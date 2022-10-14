@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
+import { User } from "../user/user.entity";
+import { Wallet } from "../wallet/wallet.entity";
+import { Payment } from "../payment/payment.entity";
+import { Statistics } from "../statistics/statistics.entity";
 
 @Module({
   imports: [
@@ -13,8 +17,17 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('PG_DATABASE'),
-        entities: [],
+        entities: [
+          User,
+          Wallet,
+          Payment,
+          Statistics,
+        ],
         autoLoadEntities: true,
+        synchronize: true,
+        logging: true,
+        migrationsRun: true,
+        migrations: [__dirname + "../migration/**/*.ts"],
       }),
     })
   ],
