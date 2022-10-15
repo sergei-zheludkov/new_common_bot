@@ -5,32 +5,32 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { WalletEnum } from "../../types/wallet.enum";
+import { WalletEnum } from '../../types/wallet.enum';
 
-@Entity("wallets")
+@Entity('wallets')
 class Wallet {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: WalletEnum,
   })
   type: string;
 
   @Column({
-    type: "varchar",
+    type: 'varchar',
     unique: true,
   })
   number: string;
 
   @Column({
-    type: "varchar",
+    type: 'varchar',
     unique: true,
   })
   token: string;
 
-  @Column({ type: "boolean" })
+  @Column({ type: 'boolean' })
   is_active: boolean;
 
   @Column({ default: 0 })

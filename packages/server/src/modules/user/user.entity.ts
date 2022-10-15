@@ -10,19 +10,19 @@ import {
 import { RoleEnum } from '../../types/role.enum';
 import { LangEnum } from '../../types/lang.enum';
 
-@Entity("users")
+@Entity('users')
 class User {
   @PrimaryColumn()
   id: string;
 
-  @Column({ type: "varchar" })
+  @Column({ type: 'varchar' })
   firstname: string;
 
-  @Column({ type: "varchar" })
+  @Column({ type: 'varchar' })
   lastname: string;
 
   @Column({
-    type: "varchar",
+    type: 'varchar',
     unique: true,
   })
   username: string;
@@ -41,14 +41,14 @@ class User {
   referral_money: number;
 
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: LangEnum,
     default: LangEnum.EN,
   })
   lang: string;
 
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: RoleEnum,
     default: RoleEnum.USER,
   })

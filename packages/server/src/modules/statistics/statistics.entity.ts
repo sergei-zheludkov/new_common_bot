@@ -6,15 +6,15 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity("statistics")
+@Entity('statistics')
 export class Statistics {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: "int" })
+  @Column({ type: 'int' })
   users: number;
 
-  @Column({ type: "simple-json" })
+  @Column({ type: 'simple-json' })
   payments: {
     [key: string]: {
       total: number,

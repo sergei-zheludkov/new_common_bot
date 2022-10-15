@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-import { User } from "../user/user.entity";
-import { Wallet } from "../wallet/wallet.entity";
-import { Payment } from "../payment/payment.entity";
-import { Statistics } from "../statistics/statistics.entity";
+import { join } from 'path';
+import { User } from '../user/user.entity';
+import { Wallet } from '../wallet/wallet.entity';
+import { Payment } from '../payment/payment.entity';
+import { Statistics } from '../statistics/statistics.entity';
 
 @Module({
   imports: [
@@ -27,9 +28,9 @@ import { Statistics } from "../statistics/statistics.entity";
         synchronize: true,
         logging: true,
         migrationsRun: true,
-        migrations: [__dirname + "../migration/**/*.ts"],
+        migrations: [join(__dirname, '../migration/**/*.ts')],
       }),
-    })
+    }),
   ],
 })
 
