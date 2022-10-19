@@ -7,21 +7,21 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from '../user/user.entity';
-import { Wallet } from '../wallet/wallet.entity';
+import { UserEntity } from '../user/user.entity';
+import { WalletEntity } from '../wallet/wallet.entity';
 
 @Entity('payments')
-class Payment {
+class PaymentEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => UserEntity)
   @JoinColumn()
-  user: User;
+  user: UserEntity;
 
-  @ManyToOne(() => Wallet)
+  @ManyToOne(() => WalletEntity)
   @JoinColumn()
-  wallet: Wallet;
+  wallet: WalletEntity;
 
   // RUB | USD | EUR | KZT
   @Column({
@@ -55,9 +55,9 @@ class Payment {
   @Column({ type: 'boolean' })
   is_paid: boolean;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => UserEntity)
   @JoinColumn()
-  referral: User;
+  referral: UserEntity;
 
   @Column({ type: 'int' })
   referral_money: number;
@@ -69,4 +69,4 @@ class Payment {
   updated: Date;
 }
 
-export { Payment };
+export { PaymentEntity };

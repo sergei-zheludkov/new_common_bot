@@ -8,7 +8,7 @@ import {
 import { WalletEnum } from '../../types/wallet.enum';
 
 @Entity('wallets')
-class Wallet {
+class WalletEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -43,4 +43,4 @@ class Wallet {
   updated: Date;
 }
 
-export { Wallet };
+export { WalletEntity };

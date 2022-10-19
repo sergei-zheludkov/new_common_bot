@@ -4,40 +4,56 @@ import {
   PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 import { RoleEnum } from '../../types/role.enum';
 import { LangEnum } from '../../types/lang.enum';
 
 @Entity('users')
-class User {
+class UserEntity {
   @PrimaryColumn()
   id: string;
 
-  @Column({ type: 'varchar' })
-  firstname: string;
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  firstname?: string;
 
-  @Column({ type: 'varchar' })
-  lastname: string;
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  lastname?: string;
 
   @Column({
     type: 'varchar',
     unique: true,
+    nullable: true,
   })
-  username: string;
+  username?: string;
 
-  @Column({ type: 'int' })
+  @Column({
+    type: 'int',
+    default: 0,
+  })
   balance: number;
 
-  @ManyToOne(() => User)
-  @JoinColumn()
-  who_invite: string;
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  who_invited?: string;
 
-  @Column({ type: 'int' })
+  @Column({
+    type: 'int',
+    default: 0,
+  })
   referral_counter: number;
 
-  @Column({ type: 'int' })
+  @Column({
+    type: 'int',
+    default: 0,
+  })
   referral_money: number;
 
   @Column({
@@ -54,7 +70,10 @@ class User {
   })
   role: string;
 
-  @Column({ type: 'int' })
+  @Column({
+    type: 'int',
+    default: 600,
+  })
   reminder_time: number;
 
   @CreateDateColumn()
@@ -64,4 +83,4 @@ class User {
   updated: Date;
 }
 
-export { User };
+export { UserEntity };

@@ -31,6 +31,7 @@ module.exports = {
   },
   rules: {
     indent: [2, 2, { ignoredNodes: ['PropertyDefinition'] }],
+    camelcase: 0,
     'no-shadow': 0,
     'no-useless-constructor': 0,
     '@typescript-eslint/no-shadow': 2,

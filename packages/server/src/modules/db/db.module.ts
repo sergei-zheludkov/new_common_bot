@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-import { join } from 'path';
-import { User } from '../user/user.entity';
-import { Wallet } from '../wallet/wallet.entity';
-import { Payment } from '../payment/payment.entity';
-import { Statistics } from '../statistics/statistics.entity';
+// import { join } from 'path';
+import { UserEntity } from '../user/user.entity';
+import { WalletEntity } from '../wallet/wallet.entity';
+import { PaymentEntity } from '../payment/payment.entity';
+import { StatisticsEntity } from '../statistics/statistics.entity';
 
 @Module({
   imports: [
@@ -19,16 +19,16 @@ import { Statistics } from '../statistics/statistics.entity';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('PG_DATABASE'),
         entities: [
-          User,
-          Wallet,
-          Payment,
-          Statistics,
+          UserEntity,
+          WalletEntity,
+          PaymentEntity,
+          StatisticsEntity,
         ],
         autoLoadEntities: true,
         synchronize: true,
         logging: true,
-        migrationsRun: true,
-        migrations: [join(__dirname, '../migration/**/*.ts')],
+        // migrationsRun: true,
+        // migrations: [join(__dirname, '../migration/**/*.ts')],
       }),
     }),
   ],

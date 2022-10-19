@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity('statistics')
-export class Statistics {
+class StatisticsEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -28,3 +28,5 @@ export class Statistics {
   @UpdateDateColumn()
   updated: Date;
 }
+
+export { StatisticsEntity };
