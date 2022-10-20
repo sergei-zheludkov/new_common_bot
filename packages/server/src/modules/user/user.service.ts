@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { logger } from '../../libs/logger/logger.instance';
 import { UserEntity as User } from './user.entity';
 import { UserCreateDto, UserUpdateDto } from './dto';
 
@@ -28,9 +29,9 @@ class UserService {
     });
   }
 
-  createUser(data: UserCreateDto) {
+  async createUser(data: UserCreateDto) {
     try {
-      return this.dataSource.transaction(async (manager) => {
+      return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
 
         // TODO Подумать над выбросом ошибки в этом случае
@@ -44,15 +45,14 @@ class UserService {
         return users_repository.save(newUser);
       });
     } catch (e) {
-      //   TODO логирование и обработка ошибки
-      console.log({ e });
+      logger.error('UserService.createUser():', e);
       throw new Error();
     }
   }
 
-  createUserWithReferral(data: UserCreateDto) {
+  async createUserWithReferral(data: UserCreateDto) {
     try {
-      return this.dataSource.transaction(async (manager) => {
+      return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
 
         // TODO Подумать над выбросом ошибки в этом случае
@@ -95,17 +95,19 @@ class UserService {
         return { ...user, who_invited: null };
       });
     } catch (e) {
-      //   TODO логирование и обработка ошибки
-      console.log({ e });
+      logger.error('UserService.createUserWithReferral():', e);
       throw new Error();
     }
   }
 
-  updateUser(user_data: UserUpdateDto) {
+  async updateUser(user_data: UserUpdateDto) {
     const { id, ...data } = user_data;
     try {
-      return this.dataSource.transaction(async (manager) => {
+      return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
+
+        const a = {} as { lol: { kek: string} };
+        const b = a.lol.kek;
 
         const user_in_db = await users_repository.findOneBy({ id });
         if (!user_in_db) {
@@ -117,8 +119,7 @@ class UserService {
         return updated_user;
       });
     } catch (e) {
-      //   TODO логирование и обработка ошибки
-      console.log({ e });
+      logger.error('UserService.updateUser():', e);
       throw new Error();
     }
   }

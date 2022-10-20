@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 // import { join } from 'path';
-import { UserEntity } from '../user/user.entity';
-import { WalletEntity } from '../wallet/wallet.entity';
-import { PaymentEntity } from '../payment/payment.entity';
-import { StatisticsEntity } from '../statistics/statistics.entity';
+import { UserEntity } from '../../modules/user/user.entity';
+import { WalletEntity } from '../../modules/wallet/wallet.entity';
+import { PaymentEntity } from '../../modules/payment/payment.entity';
+import { StatisticsEntity } from '../../modules/statistics/statistics.entity';
 
 @Module({
   imports: [
