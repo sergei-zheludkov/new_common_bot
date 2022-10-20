@@ -3,10 +3,15 @@ import {
   IsNumber,
   IsString,
   IsEnum,
+  IsNotEmpty,
 } from 'class-validator';
 import { LangEnum } from '../../../types/lang.enum';
 
 class UserUpdateDto {
+  @IsNotEmpty()
+  @IsString()
+  id: string;
+
   @IsOptional()
   @IsString()
   firstname?: string;

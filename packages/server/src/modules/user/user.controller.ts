@@ -3,18 +3,13 @@ import {
   NotFoundException,
   Get,
   Post,
-  // Patch,
+  Patch,
   Param,
   Body,
 } from '@nestjs/common';
 import { API_VERSION_ROUTES } from '../../constants';
 import { UserService } from './user.service';
 import { UserCreateDto, UserUpdateDto } from './dto';
-
-// interface PatchUserBody {
-//   id: string;
-//   data: UserUpdateDto;
-// }
 
 @Controller(`${API_VERSION_ROUTES.v1}/user`)
 class UserController {
@@ -32,19 +27,27 @@ class UserController {
   }
 
   @Post()
-  postUser(
+  async postUser(
     @Body('who_invited') who_invited: string,
     @Body() body: UserCreateDto,
   ) {
-    return who_invited
-      ? this.userService.createUserWithReferral(body)
-      : this.userService.createUser(body);
+    const user = who_invited
+      ? await this.userService.createUserWithReferral(body)
+      : await this.userService.createUser(body);
+
+    return user;
   }
 
-  // @Patch()
-  // patchUser(@Body() { id, data }: PatchUserBody) {
-  //   return this.userService.updateUser(id, data);
-  // }
+  @Patch()
+  async patchUser(@Body() data: UserUpdateDto) {
+    const user = await this.userService.updateUser(data);
+
+    if (!user) {
+      throw new NotFoundException();
+    }
+
+    return user;
+  }
 }
 
 export { UserController };

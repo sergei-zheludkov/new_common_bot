@@ -13,14 +13,14 @@ class UserService {
     private dataSource: DataSource,
   ) {}
 
-  async getOneUser(id: string) {
+  getOneUser(id: string) {
     return this.dataSource.transaction(async (manager) => {
-      const usersRepository = manager.getRepository(User);
-      const user = await usersRepository.findOneBy({ id });
+      const users_repository = manager.getRepository(User);
+      const user = await users_repository.findOneBy({ id });
 
       const who_invited = user?.who_invited;
       if (who_invited) {
-        const referralUser = await usersRepository.findOneBy({ id: who_invited });
+        const referralUser = await users_repository.findOneBy({ id: who_invited });
         return { ...user, who_invited: referralUser };
       }
 
@@ -31,17 +31,17 @@ class UserService {
   createUser(data: UserCreateDto) {
     try {
       return this.dataSource.transaction(async (manager) => {
-        const usersRepository = manager.getRepository(User);
+        const users_repository = manager.getRepository(User);
 
         // TODO Подумать над выбросом ошибки в этом случае
         const { id } = data;
-        const userInDB = await usersRepository.findOneBy({ id });
+        const userInDB = await users_repository.findOneBy({ id });
         if (userInDB) {
           return userInDB;
         }
 
-        const newUser = usersRepository.create(data);
-        return usersRepository.save(newUser);
+        const newUser = users_repository.create(data);
+        return users_repository.save(newUser);
       });
     } catch (e) {
       //   TODO логирование и обработка ошибки
@@ -53,26 +53,26 @@ class UserService {
   createUserWithReferral(data: UserCreateDto) {
     try {
       return this.dataSource.transaction(async (manager) => {
-        const usersRepository = manager.getRepository(User);
+        const users_repository = manager.getRepository(User);
 
         // TODO Подумать над выбросом ошибки в этом случае
         const { id } = data;
-        const userInDB = await usersRepository.findOneBy({ id });
-        if (userInDB) {
-          return userInDB;
+        const user_in_db = await users_repository.findOneBy({ id });
+        if (user_in_db) {
+          return user_in_db;
         }
 
-        const newUser = usersRepository.create(data);
-        const user = await usersRepository.save(newUser);
+        const new_user_data = users_repository.create(data);
+        const user = await users_repository.save(new_user_data);
 
         const { who_invited } = data;
         if (!who_invited) {
           return user;
         }
 
-        const referralUser = await usersRepository.findOneBy({ id: who_invited });
-        if (referralUser) {
-          await usersRepository.increment(
+        const referral_user = await users_repository.findOneBy({ id: who_invited });
+        if (referral_user) {
+          await users_repository.increment(
             { id: who_invited },
             'referral_counter',
             1,
@@ -81,10 +81,10 @@ class UserService {
           // TODO обращение к API бота, для оповещения реферрала о новом подписчике
           // const { firstname, lastname } = user;
           // this.httpService.post();
-          return { ...user, who_invited: referralUser };
+          return { ...user, who_invited: referral_user };
         }
 
-        await usersRepository.update(
+        await users_repository.update(
           { id: user.id },
           { who_invited: null },
         );
@@ -101,9 +101,27 @@ class UserService {
     }
   }
 
-  // updateUser(id: string, data: UserUpdateDto) {
-  //   return this.usersRepository.update({ id }, data);
-  // }
+  updateUser(user_data: UserUpdateDto) {
+    const { id, ...data } = user_data;
+    try {
+      return this.dataSource.transaction(async (manager) => {
+        const users_repository = manager.getRepository(User);
+
+        const user_in_db = await users_repository.findOneBy({ id });
+        if (!user_in_db) {
+          return user_in_db;
+        }
+
+        await users_repository.update({ id }, data);
+        const updated_user = await users_repository.findOneBy({ id });
+        return updated_user;
+      });
+    } catch (e) {
+      //   TODO логирование и обработка ошибки
+      console.log({ e });
+      throw new Error();
+    }
+  }
 }
 
 export { UserService };
