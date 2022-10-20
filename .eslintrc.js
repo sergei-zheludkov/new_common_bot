@@ -31,6 +31,7 @@ module.exports = {
   },
   rules: {
     indent: [2, 2, { ignoredNodes: ['PropertyDefinition'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     camelcase: 0,
     'no-shadow': 0,
     'no-useless-constructor': 0,

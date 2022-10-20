@@ -1,0 +1,67 @@
+{
+  "name": "@common_bot/bot",
+  "version": "0.3.9",
+  "description": "Start write chatbots with urban-bot and typescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/urban-bot/urban-bot-starter-typescript.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": ["dist/**/*"],
+  "scripts": {
+    "build": "webpack",
+    "dev": "nodemon",
+    "lint": "eslint \"./src\" --ext \".js,.jsx,.ts,.tsx\"",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "node dist/index.js",
+    "start-tunnel": "ngrok http 8080",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/node": "^18.11.3",
+    "@types/react": "^16.14.3",
+    "@urban-bot/core": "^0.3.9",
+    "@urban-bot/facebook": "^0.3.9",
+    "@urban-bot/slack": "^0.3.9",
+    "@urban-bot/telegram": "^0.3.9",
+    "@urban-bot/discord": "^0.3.9",
+    "dotenv": "^8.2.0",
+    "file-loader": "^6.2.0",
+    "react": "^16.14.0",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.5.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0",
+    "express": "^4.18.2",
+    "node-localstorage": "^2.2.1"
+  },
+  "devDependencies": {
+    "ngrok": "^4.3.0",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 4,
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  },
+  "nodemonConfig": {
+    "watch": ["src"],
+    "ext": "ts,tsx,js,jsx,json",
+    "exec": "webpack --mode=development && node ./dist/index.js"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "rootDir": "src"
+  }
+}
