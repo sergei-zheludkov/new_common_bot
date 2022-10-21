@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/user/{id}": {
+      "get": {
+        "operationId": "getUser",
+        "summary": "",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User has been found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found."
+          }
+        }
+      }
+    },
+    "/api/v1/user": {
+      "post": {
+        "operationId": "postUser",
+        "summary": "",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patchUser",
+        "summary": "",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User has been updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found."
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Bot Server",
+    "description": "The Bot Server API description",
+    "version": "3.0.1",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "UserEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "firstname": {
+            "type": "string",
+            "example": "Sergei",
+            "nullable": true
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Zheludkov",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "example": "sergozheludkov",
+            "nullable": true
+          },
+          "balance": {
+            "type": "number",
+            "example": 2000
+          },
+          "who_invited": {
+            "type": "string",
+            "example": "258000010",
+            "nullable": true
+          },
+          "referral_counter": {
+            "type": "number",
+            "example": 5
+          },
+          "referral_money": {
+            "type": "number",
+            "example": 300
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "ru",
+              "en"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "user"
+            ]
+          },
+          "reminder_time": {
+            "type": "number",
+            "example": 600
+          },
+          "created": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          },
+          "updated": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          }
+        },
+        "required": [
+          "id",
+          "firstname",
+          "lastname",
+          "username",
+          "balance",
+          "who_invited",
+          "referral_counter",
+          "referral_money",
+          "lang",
+          "role",
+          "reminder_time",
+          "created",
+          "updated"
+        ]
+      },
+      "UserCreateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "firstname": {
+            "type": "string",
+            "example": "Sergei"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Zheludkov"
+          },
+          "username": {
+            "type": "string",
+            "example": "sergozheludkov"
+          },
+          "who_invited": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "ru",
+              "en"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "lang"
+        ]
+      },
+      "UserUpdateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "firstname": {
+            "type": "string",
+            "example": "Sergei"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "Zheludkov"
+          },
+          "username": {
+            "type": "string",
+            "example": "sergozheludkov"
+          },
+          "balance": {
+            "type": "number",
+            "example": 2000
+          },
+          "referral_counter": {
+            "type": "number",
+            "example": 5
+          },
+          "referral_money": {
+            "type": "number",
+            "example": 300
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "ru",
+              "en"
+            ]
+          },
+          "reminder_time": {
+            "type": "number",
+            "example": 600
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  }
+}
