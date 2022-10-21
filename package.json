@@ -19,6 +19,8 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "scripts": {
-    "start_server:dev": "cd packages/server && yarn start:dev"
+    "start_server:dev": "cd packages/server && yarn start:dev",
+    "start_bot:dev": "cd packages/bot && yarn dev",
+    "build:i18n": "cd packages/i18n && yarn build"
   }
 }
