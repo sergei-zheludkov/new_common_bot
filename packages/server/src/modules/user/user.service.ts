@@ -106,9 +106,6 @@ class UserService {
       return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
 
-        const a = {} as { lol: { kek: string} };
-        const b = a.lol.kek;
-
         const user_in_db = await users_repository.findOneBy({ id });
         if (!user_in_db) {
           return user_in_db;

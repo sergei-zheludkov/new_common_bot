@@ -59,7 +59,7 @@ class UserEntity {
   @Column({
     type: 'enum',
     enum: LangEnum,
-    default: LangEnum.EN,
+    default: LangEnum.ENGLISH,
   })
   lang: string;
 
