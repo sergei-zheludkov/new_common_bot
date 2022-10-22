@@ -19,7 +19,8 @@
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "jsx": "react"
   },
 //  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist/**/*"]

@@ -4,14 +4,17 @@
   "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "generate:api": "openapi --input ../server/openapi.json --output ./generated --client axios"
+  },
   "dependencies": {
     "openapi-typescript-codegen": "^0.23.0",
     "axios": "^1.1.3",
     "form-data": "^4.0.0"
   },
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch --preserveWatchOutput",
-    "generate:api": "openapi --input ../server/openapi.json --output ./generated --client axios"
+  "peerDependencies": {
+    "react": "^16.14.0"
   }
 }
