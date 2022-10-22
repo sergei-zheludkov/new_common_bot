@@ -8,7 +8,7 @@ const getDefaultI18n = (config?: Partial<InitOptions>) => {
     .use(initReactI18next)
     .init({
       lng: Languages.ENGLISH,
-      fallbackLng: [Languages.ENGLISH, Languages.RUSSIA],
+      fallbackLng: [Languages.ENGLISH, Languages.RUSSIAN],
       resources,
       ns: ['common'],
       defaultNS: 'common',

@@ -1,5 +1,5 @@
 {
-  "name": "commot_bot",
+  "name": "common_bot",
   "version": "1.0.0",
   "main": "index.js",
   "private": "true",
@@ -21,6 +21,7 @@
   "scripts": {
     "start_server:dev": "cd packages/server && yarn start:dev",
     "start_bot:dev": "cd packages/bot && yarn dev",
-    "build:i18n": "cd packages/i18n && yarn build"
+    "build:packages": "lerna run build --parallel --scope=@common_bot/{api,i18n}",
+    "build:project": "lerna run build --parallel --scope=@common_bot/{server,bot}"
   }
 }

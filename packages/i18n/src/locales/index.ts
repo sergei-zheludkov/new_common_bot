@@ -5,7 +5,7 @@ import { Languages } from '../constants';
 
 const resources = {
   [Languages.ENGLISH]: en,
-  [Languages.RUSSIA]: ru,
+  [Languages.RUSSIAN]: ru,
 };
 
 export { resources };
