@@ -11,6 +11,7 @@ import { LangEnum } from '../../../types/lang.enum';
 class UserUpdateDto {
   @ApiProperty({
     required: true,
+    example: '258000010',
   })
   @IsNotEmpty()
   @IsString()
