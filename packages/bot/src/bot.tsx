@@ -30,11 +30,11 @@ export const Bot = () => {
 
   const { chat } = useBotContext<UrbanBotTelegram>();
 
-  useEffect(() => {
-    const user = getChatsMap()[chat.id];
-    if (!user) setScene(T.ScenesEnum.AUTH);
-    else setScene(T.ScenesEnum.UPDATE_BOT);
-  }, []);
+  // useEffect(() => {
+  //   const user = getChatsMap()[chat.id];
+  //   if (!user) setScene(T.ScenesEnum.AUTH);
+  //   else setScene(T.ScenesEnum.UPDATE_BOT);
+  // }, []);
 
   useEffect(() => {
     saveChat(chat);
@@ -91,7 +91,7 @@ export const Bot = () => {
       />
       // </Provider.User>
     );
-  // -------------------------------------AUTHENTIFICATION-------------------------------------
+  // -------------------------------------AUTHENTICATION-------------------------------------
   case T.ScenesEnum.AUTH:
     return (
       <Scene.Authentication

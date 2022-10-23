@@ -1,2 +1,2 @@
 export { Authentication } from './authentication';
-// export { Registration } from './registration';
+export { Registration } from './registration';
