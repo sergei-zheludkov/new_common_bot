@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCommand, useBotContext } from '@urban-bot/core';
-import { UrbanBotTelegram } from '@urban-bot/telegram';
-import { saveChat, getChatsMap } from './local-storage';
+// import { UrbanBotTelegram } from '@urban-bot/telegram';
+// import { saveChat, getChatsMap } from './local-storage';
 
 // import { Provider } from './contexts';
 
@@ -21,14 +21,14 @@ const DEFAULT_STATE = {
 
 export const Bot = () => {
   const [{ scene }, setState] = useState<BotState>(DEFAULT_STATE);
-  const [refId, setRefId] = useState<string | null>('');
+  const [refId, setRefId] = useState<string | null>(null);
   console.info('Bot scene:', scene);
 
   const setScene = (_scene: BotState['scene']) => setState((prev) => ({ ...prev, scene: _scene }));
   // const setStatistics = (type: T.Statistics) =>
   //   setState({ scene: T.Scene.STATISTICS, statisticsType: type });
 
-  const { chat } = useBotContext<UrbanBotTelegram>();
+  // const { chat } = useBotContext<UrbanBotTelegram>();
 
   // useEffect(() => {
   //   const user = getChatsMap()[chat.id];
@@ -36,9 +36,9 @@ export const Bot = () => {
   //   else setScene(T.ScenesEnum.UPDATE_BOT);
   // }, []);
 
-  useEffect(() => {
-    saveChat(chat);
-  }, [chat]);
+  // useEffect(() => {
+  //   saveChat(chat);
+  // }, [chat]);
 
   useCommand(({ argument }) => {
     if (argument) setRefId(argument);
@@ -73,7 +73,6 @@ export const Bot = () => {
   switch (scene) {
   case T.ScenesEnum.UPDATE_BOT:
     return (
-      // <Provider.User>
       <Menu.Main
         useMain={Menu.hooks.useUpdatedMain}
         onAdmin={() => {}}
@@ -89,7 +88,6 @@ export const Bot = () => {
         // onFeedback={handleSceneFeedback}
         // onRules={handleSceneRules}
       />
-      // </Provider.User>
     );
   // -------------------------------------AUTHENTICATION-------------------------------------
   case T.ScenesEnum.AUTH:

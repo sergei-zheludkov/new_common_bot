@@ -15,14 +15,18 @@ const useAuthentication = () => {
     statusCode,
   } = useUser();
 
+  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
+  const isUserLoaded = isCalled && !isLoading && isSuccess && user;
+
   useEffect(() => {
+    if (isUserLoaded) {
+      return;
+    }
+
     (async () => {
       await fetch();
     })();
   }, []);
-
-  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
-  const isUserLoaded = isCalled && !isLoading && isSuccess && user;
 
   return {
     isUserLoaded,

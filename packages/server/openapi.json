@@ -211,7 +211,8 @@
           },
           "who_invited": {
             "type": "string",
-            "example": "258000010"
+            "example": "258000010",
+            "nullable": true
           },
           "lang": {
             "type": "string",

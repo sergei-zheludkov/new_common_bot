@@ -43,6 +43,7 @@ class UserCreateDto {
   @ApiProperty({
     required: false,
     example: '258000010',
+    nullable: true,
   })
   @IsOptional()
   @IsString()
