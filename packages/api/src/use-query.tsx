@@ -8,6 +8,7 @@ export type QueryOptions = {
 }
 
 type QueryState<T, E = ApiError> = {
+  isCalled: boolean
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
@@ -26,6 +27,7 @@ function useQuery<T, A, E extends ApiError = ApiError>(
   { isLazy = false }: QueryOptions = {},
 ): Query<T, E, A> {
   const [query, setQuery] = useState<QueryState<T, E>>({
+    isCalled: !isLazy,
     isLoading: !isLazy,
     isError: false,
     isSuccess: false,
@@ -34,6 +36,7 @@ function useQuery<T, A, E extends ApiError = ApiError>(
   const fetch = useCallback(
     async (...arg: A[]): Promise<QueryState<T, E>> => {
       setQuery({
+        isCalled: true,
         isLoading: true,
         isError: false,
         isSuccess: false,

@@ -1,24 +1,30 @@
-import { useBotContext } from '@urban-bot/core';
-import { useApi, useQuery, predicates } from '@common_bot/api';
+import { useEffect } from 'react';
+import { predicates } from '@common_bot/api';
+import { useUser } from '../../contexts/user';
 
 const { isNotFoundError } = predicates;
 
 const useAuthentication = () => {
-  const { chat } = useBotContext();
-  const { getUser } = useApi();
   const {
-    data: user,
+    fetch,
+    user,
+    isCalled,
     isLoading,
     isSuccess,
     isError,
     statusCode,
-  } = useQuery('user', () => getUser(chat.id));
+  } = useUser();
 
-  const isUserNotFound = isError && isNotFoundError(statusCode);
-  const isUserLoaded = !isLoading && isSuccess && user;
+  useEffect(() => {
+    (async () => {
+      await fetch();
+    })();
+  }, []);
+
+  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
+  const isUserLoaded = isCalled && !isLoading && isSuccess && user;
 
   return {
-    isLoading,
     isUserLoaded,
     isUserNotFound,
   };
