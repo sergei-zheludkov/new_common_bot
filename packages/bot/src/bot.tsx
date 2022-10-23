@@ -47,18 +47,18 @@ export const Bot = () => {
 
   // menu handlers
   const handleMenuMain = () => setScene(T.MenusEnum.MAIN);
-  // const handleMenuAdmin = () => setScene(T.Menu.ADMIN);
-  // const handleMenuBalance = () => setScene(T.Menu.BALANCE);
-  // const handleMenuWallets = () => setScene(T.Menu.WALLETS);
-  // const handleMenuReferral = () => setScene(T.Menu.REFERRAL);
-  // const handleMenuSettings = () => setScene(T.Menu.SETTINGS);
+  const handleMenuAdmin = () => setScene(T.MenusEnum.ADMIN);
+  const handleMenuBalance = () => setScene(T.MenusEnum.BALANCE);
+  const handleMenuReferral = () => setScene(T.MenusEnum.REFERRAL);
+  const handleMenuSettings = () => setScene(T.MenusEnum.SETTINGS);
+  // const handleMenuWallets = () => setScene(T.MenusEnum.WALLETS);
   // const handleMenuStatistics = () =>
   // setState({scene: T.Menu.STATISTICS,statisticsType: T.Statistics.NONE});
 
   // scene handlers
   const handleSceneRegistration = () => setScene(T.ScenesEnum.REG);
-  // const handleSceneFeedback = () => setScene(T.Scene.FEEDBACK);
-  // const handleSceneRules = () => setScene(T.Scene.RULES);
+  const handleSceneFeedback = () => setScene(T.ScenesEnum.FEEDBACK);
+  const handleSceneRules = () => setScene(T.ScenesEnum.RULES);
   // const handleSceneInputMoney = () => setScene(T.Scene.INPUT_MONEY);
   // const handleSceneAllPayments = () => setScene(T.Scene.ALL_PAYMENTS);
   // const handleSceneAddWallets = () => setScene(T.Scene.ADD_WALLETS);
@@ -75,18 +75,12 @@ export const Bot = () => {
     return (
       <Menu.Main
         useMain={Menu.hooks.useUpdatedMain}
-        onAdmin={() => {}}
-        onBalance={() => {}}
-        onReferral={() => {}}
-        onSettings={() => {}}
-        onFeedback={() => {}}
-        onRules={() => {}}
-        // onAdmin={handleMenuAdmin}
-        // onBalance={handleMenuBalance}
-        // onReferral={handleMenuReferral}
-        // onSettings={handleMenuSettings}
-        // onFeedback={handleSceneFeedback}
-        // onRules={handleSceneRules}
+        onAdmin={handleMenuAdmin}
+        onBalance={handleMenuBalance}
+        onReferral={handleMenuReferral}
+        onSettings={handleMenuSettings}
+        onFeedback={handleSceneFeedback}
+        onRules={handleSceneRules}
       />
     );
   // -------------------------------------AUTHENTICATION-------------------------------------
@@ -152,18 +146,12 @@ export const Bot = () => {
     return (
       <Menu.Main
         useMain={Menu.hooks.useCommonMain}
-        onAdmin={() => {}}
-        onBalance={() => {}}
-        onReferral={() => {}}
-        onSettings={() => {}}
-        onFeedback={() => {}}
-        onRules={() => {}}
-        // onAdmin={handleMenuAdmin}
-        // onBalance={handleMenuBalance}
-        // onReferral={handleMenuReferral}
-        // onSettings={handleMenuSettings}
-        // onFeedback={handleSceneFeedback}
-        // onRules={handleSceneRules}
+        onAdmin={handleMenuAdmin}
+        onBalance={handleMenuBalance}
+        onReferral={handleMenuReferral}
+        onSettings={handleMenuSettings}
+        onFeedback={handleSceneFeedback}
+        onRules={handleSceneRules}
       />
     );
 
