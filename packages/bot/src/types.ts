@@ -1,8 +1,8 @@
 enum ScenesEnum {
   AUTH = 'scene_authentification',
   REG = 'scene_registration',
-  // FEEDBACK = 'scene_feedback',
-  // RULES = 'scene_rules',
+  FEEDBACK = 'scene_feedback',
+  RULES = 'scene_rules',
   // INPUT_MONEY = 'scene_input_money',
   // ALL_PAYMENTS = 'scene_all_payments',
   // ADD_WALLETS = 'scene_add_wallets',
@@ -18,11 +18,11 @@ enum ScenesEnum {
 
 enum MenusEnum {
   MAIN = 'main_menu',
-  // ADMIN = 'admin_menu',
-  // BALANCE = 'balance_menu',
-  // WALLETS = 'wallets_menu',
-  // REFERRAL = 'referral_menu',
-  // SETTINGS = 'settings_menu',
+  ADMIN = 'admin_menu',
+  BALANCE = 'balance_menu',
+  WALLETS = 'wallets_menu',
+  REFERRAL = 'referral_menu',
+  SETTINGS = 'settings_menu',
   // STATISTICS = 'statistics_menu',
 }
 //
