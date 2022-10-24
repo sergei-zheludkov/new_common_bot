@@ -28,12 +28,8 @@ export class MessageBroker {
 
   notification(chatId: string, callback: (params: NotificationData) => void) {
     expressApp.post(`${this.MESSAGE}/${chatId}`, (req, res) => {
-      const {
-        body: { data },
-      } = req;
-
-      const message = (data.message as string) || '';
-
+      const { body } = req;
+      const message = (body?.message as string) || '';
       callback({ message });
       res.sendStatus(200);
     });
