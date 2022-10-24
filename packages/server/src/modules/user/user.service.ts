@@ -9,9 +9,9 @@ import { UserCreateDto, UserUpdateDto } from './dto';
 @Injectable()
 class UserService {
   constructor(
-    private httpService: HttpService,
+    private readonly httpService: HttpService,
     @InjectDataSource()
-    private dataSource: DataSource,
+    private readonly dataSource: DataSource,
   ) {}
 
   getOneUser(id: string) {
@@ -21,8 +21,8 @@ class UserService {
 
       const who_invited = user?.who_invited;
       if (who_invited) {
-        const referralUser = await users_repository.findOneBy({ id: who_invited });
-        return { ...user, who_invited: referralUser };
+        const referral_user = await users_repository.findOneBy({ id: who_invited });
+        return { ...user, who_invited: referral_user };
       }
 
       return user;
@@ -34,18 +34,18 @@ class UserService {
       return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
 
-        // TODO Подумать над выбросом ошибки в этом случае
+        // TODO Подумать над выбросом ошибки в случае если юзер создан
         const { id } = data;
-        const userInDB = await users_repository.findOneBy({ id });
-        if (userInDB) {
-          return userInDB;
+        const user_in_db = await users_repository.findOneBy({ id });
+        if (user_in_db) {
+          return user_in_db;
         }
 
-        const newUser = users_repository.create(data);
-        return users_repository.save(newUser);
+        const new_user = users_repository.create(data);
+        return users_repository.save(new_user);
       });
     } catch (e) {
-      logger.error('UserService.createUser():', e);
+      logger.error('[ UserService | createUser ]', e);
       throw new Error();
     }
   }
@@ -95,7 +95,7 @@ class UserService {
         return { ...user, who_invited: null };
       });
     } catch (e) {
-      logger.error('UserService.createUserWithReferral():', e);
+      logger.error('[ UserService | createUserWithReferral ]', e);
       throw new Error();
     }
   }
@@ -116,7 +116,7 @@ class UserService {
         return updated_user;
       });
     } catch (e) {
-      logger.error('UserService.updateUser():', e);
+      logger.error('[ UserService | updateUser ]', e);
       throw new Error();
     }
   }
