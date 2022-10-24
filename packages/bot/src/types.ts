@@ -20,9 +20,9 @@ enum MenusEnum {
   MAIN = 'main_menu',
   ADMIN = 'admin_menu',
   BALANCE = 'balance_menu',
-  WALLETS = 'wallets_menu',
   REFERRAL = 'referral_menu',
   SETTINGS = 'settings_menu',
+  // WALLETS = 'wallets_menu',
   // STATISTICS = 'statistics_menu',
 }
 //
