@@ -3,6 +3,7 @@ import { UrbanBotTelegram } from '@urban-bot/telegram';
 import { render, Root } from '@urban-bot/core';
 import dotenv from 'dotenv';
 import { App } from '../app';
+import { expressApp } from '../express-app';
 
 dotenv.config();
 
@@ -20,7 +21,11 @@ const urbanBotTelegram = new UrbanBotTelegram({
 });
 
 render(
-  <Root bot={urbanBotTelegram} port={PORT ? Number(PORT) : undefined}>
+  <Root
+    bot={urbanBotTelegram}
+    expressApp={expressApp}
+    port={PORT ? Number(PORT) : undefined}
+  >
     <App />
   </Root>,
   () => console.log('telegram bot has started'),
