@@ -9,9 +9,9 @@ import { UserCreateDto, UserUpdateDto } from './dto';
 @Injectable()
 class UserService {
   constructor(
-    private httpService: HttpService,
+    private readonly httpService: HttpService,
     @InjectDataSource()
-    private dataSource: DataSource,
+    private readonly dataSource: DataSource,
   ) {}
 
   getOneUser(id: string) {
@@ -34,7 +34,7 @@ class UserService {
       return await this.dataSource.transaction(async (manager) => {
         const users_repository = manager.getRepository(User);
 
-        // TODO Подумать над выбросом ошибки в этом случае
+        // TODO Подумать над выбросом ошибки в случае если юзер создан
         const { id } = data;
         const userInDB = await users_repository.findOneBy({ id });
         if (userInDB) {
@@ -45,7 +45,7 @@ class UserService {
         return users_repository.save(newUser);
       });
     } catch (e) {
-      logger.error('UserService.createUser():', e);
+      logger.error('[ UserService | createUser ]', e);
       throw new Error();
     }
   }
@@ -95,7 +95,7 @@ class UserService {
         return { ...user, who_invited: null };
       });
     } catch (e) {
-      logger.error('UserService.createUserWithReferral():', e);
+      logger.error('[ UserService | createUserWithReferral ]', e);
       throw new Error();
     }
   }
@@ -116,7 +116,7 @@ class UserService {
         return updated_user;
       });
     } catch (e) {
-      logger.error('UserService.updateUser():', e);
+      logger.error('[ UserService | updateUser ]', e);
       throw new Error();
     }
   }
