@@ -1,74 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useCommand, useBotContext } from '@urban-bot/core';
-// import { UrbanBotTelegram } from '@urban-bot/telegram';
-// import { saveChat, getChatsMap } from './local-storage';
-
-// import { Provider } from './contexts';
+import React from 'react';
+import { useRouter } from './contexts';
 
 import * as Menu from './menus';
-import * as Scene from './scenes';
+// import * as Scene from './scenes';
 import * as T from './types';
 
-interface BotState {
-  scene: T.MenusEnum | T.ScenesEnum;
-  // statisticsType: T.Statistics;
-}
+export const SceneSwitcher = () => {
+  const {
+    scene,
+    // handleMenuMain,
+    handleMenuAdmin,
+    handleMenuBalance,
+    handleMenuReferral,
+    handleMenuSettings,
+    // handleMenuWallets,
+    // handleMenuStatistics,
 
-const DEFAULT_STATE = {
-  scene: T.ScenesEnum.RESET,
-  /* , statisticsType: T.Statistics.NONE */
-};
-
-export const Bot = () => {
-  const [{ scene }, setState] = useState<BotState>(DEFAULT_STATE);
-  const [refId, setRefId] = useState<string | null>(null);
-  console.info('Bot scene:', scene);
-
-  const setScene = (_scene: BotState['scene']) => setState((prev) => ({ ...prev, scene: _scene }));
-  // const setStatistics = (type: T.Statistics) =>
-  //   setState({ scene: T.Scene.STATISTICS, statisticsType: type });
-
-  // const { chat } = useBotContext<UrbanBotTelegram>();
-
-  // useEffect(() => {
-  //   const user = getChatsMap()[chat.id];
-  //   if (!user) setScene(T.ScenesEnum.AUTH);
-  //   else setScene(T.ScenesEnum.UPDATE_BOT);
-  // }, []);
-
-  // useEffect(() => {
-  //   saveChat(chat);
-  // }, [chat]);
-
-  useCommand(({ argument }) => {
-    if (argument) setRefId(argument);
-    setScene(T.ScenesEnum.AUTH);
-  }, '/start');
-
-  // menu handlers
-  const handleMenuMain = () => setScene(T.MenusEnum.MAIN);
-  const handleMenuAdmin = () => setScene(T.MenusEnum.ADMIN);
-  const handleMenuBalance = () => setScene(T.MenusEnum.BALANCE);
-  const handleMenuReferral = () => setScene(T.MenusEnum.REFERRAL);
-  const handleMenuSettings = () => setScene(T.MenusEnum.SETTINGS);
-  // const handleMenuWallets = () => setScene(T.MenusEnum.WALLETS);
-  // const handleMenuStatistics = () =>
-  // setState({scene: T.Menu.STATISTICS,statisticsType: T.Statistics.NONE});
-
-  // scene handlers
-  const handleSceneRegistration = () => setScene(T.ScenesEnum.REG);
-  const handleSceneFeedback = () => setScene(T.ScenesEnum.FEEDBACK);
-  const handleSceneRules = () => setScene(T.ScenesEnum.RULES);
-  // const handleSceneInputMoney = () => setScene(T.Scene.INPUT_MONEY);
-  // const handleSceneAllPayments = () => setScene(T.Scene.ALL_PAYMENTS);
-  // const handleSceneAddWallets = () => setScene(T.Scene.ADD_WALLETS);
-  // const handleSceneManagementWallets = () => setScene(T.Scene.MANAGEMENT_WALLETS);
-  // const handleSceneLanguage = () => setScene(T.Scene.LANGUAGE);
-  // const handleSceneNotifications = () => setScene(T.Scene.NOTIFICATIONS);
-
-  // statistics handlers
-  // const handleStatisticsUsers = () => setStatistics(T.Statistics.USERS);
-  // const handleStatisticsPayments = () => setStatistics(T.Statistics.PAYMENTS);
+    handleSceneFeedback,
+    handleSceneRules,
+  } = useRouter();
 
   switch (scene) {
   case T.ScenesEnum.UPDATE_BOT:
@@ -84,20 +34,20 @@ export const Bot = () => {
       />
     );
   // -------------------------------------AUTHENTICATION-------------------------------------
-  case T.ScenesEnum.AUTH:
-    return (
-      <Scene.Authentication
-        onSuccess={handleMenuMain}
-        onFailed={handleSceneRegistration}
-      />
-    );
-  case T.ScenesEnum.REG:
-    return (
-      <Scene.Registration
-        refId={refId || null}
-        onExit={handleMenuMain}
-      />
-    );
+  // case T.ScenesEnum.AUTH:
+  //   return (
+  //     <Scene.Authentication
+  //       onSuccess={handleMenuMain}
+  //       onFailed={handleSceneRegistration}
+  //     />
+  //   );
+  // case T.ScenesEnum.REG:
+  //   return (
+  //     <Scene.Registration
+  //       refId={refId || null}
+  //       onExit={handleMenuMain}
+  //     />
+  //   );
     // ----------------------------------------MAIN MENU----------------------------------------
     // case T.Scene.INPUT_MONEY:
     //   return <Scene.InputMoney onExit={handleMenuBalance} />;

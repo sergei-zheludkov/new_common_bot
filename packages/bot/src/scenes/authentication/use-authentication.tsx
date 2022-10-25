@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { predicates } from '@common_bot/api';
-import { useUser } from '../../contexts/user';
+import { useUser } from '../../contexts';
 
 const { isNotFoundError } = predicates;
 

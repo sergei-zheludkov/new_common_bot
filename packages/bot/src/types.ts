@@ -22,8 +22,8 @@ enum MenusEnum {
   BALANCE = 'balance_menu',
   REFERRAL = 'referral_menu',
   SETTINGS = 'settings_menu',
-  // WALLETS = 'wallets_menu',
-  // STATISTICS = 'statistics_menu',
+  WALLETS = 'wallets_menu',
+  STATISTICS = 'statistics_menu',
 }
 //
 // export enum Statistics {
