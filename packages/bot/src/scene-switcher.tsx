@@ -2,8 +2,8 @@ import React from 'react';
 import { useRouter } from './contexts';
 
 import * as Menu from './menus';
-// import * as Scene from './scenes';
-import * as T from './types';
+import * as Scene from './scenes';
+import * as T from './constants';
 
 export const SceneSwitcher = () => {
   const {
@@ -21,18 +21,19 @@ export const SceneSwitcher = () => {
   } = useRouter();
 
   switch (scene) {
-    case T.ScenesEnum.UPDATE_BOT:
-      return (
-        <Menu.Main
-          useMain={Menu.hooks.useUpdatedMain}
-          onAdmin={handleMenuAdmin}
-          onBalance={handleMenuBalance}
-          onReferral={handleMenuReferral}
-          onSettings={handleMenuSettings}
-          onFeedback={handleSceneFeedback}
-          onRules={handleSceneRules}
-        />
-      );
+    case T.ScenesEnum.GREETING:
+      return <Scene.Greeting />;
+      // return (
+      //   <Menu.Main
+      //     useMain={Menu.hooks.useUpdatedMain}
+      //     onAdmin={handleMenuAdmin}
+      //     onBalance={handleMenuBalance}
+      //     onReferral={handleMenuReferral}
+      //     onSettings={handleMenuSettings}
+      //     onFeedback={handleSceneFeedback}
+      //     onRules={handleSceneRules}
+      //   />
+      // );
       // -------------------------------------AUTHENTICATION-------------------------------------
       // case T.ScenesEnum.AUTH:
       //   return (

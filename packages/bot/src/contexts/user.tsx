@@ -2,14 +2,15 @@
 import React, {
   createContext,
   useContext,
-  // useMemo,
   useState,
+  // useEffect,
 } from 'react';
 import { useBotContext, useCommand } from '@urban-bot/core';
 import { useApi, useQuery, predicates } from '@common_bot/api';
 import type { UserEntity } from '@common_bot/api';
 import { Registration } from '../scenes';
 import { useRouter } from './router';
+// import { saveChat, getChatsMap } from '../local-storage';
 
 const { isNotFoundError } = predicates;
 
@@ -33,7 +34,7 @@ type UserProviderProps = {
 const User = ({ children }: UserProviderProps) => {
   const [referralId, setReferralId] = useState<User['referralId']>(null);
 
-  const { handleMenuMain } = useRouter();
+  const { handleSceneGreeting } = useRouter();
   const { chat } = useBotContext();
   const { getUser } = useApi();
   const {
@@ -44,10 +45,26 @@ const User = ({ children }: UserProviderProps) => {
     isError,
     statusCode,
     fetch,
-  } = useQuery('user', () => getUser(chat.id));
+  } = useQuery(
+    'user',
+    () => getUser(chat.id),
+    { isLazy: true },
+  );
+
+  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
+  const isUserLoaded = isCalled && !isLoading && isSuccess && !!user;
 
   useCommand(({ argument }) => {
-    if (argument) setReferralId(argument);
+    if (argument) {
+      setReferralId(argument);
+    }
+    if (isUserLoaded) {
+      handleSceneGreeting();
+      return;
+    }
+    if (!isCalled) {
+      fetch();
+    }
   }, '/start');
 
   // useEffect(() => {
@@ -60,11 +77,14 @@ const User = ({ children }: UserProviderProps) => {
   //   else setScene(T.ScenesEnum.UPDATE_BOT);
   // }, []);
 
-  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
-  const isUserLoaded = isCalled && !isLoading && isSuccess && user;
-
   if (isUserNotFound) {
-    return <Registration refId={referralId} getUser={fetch} onFinish={handleMenuMain} />;
+    return (
+      <Registration
+        refId={referralId}
+        getUser={fetch}
+        onFinish={handleSceneGreeting}
+      />
+    );
   }
 
   if (isUserLoaded) {

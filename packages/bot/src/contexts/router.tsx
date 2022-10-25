@@ -4,7 +4,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import * as T from '../types';
+import * as T from '../constants';
 
 type Scenes = T.MenusEnum | T.ScenesEnum;
 
@@ -18,7 +18,7 @@ interface Router {
   handleMenuWallets: () => void;
   handleMenuStatistics: () => void;
 
-  handleSceneRegistration: () => void;
+  handleSceneGreeting: () => void;
   handleSceneFeedback: () => void;
   handleSceneRules: () => void;
 }
@@ -41,7 +41,7 @@ const Router = ({ children }: RouterProviderProps) => {
   const handleMenuWallets = () => setScene(T.MenusEnum.WALLETS);
   const handleMenuStatistics = () => setScene(T.MenusEnum.STATISTICS);
 
-  const handleSceneRegistration = () => setScene(T.ScenesEnum.REG);
+  const handleSceneGreeting = () => setScene(T.ScenesEnum.GREETING);
   const handleSceneFeedback = () => setScene(T.ScenesEnum.FEEDBACK);
   const handleSceneRules = () => setScene(T.ScenesEnum.RULES);
 
@@ -56,7 +56,7 @@ const Router = ({ children }: RouterProviderProps) => {
     handleMenuWallets,
     handleMenuStatistics,
 
-    handleSceneRegistration,
+    handleSceneGreeting,
     handleSceneFeedback,
     handleSceneRules,
   }), [scene]);

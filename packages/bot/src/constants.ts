@@ -1,6 +1,5 @@
 enum ScenesEnum {
-  AUTH = 'scene_authentification',
-  REG = 'scene_registration',
+  GREETING = 'scene_greeting',
   FEEDBACK = 'scene_feedback',
   RULES = 'scene_rules',
   // INPUT_MONEY = 'scene_input_money',
@@ -12,7 +11,7 @@ enum ScenesEnum {
   // NOTIFICATIONS = 'scene_notifications',
 
   // TEST = 'scene_test',
-  UPDATE_BOT = 'scene_update_bot',
+  // UPDATE_BOT = 'scene_update_bot',
   RESET = 'scene_reset',
 }
 
@@ -25,33 +24,5 @@ enum MenusEnum {
   WALLETS = 'wallets_menu',
   STATISTICS = 'statistics_menu',
 }
-//
-// export enum Statistics {
-//   NONE = 'none',
-//
-//   USERS = 'users',
-//   PAYMENTS = 'payments',
-// }
-
-// export enum Wallet {
-//   QIWI = 'qiwi',
-//   YOO_MONEY = 'yoo_money',
-//   NOOP = '',
-// }
-
-// export enum Period {
-//   NONE = 'none',
-//   DAY = 'day',
-//   YESTERDAY = 'yesterday',
-//   WEEK = 'week',
-//   MONTH = 'month',
-//   ALL_TIME = 'all_time',
-//   PERIOD = 'period',
-// }
-
-// export interface StatisticsToggles {
-//   users?: boolean;
-//   payments?: boolean;
-// }
 
 export { ScenesEnum, MenusEnum };
