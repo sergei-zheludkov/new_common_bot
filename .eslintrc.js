@@ -30,7 +30,7 @@ module.exports = {
     jest: true,
   },
   rules: {
-    indent: [2, 2, { ignoredNodes: ['PropertyDefinition'] }],
+    indent: [2, 2, { ignoredNodes: ['PropertyDefinition'], SwitchCase: 1 }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'react/function-component-definition': 0,
     camelcase: 0,

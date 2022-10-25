@@ -1,5 +1,5 @@
 export { Main } from './main';
-// export { Admin } from './admin';
+export { Admin } from './admin';
 // export { Balance } from './balance';
 // export { Wallets } from './wallets';
 // export { Referral } from './referral';
