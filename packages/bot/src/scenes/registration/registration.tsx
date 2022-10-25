@@ -6,12 +6,21 @@ import { useRegistration } from './use-registration';
 
 interface Props {
   refId: string | null;
-  onExit: () => void;
+  getUser: () => void;
+  onFinish: () => void;
 }
 
-const Registration = ({ refId, onExit }: Props) => {
+const Registration = ({ refId, getUser, onFinish }: Props) => {
   const { t } = useTranslation('lang');
-  const { isRegistered, isSentData, createUser } = useRegistration({ refId, onExit });
+  const {
+    isRegistered,
+    isSentData,
+    createUser,
+  } = useRegistration({
+    refId,
+    getUser,
+    onFinish,
+  });
 
   if (isRegistered) {
     return <Text>{t('success')}</Text>;
