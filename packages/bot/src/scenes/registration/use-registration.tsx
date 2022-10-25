@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useBotContext } from '@urban-bot/core';
 import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
+import { LanguageEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
 import { useUser } from '../../contexts/user';
-
-type Lang = UserCreateDto['lang'];
 
 interface Props {
   refId: string | null;
@@ -19,14 +18,15 @@ const useRegistration = ({ refId, onExit }: Props) => {
   const { postUser } = useApi();
   const { fetch, isCalled } = useQuery('user', postUser, { isLazy: true });
 
-  const createUser = async (lang: Lang) => {
+  const createUser = async (lang: LanguageEnum) => {
     const newUser = await fetch({
       id: chat.id,
       firstname: chat.firstName,
       lastname: chat.lastName,
       username: chat.username,
       who_invited: refId,
-      lang,
+      // Такой финт из-за кривой генерации enum в @common_bot/api
+      lang: lang as unknown as UserCreateDto['lang'],
     });
 
     if (!newUser) {
@@ -47,4 +47,3 @@ const useRegistration = ({ refId, onExit }: Props) => {
 };
 
 export { useRegistration };
-export type { Lang };

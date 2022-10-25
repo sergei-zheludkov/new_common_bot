@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { WalletEnum } from '../../types/wallet.enum';
+import { WalletEnum } from '@common_bot/shared';
 
 @Entity('wallets')
 class WalletEntity {

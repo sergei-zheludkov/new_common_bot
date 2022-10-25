@@ -1,14 +1,14 @@
 import i18n, { InitOptions } from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { LanguageEnum } from '@common_bot/shared';
 import { resources } from './locales';
-import { Languages } from './constants';
 
 const getDefaultI18n = (config?: Partial<InitOptions>) => {
   i18n
     .use(initReactI18next)
     .init({
-      lng: Languages.ENGLISH,
-      fallbackLng: [Languages.ENGLISH, Languages.RUSSIAN],
+      lng: LanguageEnum.ENGLISH,
+      fallbackLng: [LanguageEnum.ENGLISH, LanguageEnum.RUSSIAN],
       resources,
       ns: ['common'],
       defaultNS: 'common',

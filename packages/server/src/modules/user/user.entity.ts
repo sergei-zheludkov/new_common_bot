@@ -6,8 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { RoleEnum } from '../../types/role.enum';
-import { LangEnum } from '../../types/lang.enum';
+import { LanguageEnum, RoleEnum } from '@common_bot/shared';
 
 @Entity('users')
 class UserEntity {
@@ -86,12 +85,12 @@ class UserEntity {
   referral_money: number;
 
   @ApiProperty({
-    enum: LangEnum,
+    enum: LanguageEnum,
   })
   @Column({
     type: 'enum',
-    enum: LangEnum,
-    default: LangEnum.ENGLISH,
+    enum: LanguageEnum,
+    default: LanguageEnum.ENGLISH,
   })
   lang: string;
 

@@ -6,7 +6,7 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { LangEnum } from '../../../types/lang.enum';
+import { LanguageEnum } from '@common_bot/shared';
 
 class UserUpdateDto {
   @ApiProperty({
@@ -67,10 +67,10 @@ class UserUpdateDto {
 
   @ApiProperty({
     required: false,
-    enum: LangEnum,
+    enum: LanguageEnum,
   })
   @IsOptional()
-  @IsEnum(LangEnum)
+  @IsEnum(LanguageEnum)
   lang?: string;
 
   @ApiProperty({

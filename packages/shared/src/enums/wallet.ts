@@ -1,8 +1,8 @@
 enum WalletEnum {
+  TINKOFF = 'tinkoff',
   QIWI = 'qiwi',
   WEBMONEY = 'webmoney',
   YOOMONEY = 'yoomoney',
-  TINKOFF = 'tinkoff',
 }
 
 export { WalletEnum };
