@@ -25,7 +25,7 @@
   "scripts": {
     "start_server:dev": "cd packages/server && yarn start:dev",
     "start_bot:dev": "cd packages/bot && yarn dev",
-    "build:packages": "lerna run build --parallel --scope=@common_bot/{api,i18n}",
+    "build:packages": "lerna run build --parallel --scope=@common_bot/{shared,api,i18n}",
     "build:project": "lerna run build --parallel --scope=@common_bot/{server,bot}"
   }
 }

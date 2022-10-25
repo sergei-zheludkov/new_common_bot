@@ -22,6 +22,7 @@
   "dependencies": {
     "@common_bot/i18n": "^1.0.0",
     "@common_bot/api": "^1.0.0",
+    "@common_bot/shared": "^1.0.0",
     "@urban-bot/core": "^0.3.9",
     "@urban-bot/facebook": "^0.3.9",
     "@urban-bot/slack": "^0.3.9",
