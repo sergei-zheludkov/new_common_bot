@@ -25,6 +25,7 @@ const en = {
     notifications: '🔈 Notifications',
     rules: '📚 Rules',
     invite: '🤝 Invite',
+    link_generator: '🔗 Link Generator',
     input_money: '💸 Payment',
     output_money: '💰 Output profit',
     all_payments: '🧾 All Payments',
@@ -113,6 +114,9 @@ const en = {
     amount_error: 'Incorrect. Enter by number',
     amount_not_integer: 'Please enter an integer',
     amount_should_be_positive: 'The number must be greater 0',
+  },
+  output_money: {
+    message: '[Write output message]',
   },
   payments: {
     title: 'Payments',

@@ -16,6 +16,8 @@ export const SceneSwitcher = () => {
     handleMenuSettings,
     handleMenuWallets,
     handleMenuStatistics,
+    handleMenuLinkGenerator,
+    handleMenuAffiliateStatistics,
 
     handleSceneFeedback,
     handleSceneRules,
@@ -131,14 +133,16 @@ export const SceneSwitcher = () => {
           onBack={handleMenuMain}
         />
       );
-      //
-      // case T.Menu.REFERRAL:
-      //   return (
-      //     <Provider.User>
-      //       <Menu.Referral onBack={handleMenuMain} />
-      //     </Provider.User>
-      //   );
-      //
+
+    case T.MenuEnum.REFERRAL:
+      return (
+        <Menu.Referral
+          onLinkGenerator={handleMenuLinkGenerator}
+          onStatistic={handleMenuAffiliateStatistics}
+          onBack={handleMenuMain}
+        />
+      );
+
       // case T.Menu.SETTINGS:
       //   return (
       //     <Menu.Settings

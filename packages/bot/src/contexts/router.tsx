@@ -17,6 +17,8 @@ interface Router {
   handleMenuSettings: () => void;
   handleMenuWallets: () => void;
   handleMenuStatistics: () => void;
+  handleMenuLinkGenerator: () => void;
+  handleMenuAffiliateStatistics: () => void;
 
   handleSceneGreeting: () => void;
   handleSceneFeedback: () => void;
@@ -42,6 +44,8 @@ const Router = ({ children }: RouterProviderProps) => {
   const handleMenuSettings = () => setScene(T.MenuEnum.SETTINGS);
   const handleMenuWallets = () => setScene(T.MenuEnum.WALLETS);
   const handleMenuStatistics = () => setScene(T.MenuEnum.STATISTICS);
+  const handleMenuLinkGenerator = () => setScene(T.MenuEnum.LINK_GENERATOR);
+  const handleMenuAffiliateStatistics = () => setScene(T.MenuEnum.AFFILIATE_STATISTICS);
 
   const handleSceneGreeting = () => setScene(T.SceneEnum.GREETING);
   const handleSceneFeedback = () => setScene(T.SceneEnum.FEEDBACK);
@@ -59,6 +63,8 @@ const Router = ({ children }: RouterProviderProps) => {
     handleMenuSettings,
     handleMenuWallets,
     handleMenuStatistics,
+    handleMenuLinkGenerator,
+    handleMenuAffiliateStatistics,
 
     handleSceneGreeting,
     handleSceneFeedback,

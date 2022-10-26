@@ -23,6 +23,8 @@ enum MenuEnum {
   SETTINGS = 'settings_menu',
   WALLETS = 'wallets_menu',
   STATISTICS = 'statistics_menu',
+  LINK_GENERATOR = 'link_generator_menu',
+  AFFILIATE_STATISTICS = 'affiliate_statistics_menu',
 }
 
 export { SceneEnum, MenuEnum };
