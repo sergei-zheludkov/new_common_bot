@@ -1,9 +1,9 @@
-enum ScenesEnum {
+enum SceneEnum {
   GREETING = 'scene_greeting',
   FEEDBACK = 'scene_feedback',
   RULES = 'scene_rules',
-  // INPUT_MONEY = 'scene_input_money',
-  // ALL_PAYMENTS = 'scene_all_payments',
+  INPUT_MONEY = 'scene_input_money',
+  ALL_PAYMENTS = 'scene_all_payments',
   // ADD_WALLETS = 'scene_add_wallets',
   // MANAGEMENT_WALLETS = 'scene_management_wallets',
   // STATISTICS = 'scene_statistics',
@@ -15,7 +15,7 @@ enum ScenesEnum {
   RESET = 'scene_reset',
 }
 
-enum MenusEnum {
+enum MenuEnum {
   MAIN = 'main_menu',
   ADMIN = 'admin_menu',
   BALANCE = 'balance_menu',
@@ -25,4 +25,4 @@ enum MenusEnum {
   STATISTICS = 'statistics_menu',
 }
 
-export { ScenesEnum, MenusEnum };
+export { SceneEnum, MenuEnum };
