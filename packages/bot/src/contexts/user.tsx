@@ -3,14 +3,14 @@ import React, {
   createContext,
   useContext,
   useState,
-  // useEffect,
+  useEffect,
 } from 'react';
 import { useBotContext, useCommand } from '@urban-bot/core';
 import { useApi, useQuery, predicates } from '@common_bot/api';
 import type { UserEntity } from '@common_bot/api';
 import { Registration } from '../scenes';
 import { useRouter } from './router';
-// import { saveChat, getChatsMap } from '../local-storage';
+import { saveChat, getChatsMap } from '../local-storage';
 
 const { isNotFoundError } = predicates;
 
@@ -60,22 +60,22 @@ const User = ({ children }: UserProviderProps) => {
     }
     if (isUserLoaded) {
       handleSceneGreeting();
-      return;
-    }
-    if (!isCalled) {
-      fetch();
     }
   }, '/start');
 
-  // useEffect(() => {
-  //   saveChat(chat);
-  // }, [chat]);
+  useEffect(() => {
+    const userInStore = getChatsMap()[chat.id];
+    if (userInStore) {
+      handleSceneGreeting();
+    }
+    if (!isUserLoaded) {
+      fetch();
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   const user = getChatsMap()[chat.id];
-  //   if (!user) setScene(T.ScenesEnum.AUTH); // useQuery lazy
-  //   else setScene(T.ScenesEnum.UPDATE_BOT);
-  // }, []);
+  useEffect(() => {
+    saveChat(chat);
+  }, [chat]);
 
   if (isUserNotFound) {
     return (
