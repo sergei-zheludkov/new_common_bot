@@ -7,8 +7,8 @@ enum SceneEnum {
   // ADD_WALLETS = 'scene_add_wallets',
   // MANAGEMENT_WALLETS = 'scene_management_wallets',
   // STATISTICS = 'scene_statistics',
-  // LANGUAGE = 'scene_language',
-  // NOTIFICATIONS = 'scene_notifications',
+  LANGUAGE = 'scene_language',
+  NOTIFICATIONS = 'scene_notifications',
 
   // TEST = 'scene_test',
   // UPDATE_BOT = 'scene_update_bot',

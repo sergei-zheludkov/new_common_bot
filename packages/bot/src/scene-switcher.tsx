@@ -23,6 +23,8 @@ export const SceneSwitcher = () => {
     handleSceneRules,
     handleSceneInputMoney,
     handleSceneAllPayments,
+    handleSceneLanguage,
+    handleSceneNotifications,
   } = useRouter();
 
   switch (scene) {
@@ -143,14 +145,14 @@ export const SceneSwitcher = () => {
         />
       );
 
-      // case T.Menu.SETTINGS:
-      //   return (
-      //     <Menu.Settings
-      //       onLanguage={handleSceneLanguage}
-      //       onNotifications={handleSceneNotifications}
-      //       onBack={handleMenuMain}
-      //     />
-      //   );
+    case T.MenuEnum.SETTINGS:
+      return (
+        <Menu.Settings
+          onLanguage={handleSceneLanguage}
+          onNotifications={handleSceneNotifications}
+          onBack={handleMenuMain}
+        />
+      );
 
       // -----------------------------------------------------------------------------------------
 

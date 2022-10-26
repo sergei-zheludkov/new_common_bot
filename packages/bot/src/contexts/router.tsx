@@ -25,6 +25,8 @@ interface Router {
   handleSceneRules: () => void;
   handleSceneInputMoney: () => void;
   handleSceneAllPayments: () => void;
+  handleSceneLanguage: () => void;
+  handleSceneNotifications: () => void;
 }
 
 const RouterContext = createContext({} as Router);
@@ -52,6 +54,8 @@ const Router = ({ children }: RouterProviderProps) => {
   const handleSceneRules = () => setScene(T.SceneEnum.RULES);
   const handleSceneInputMoney = () => setScene(T.SceneEnum.INPUT_MONEY);
   const handleSceneAllPayments = () => setScene(T.SceneEnum.ALL_PAYMENTS);
+  const handleSceneLanguage = () => setScene(T.SceneEnum.LANGUAGE);
+  const handleSceneNotifications = () => setScene(T.SceneEnum.NOTIFICATIONS);
 
   const data = useMemo(() => ({
     scene,
@@ -71,6 +75,8 @@ const Router = ({ children }: RouterProviderProps) => {
     handleSceneRules,
     handleSceneInputMoney,
     handleSceneAllPayments,
+    handleSceneLanguage,
+    handleSceneNotifications,
   }), [scene]);
 
   return (
