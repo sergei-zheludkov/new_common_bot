@@ -18,14 +18,14 @@ const Admin = ({ onWallets, onStatistic, onBack }: Props) => {
   const role = user.role as unknown as RoleEnum;
 
   useText(onWallets, t('wallets'));
-  useText(onStatistic, t('statistic'));
+  useText(onStatistic, t('statistics'));
   useText(onBack, t('back'));
 
   if (isAdmin(role)) {
     return (
       <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t('admin_menu:message')}>
         <Button>{t('wallets')}</Button>
-        <Button>{t('statistic')}</Button>
+        <Button>{t('statistics')}</Button>
         <Button>{t('back')}</Button>
       </ButtonGroup>
     );
