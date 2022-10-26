@@ -61,6 +61,7 @@ const User = ({ children }: UserProviderProps) => {
     if (isUserLoaded) {
       handleSceneGreeting();
     }
+    fetch();
   }, '/start');
 
   useEffect(() => {
