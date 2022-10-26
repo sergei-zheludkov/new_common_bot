@@ -6,37 +6,30 @@ import {
   useCommand,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
+import { useRouter } from '../contexts';
 
 interface MainMenuProps {
-  onAdmin: () => void;
-  onBalance: () => void;
-  onReferral: () => void;
-  onSettings: () => void;
-  onFeedback: () => void;
-  onRules: () => void;
-
   useMain: () => { message: string };
 }
 
-export const Main = ({
-  onAdmin,
-  onBalance,
-  onReferral,
-  onSettings,
-  onFeedback,
-  onRules,
-
-  useMain,
-}: MainMenuProps) => {
+export const Main = ({ useMain }: MainMenuProps) => {
+  const {
+    switchToMenuAdmin,
+    switchToMenuBalance,
+    switchToMenuReferral,
+    switchToMenuSettings,
+    switchToSceneFeedback,
+    switchToSceneRules,
+  } = useRouter();
   const { t } = useTranslation('buttons');
   const { message } = useMain();
 
-  useCommand(onAdmin, '/admin');
-  useText(onBalance, t('balance'));
-  useText(onReferral, t('referral'));
-  useText(onSettings, t('settings'));
-  useText(onFeedback, t('feedback'));
-  useText(onRules, t('rules'));
+  useCommand(switchToMenuAdmin, '/admin');
+  useText(switchToMenuBalance, t('balance'));
+  useText(switchToMenuReferral, t('referral'));
+  useText(switchToMenuSettings, t('settings'));
+  useText(switchToSceneFeedback, t('feedback'));
+  useText(switchToSceneRules, t('rules'));
 
   return (
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t(message)}>

@@ -7,7 +7,7 @@ import {
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
 import { predicates, RoleEnum } from '@common_bot/shared';
-import { useUser } from '../contexts';
+import { useUser, useRouter } from '../contexts';
 
 const { roles } = predicates;
 const BOT_NAME = 'zheludkov_test_bot';
@@ -15,34 +15,33 @@ const nothingShown = { inviteIsShowed: false, moneyIsShowed: false };
 const inviteShowed = { inviteIsShowed: true, moneyIsShowed: false };
 const moneyShowed = { inviteIsShowed: false, moneyIsShowed: true };
 
-interface Props {
-  onStatistic: () => void;
-  onLinkGenerator: () => void;
-  onBack: () => void;
-}
-
 interface State {
   inviteIsShowed: boolean;
   moneyIsShowed: boolean;
 }
 
 // TODO сделать перевод по запросу после проверки и подтверждения данных
-const Referral = ({ onStatistic, onLinkGenerator, onBack }: Props) => {
+const Referral = () => {
+  const {
+    switchToMenuLinkGenerator,
+    switchToMenuAffiliateStatistics,
+    switchToMenuMain,
+  } = useRouter();
   const { user } = useUser();
   const { t } = useTranslation(['buttons', 'referral', 'invite']);
   const [{ inviteIsShowed, moneyIsShowed }, setShowed] = useState<State>(nothingShown);
   const role = user.role as unknown as RoleEnum;
-  const isAffiliate = roles.isAffiliate(role);
+  const isUserAffiliate = roles.isAffiliate(role);
 
   const handleLinkGenerator = () => {
-    if (isAffiliate) {
-      onLinkGenerator();
+    if (isUserAffiliate) {
+      switchToMenuLinkGenerator();
     }
   };
 
   const handleStatistic = () => {
-    if (isAffiliate) {
-      onStatistic();
+    if (isUserAffiliate) {
+      switchToMenuAffiliateStatistics();
     }
   };
 
@@ -50,7 +49,7 @@ const Referral = ({ onStatistic, onLinkGenerator, onBack }: Props) => {
   useText(() => setShowed(moneyShowed), t('output_money'));
   useText(handleLinkGenerator, t('link_generator'));
   useText(handleStatistic, t('statistics'));
-  useText(onBack, t('back'));
+  useText(switchToMenuMain, t('back'));
 
   if (inviteIsShowed) {
     const inviteLink = `https://t.me/${BOT_NAME}?start=${user.id}`;
@@ -92,8 +91,8 @@ const Referral = ({ onStatistic, onLinkGenerator, onBack }: Props) => {
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={message}>
       <Button>{t('invite')}</Button>
       <Button>{t('output_money')}</Button>
-      {isAffiliate && <Button>{t('statistics')}</Button>}
-      {isAffiliate && <Button>{t('link_generator')}</Button>}
+      {isUserAffiliate && <Button>{t('statistics')}</Button>}
+      {isUserAffiliate && <Button>{t('link_generator')}</Button>}
       <Button>{t('back')}</Button>
     </ButtonGroup>
   );

@@ -7,10 +7,9 @@ import { useRegistration } from './use-registration';
 interface Props {
   refId: string | null;
   getUser: () => void;
-  onFinish: () => void;
 }
 
-const Registration = ({ refId, getUser, onFinish }: Props) => {
+const Registration = ({ refId, getUser }: Props) => {
   const { t } = useTranslation('lang');
   const {
     isRegistered,
@@ -19,7 +18,6 @@ const Registration = ({ refId, getUser, onFinish }: Props) => {
   } = useRegistration({
     refId,
     getUser,
-    onFinish,
   });
 
   if (isRegistered) {

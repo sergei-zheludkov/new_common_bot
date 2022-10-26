@@ -4,10 +4,10 @@ import { useTranslation } from '@common_bot/i18n';
 import { useRouter } from '../../contexts';
 
 const Greeting = () => {
+  const { switchToMenuMain } = useRouter();
   const { t } = useTranslation();
-  const { handleMenuMain } = useRouter();
 
-  useEffect(handleMenuMain, []);
+  useEffect(switchToMenuMain, []);
 
   return <Text>{t('greeting')}</Text>;
 };

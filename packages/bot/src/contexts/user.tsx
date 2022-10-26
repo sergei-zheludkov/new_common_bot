@@ -34,7 +34,7 @@ type UserProviderProps = {
 const User = ({ children }: UserProviderProps) => {
   const [referralId, setReferralId] = useState<User['referralId']>(null);
 
-  const { handleSceneGreeting } = useRouter();
+  const { switchToSceneGreeting } = useRouter();
   const { chat } = useBotContext();
   const { getUser } = useApi();
   const {
@@ -59,7 +59,7 @@ const User = ({ children }: UserProviderProps) => {
       setReferralId(argument);
     }
     if (isUserLoaded) {
-      handleSceneGreeting();
+      switchToSceneGreeting();
     }
     fetch();
   }, '/start');
@@ -67,7 +67,7 @@ const User = ({ children }: UserProviderProps) => {
   useEffect(() => {
     const userInStore = getChatsMap()[chat.id];
     if (userInStore) {
-      handleSceneGreeting();
+      switchToSceneGreeting();
     }
     if (!isUserLoaded) {
       fetch();
@@ -79,13 +79,7 @@ const User = ({ children }: UserProviderProps) => {
   }, [chat]);
 
   if (isUserNotFound) {
-    return (
-      <Registration
-        refId={referralId}
-        getUser={fetch}
-        onFinish={handleSceneGreeting}
-      />
-    );
+    return <Registration refId={referralId} getUser={fetch} />;
   }
 
   if (isUserLoaded) {

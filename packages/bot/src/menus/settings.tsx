@@ -1,19 +1,19 @@
 import React from 'react';
 import { ButtonGroup, Button, useText } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
+import { useRouter } from '../contexts';
 
-interface Props {
-  onLanguage: () => void;
-  onNotifications: () => void;
-  onBack: () => void;
-}
-
-const Settings = ({ onLanguage, onNotifications, onBack }: Props) => {
+const Settings = () => {
+  const {
+    switchToSceneLanguage,
+    switchToSceneNotifications,
+    switchToMenuMain,
+  } = useRouter();
   const { t } = useTranslation(['buttons', 'common']);
 
-  useText(onLanguage, t('languages'));
-  useText(onNotifications, t('notifications'));
-  useText(onBack, t('back'));
+  useText(switchToSceneLanguage, t('languages'));
+  useText(switchToSceneNotifications, t('notifications'));
+  useText(switchToMenuMain, t('back'));
 
   return (
     <ButtonGroup
