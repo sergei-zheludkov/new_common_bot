@@ -22,7 +22,7 @@ enum MenuEnum {
   REFERRAL = 'referral_menu',
   SETTINGS = 'settings_menu',
   WALLETS = 'wallets_menu',
-  STATISTICS = 'statistics_menu',
+  ADMIN_STATISTICS = 'admin_statistics_menu',
   LINK_GENERATOR = 'link_generator_menu',
   AFFILIATE_STATISTICS = 'affiliate_statistics_menu',
 }

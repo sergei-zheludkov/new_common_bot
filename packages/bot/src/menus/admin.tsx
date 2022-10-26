@@ -2,37 +2,46 @@ import React from 'react';
 import { ButtonGroup, Button, useText } from '@urban-bot/core';
 import { predicates, RoleEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
-import { useUser } from '../contexts';
+import { useUser, useRouter } from '../contexts';
 
 const { roles: { isAdmin } } = predicates;
 
-interface Props {
-  onWallets: () => void;
-  onStatistic: () => void;
-  onBack: () => void;
-}
-
-const Admin = ({ onWallets, onStatistic, onBack }: Props) => {
+const Admin = () => {
+  const {
+    switchToMenuWallets,
+    switchToMenuAdminStatistics,
+    switchToMenuMain,
+  } = useRouter();
   const { t } = useTranslation('buttons');
   const { user } = useUser();
   const role = user.role as unknown as RoleEnum;
+  const isUserAdmin = isAdmin(role);
 
-  useText(onWallets, t('wallets'));
-  useText(onStatistic, t('statistics'));
-  useText(onBack, t('back'));
+  const handleSwitchToMenuWallets = () => {
+    if (isUserAdmin) {
+      switchToMenuWallets();
+    }
+  };
 
-  if (isAdmin(role)) {
-    return (
-      <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t('admin_menu:message')}>
-        <Button>{t('wallets')}</Button>
-        <Button>{t('statistics')}</Button>
-        <Button>{t('back')}</Button>
-      </ButtonGroup>
-    );
-  }
+  const handleSwitchToMenuAdminStatistics = () => {
+    if (isUserAdmin) {
+      switchToMenuAdminStatistics();
+    }
+  };
+
+  useText(handleSwitchToMenuWallets, t('wallets'));
+  useText(handleSwitchToMenuAdminStatistics, t('statistics'));
+  useText(switchToMenuMain, t('back'));
 
   return (
-    <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t('admin_menu:error')}>
+    <ButtonGroup
+      isReplyButtons
+      isResizedKeyboard
+      maxColumns={2}
+      title={t(isUserAdmin ? 'admin_menu:message' : 'admin_menu:error')}
+    >
+      {isUserAdmin && <Button>{t('wallets')}</Button>}
+      {isUserAdmin && <Button>{t('statistics')}</Button>}
       <Button>{t('back')}</Button>
     </ButtonGroup>
   );

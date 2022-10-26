@@ -1,21 +1,20 @@
 import React from 'react';
 import { ButtonGroup, Button, useText } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { useUser } from '../contexts';
+import { useUser, useRouter } from '../contexts';
 
-interface Props {
-  onInputMoney: () => void;
-  onAllPayments: () => void;
-  onBack: () => void;
-}
-
-export const Balance = ({ onInputMoney, onAllPayments, onBack }: Props) => {
+export const Balance = () => {
+  const {
+    switchToSceneInputMoney,
+    switchToSceneAllPayments,
+    switchToMenuMain,
+  } = useRouter();
   const { t } = useTranslation(['buttons', 'balance']);
   const { user } = useUser();
 
-  useText(onInputMoney, t('input_money'));
-  useText(onAllPayments, t('all_payments'));
-  useText(onBack, t('back'));
+  useText(switchToSceneInputMoney, t('input_money'));
+  useText(switchToSceneAllPayments, t('all_payments'));
+  useText(switchToMenuMain, t('back'));
 
   const message = (
     <>

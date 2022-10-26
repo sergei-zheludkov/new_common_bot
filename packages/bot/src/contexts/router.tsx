@@ -10,23 +10,23 @@ type Scenes = T.MenuEnum | T.SceneEnum;
 
 interface Router {
   scene: Scenes
-  handleMenuMain: () => void;
-  handleMenuAdmin: () => void;
-  handleMenuBalance: () => void;
-  handleMenuReferral: () => void;
-  handleMenuSettings: () => void;
-  handleMenuWallets: () => void;
-  handleMenuStatistics: () => void;
-  handleMenuLinkGenerator: () => void;
-  handleMenuAffiliateStatistics: () => void;
+  switchToMenuMain: () => void;
+  switchToMenuAdmin: () => void;
+  switchToMenuBalance: () => void;
+  switchToMenuReferral: () => void;
+  switchToMenuSettings: () => void;
+  switchToMenuWallets: () => void;
+  switchToMenuAdminStatistics: () => void;
+  switchToMenuLinkGenerator: () => void;
+  switchToMenuAffiliateStatistics: () => void;
 
-  handleSceneGreeting: () => void;
-  handleSceneFeedback: () => void;
-  handleSceneRules: () => void;
-  handleSceneInputMoney: () => void;
-  handleSceneAllPayments: () => void;
-  handleSceneLanguage: () => void;
-  handleSceneNotifications: () => void;
+  switchToSceneGreeting: () => void;
+  switchToSceneFeedback: () => void;
+  switchToSceneRules: () => void;
+  switchToSceneInputMoney: () => void;
+  switchToSceneAllPayments: () => void;
+  switchToSceneLanguage: () => void;
+  switchToSceneNotifications: () => void;
 }
 
 const RouterContext = createContext({} as Router);
@@ -39,44 +39,44 @@ const Router = ({ children }: RouterProviderProps) => {
   const [scene, setScene] = useState<Scenes>(T.SceneEnum.RESET);
   console.info('Bot scene:', scene);
 
-  const handleMenuMain = () => setScene(T.MenuEnum.MAIN);
-  const handleMenuAdmin = () => setScene(T.MenuEnum.ADMIN);
-  const handleMenuBalance = () => setScene(T.MenuEnum.BALANCE);
-  const handleMenuReferral = () => setScene(T.MenuEnum.REFERRAL);
-  const handleMenuSettings = () => setScene(T.MenuEnum.SETTINGS);
-  const handleMenuWallets = () => setScene(T.MenuEnum.WALLETS);
-  const handleMenuStatistics = () => setScene(T.MenuEnum.STATISTICS);
-  const handleMenuLinkGenerator = () => setScene(T.MenuEnum.LINK_GENERATOR);
-  const handleMenuAffiliateStatistics = () => setScene(T.MenuEnum.AFFILIATE_STATISTICS);
+  const switchToMenuMain = () => setScene(T.MenuEnum.MAIN);
+  const switchToMenuAdmin = () => setScene(T.MenuEnum.ADMIN);
+  const switchToMenuBalance = () => setScene(T.MenuEnum.BALANCE);
+  const switchToMenuReferral = () => setScene(T.MenuEnum.REFERRAL);
+  const switchToMenuSettings = () => setScene(T.MenuEnum.SETTINGS);
+  const switchToMenuWallets = () => setScene(T.MenuEnum.WALLETS);
+  const switchToMenuAdminStatistics = () => setScene(T.MenuEnum.ADMIN_STATISTICS);
+  const switchToMenuLinkGenerator = () => setScene(T.MenuEnum.LINK_GENERATOR);
+  const switchToMenuAffiliateStatistics = () => setScene(T.MenuEnum.AFFILIATE_STATISTICS);
 
-  const handleSceneGreeting = () => setScene(T.SceneEnum.GREETING);
-  const handleSceneFeedback = () => setScene(T.SceneEnum.FEEDBACK);
-  const handleSceneRules = () => setScene(T.SceneEnum.RULES);
-  const handleSceneInputMoney = () => setScene(T.SceneEnum.INPUT_MONEY);
-  const handleSceneAllPayments = () => setScene(T.SceneEnum.ALL_PAYMENTS);
-  const handleSceneLanguage = () => setScene(T.SceneEnum.LANGUAGE);
-  const handleSceneNotifications = () => setScene(T.SceneEnum.NOTIFICATIONS);
+  const switchToSceneGreeting = () => setScene(T.SceneEnum.GREETING);
+  const switchToSceneFeedback = () => setScene(T.SceneEnum.FEEDBACK);
+  const switchToSceneRules = () => setScene(T.SceneEnum.RULES);
+  const switchToSceneInputMoney = () => setScene(T.SceneEnum.INPUT_MONEY);
+  const switchToSceneAllPayments = () => setScene(T.SceneEnum.ALL_PAYMENTS);
+  const switchToSceneLanguage = () => setScene(T.SceneEnum.LANGUAGE);
+  const switchToSceneNotifications = () => setScene(T.SceneEnum.NOTIFICATIONS);
 
   const data = useMemo(() => ({
     scene,
 
-    handleMenuMain,
-    handleMenuAdmin,
-    handleMenuBalance,
-    handleMenuReferral,
-    handleMenuSettings,
-    handleMenuWallets,
-    handleMenuStatistics,
-    handleMenuLinkGenerator,
-    handleMenuAffiliateStatistics,
+    switchToMenuMain,
+    switchToMenuAdmin,
+    switchToMenuBalance,
+    switchToMenuReferral,
+    switchToMenuSettings,
+    switchToMenuWallets,
+    switchToMenuAdminStatistics,
+    switchToMenuLinkGenerator,
+    switchToMenuAffiliateStatistics,
 
-    handleSceneGreeting,
-    handleSceneFeedback,
-    handleSceneRules,
-    handleSceneInputMoney,
-    handleSceneAllPayments,
-    handleSceneLanguage,
-    handleSceneNotifications,
+    switchToSceneGreeting,
+    switchToSceneFeedback,
+    switchToSceneRules,
+    switchToSceneInputMoney,
+    switchToSceneAllPayments,
+    switchToSceneLanguage,
+    switchToSceneNotifications,
   }), [scene]);
 
   return (

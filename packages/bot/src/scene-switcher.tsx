@@ -7,40 +7,12 @@ import * as Scene from './scenes';
 import * as T from './constants';
 
 export const SceneSwitcher = () => {
-  const {
-    scene,
-    handleMenuMain,
-    handleMenuAdmin,
-    handleMenuBalance,
-    handleMenuReferral,
-    handleMenuSettings,
-    handleMenuWallets,
-    handleMenuStatistics,
-    handleMenuLinkGenerator,
-    handleMenuAffiliateStatistics,
-
-    handleSceneFeedback,
-    handleSceneRules,
-    handleSceneInputMoney,
-    handleSceneAllPayments,
-    handleSceneLanguage,
-    handleSceneNotifications,
-  } = useRouter();
+  const { scene } = useRouter();
 
   switch (scene) {
     case T.SceneEnum.GREETING:
       return <Scene.Greeting />;
-      // return (
-      //   <Menu.Main
-      //     useMain={useUpdatedMain}
-      //     onAdmin={handleMenuAdmin}
-      //     onBalance={handleMenuBalance}
-      //     onReferral={handleMenuReferral}
-      //     onSettings={handleMenuSettings}
-      //     onFeedback={handleSceneFeedback}
-      //     onRules={handleSceneRules}
-      //   />
-      // );
+      // return <Menu.Main useMain={useUpdatedMain} />;
       // ----------------------------------------MAIN MENU----------------------------------------
       // case T.Scene.INPUT_MONEY:
       //   return <Scene.InputMoney onExit={handleMenuBalance} />;
@@ -86,26 +58,10 @@ export const SceneSwitcher = () => {
       //   );
       // -----------------------------------------------------------------------------------------
     case T.MenuEnum.MAIN:
-      return (
-        <Menu.Main
-          useMain={useCommonMainMenu}
-          onAdmin={handleMenuAdmin}
-          onBalance={handleMenuBalance}
-          onReferral={handleMenuReferral}
-          onSettings={handleMenuSettings}
-          onFeedback={handleSceneFeedback}
-          onRules={handleSceneRules}
-        />
-      );
+      return <Menu.Main useMain={useCommonMainMenu} />;
 
     case T.MenuEnum.ADMIN:
-      return (
-        <Menu.Admin
-          onWallets={handleMenuWallets}
-          onStatistic={handleMenuStatistics}
-          onBack={handleMenuMain}
-        />
-      );
+      return <Menu.Admin />;
 
       // case T.Menu.WALLETS:
       //   return (
@@ -128,31 +84,13 @@ export const SceneSwitcher = () => {
       //   );
       //
     case T.MenuEnum.BALANCE:
-      return (
-        <Menu.Balance
-          onInputMoney={handleSceneInputMoney}
-          onAllPayments={handleSceneAllPayments}
-          onBack={handleMenuMain}
-        />
-      );
+      return <Menu.Balance />;
 
     case T.MenuEnum.REFERRAL:
-      return (
-        <Menu.Referral
-          onLinkGenerator={handleMenuLinkGenerator}
-          onStatistic={handleMenuAffiliateStatistics}
-          onBack={handleMenuMain}
-        />
-      );
+      return <Menu.Referral />;
 
     case T.MenuEnum.SETTINGS:
-      return (
-        <Menu.Settings
-          onLanguage={handleSceneLanguage}
-          onNotifications={handleSceneNotifications}
-          onBack={handleMenuMain}
-        />
-      );
+      return <Menu.Settings />;
 
       // -----------------------------------------------------------------------------------------
 
