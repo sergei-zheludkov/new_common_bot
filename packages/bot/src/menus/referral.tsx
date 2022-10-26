@@ -49,7 +49,7 @@ const Referral = ({ onStatistic, onLinkGenerator, onBack }: Props) => {
   useText(() => setShowed(inviteShowed), t('invite'));
   useText(() => setShowed(moneyShowed), t('output_money'));
   useText(handleLinkGenerator, t('link_generator'));
-  useText(handleStatistic, t('statistic'));
+  useText(handleStatistic, t('statistics'));
   useText(onBack, t('back'));
 
   if (inviteIsShowed) {
@@ -92,7 +92,7 @@ const Referral = ({ onStatistic, onLinkGenerator, onBack }: Props) => {
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={message}>
       <Button>{t('invite')}</Button>
       <Button>{t('output_money')}</Button>
-      {isAffiliate && <Button>{t('statistic')}</Button>}
+      {isAffiliate && <Button>{t('statistics')}</Button>}
       {isAffiliate && <Button>{t('link_generator')}</Button>}
       <Button>{t('back')}</Button>
     </ButtonGroup>
