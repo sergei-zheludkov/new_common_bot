@@ -19,6 +19,7 @@ const Notification: React.FC = () => {
   const [{ isShow, message }, setState] = useState<NotificationState>(defaultState);
 
   const callback = (data: NotificationData) => setState({ ...data, isShow: true });
+  const setDefaultState = () => setState(defaultState);
 
   useEffect(
     () => messageBroker.notification(chat.id, callback),
@@ -29,14 +30,17 @@ const Notification: React.FC = () => {
     let timeoutId: NodeJS.Timeout;
 
     if (isShow) {
-      timeoutId = setTimeout(() => setState(defaultState), 500);
+      timeoutId = setTimeout(setDefaultState, 500);
     }
 
     return () => clearTimeout(timeoutId);
   }, [isShow]);
 
-  if (!isShow) return null;
-  return <Text>{message || t('default_notification_message')}</Text>;
+  if (isShow) {
+    return <Text>{message || t('default_notification_message')}</Text>;
+  }
+
+  return null;
 };
 
 export { Notification };
