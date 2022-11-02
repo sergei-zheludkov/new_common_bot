@@ -20,6 +20,7 @@ const NewReferral: React.FC = () => {
   const [{ isShow, firstname, lastname }, setState] = useState<NewReferralState>(defaultState);
 
   const callback = (data: NewReferralData) => setState({ ...data, isShow: true });
+  const setDefaultState = () => setState(defaultState);
 
   useEffect(
     () => messageBroker.newReferral(chat.id, callback),
@@ -30,7 +31,7 @@ const NewReferral: React.FC = () => {
     let timeoutId: NodeJS.Timeout;
 
     if (isShow) {
-      timeoutId = setTimeout(() => setState(defaultState), 500);
+      timeoutId = setTimeout(setDefaultState, 500);
     }
 
     return () => clearTimeout(timeoutId);
