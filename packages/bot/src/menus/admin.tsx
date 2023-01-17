@@ -4,7 +4,7 @@ import { predicates, RoleEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
 import { useUser, useRouter } from '../contexts';
 
-const { roles: { isAdmin } } = predicates;
+const { ROLES: { isAdmin } } = predicates;
 
 const Admin = () => {
   const {
@@ -29,9 +29,16 @@ const Admin = () => {
     }
   };
 
-  useText(handleSwitchToMenuWallets, t('wallets'));
-  useText(handleSwitchToMenuAdminStatistics, t('statistics'));
-  useText(switchToMenuMain, t('back'));
+  /* ---------- BUTTON HOOKS ---------- */
+  const wallets = t('wallets');
+  useText(handleSwitchToMenuWallets, wallets);
+
+  const statistics = t('statistics');
+  useText(handleSwitchToMenuAdminStatistics, statistics);
+
+  const back = t('back');
+  useText(switchToMenuMain, back);
+  /* --------------------------------- */
 
   return (
     <ButtonGroup

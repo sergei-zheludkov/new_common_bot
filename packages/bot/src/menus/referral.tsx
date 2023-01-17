@@ -9,7 +9,7 @@ import { useTranslation } from '@common_bot/i18n';
 import { predicates, RoleEnum } from '@common_bot/shared';
 import { useUser, useRouter } from '../contexts';
 
-const { roles } = predicates;
+const { ROLES: { isAffiliate } } = predicates;
 const BOT_NAME = 'zheludkov_test_bot';
 const nothingShown = { inviteIsShowed: false, moneyIsShowed: false };
 const inviteShowed = { inviteIsShowed: true, moneyIsShowed: false };
@@ -31,7 +31,7 @@ const Referral = () => {
   const { t } = useTranslation(['buttons', 'referral', 'invite']);
   const [{ inviteIsShowed, moneyIsShowed }, setShowed] = useState<State>(nothingShown);
   const role = user.role as unknown as RoleEnum;
-  const isUserAffiliate = roles.isAffiliate(role);
+  const isUserAffiliate = isAffiliate(role);
 
   const handleLinkGenerator = () => {
     if (isUserAffiliate) {
@@ -45,11 +45,22 @@ const Referral = () => {
     }
   };
 
-  useText(() => setShowed(inviteShowed), t('invite'));
-  useText(() => setShowed(moneyShowed), t('output_money'));
-  useText(handleLinkGenerator, t('link_generator'));
-  useText(handleStatistic, t('statistics'));
-  useText(switchToMenuMain, t('back'));
+  /* ---------- BUTTON HOOKS ---------- */
+  const invite = t('invite');
+  useText(() => setShowed(inviteShowed), invite);
+
+  const output_money = t('output_money');
+  useText(() => setShowed(moneyShowed), output_money);
+
+  const link_generator = t('link_generator');
+  useText(handleLinkGenerator, link_generator);
+
+  const statistics = t('statistics');
+  useText(handleStatistic, statistics);
+
+  const back = t('back');
+  useText(switchToMenuMain, back);
+  /* --------------------------------- */
 
   if (inviteIsShowed) {
     const inviteLink = `https://t.me/${BOT_NAME}?start=${user.id}`;
