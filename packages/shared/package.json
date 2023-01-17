@@ -5,8 +5,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist/**/*"],
-  "dependencies": {},
+  "dependencies": {
+    "dayjs": "^1.11.6"
+  },
   "devDependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
@@ -14,8 +19,5 @@
   },
   "engines": {
     "node": ">=12.0.0"
-  },
-  "peerDependencies": {
-    "react": "^16.14.0"
   }
 }
