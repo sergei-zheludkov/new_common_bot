@@ -29,9 +29,9 @@ class UserController {
   @ApiNotFoundResponse({
     description: 'User not found.',
   })
-  @ApiOperation({ operationId: 'getUser' })
+  @ApiOperation({ operationId: 'getOneUser' })
   @Get(':id')
-  async getUser(@Param('id') id: string) {
+  async getOneUser(@Param('id') id: string) {
     const user = await this.userService.getOneUser(id);
 
     if (!user) {
@@ -48,10 +48,10 @@ class UserController {
   @ApiOperation({ operationId: 'postUser' })
   @Post()
   async postUser(
-    @Body('who_invited') who_invited: string,
+    @Body('who_invited_id') who_invited_id: string,
     @Body() body: UserCreateDto,
   ) {
-    const user = who_invited
+    const user = who_invited_id
       ? await this.userService.createUserWithReferral(body)
       : await this.userService.createUser(body);
 

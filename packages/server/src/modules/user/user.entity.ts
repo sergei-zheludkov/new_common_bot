@@ -1,12 +1,14 @@
 import {
   Entity,
   Column,
+  JoinColumn,
   PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { LanguageEnum, RoleEnum } from '@common_bot/shared';
+import { BotLanguageEnum, RoleEnum } from '@common_bot/shared';
 
 @Entity('users')
 class UserEntity {
@@ -60,9 +62,11 @@ class UserEntity {
     example: '258000010',
     nullable: true,
   })
-  @Column({
-    type: 'varchar',
+  @ManyToOne(() => UserEntity, {
     nullable: true,
+  })
+  @JoinColumn({
+    name: 'who_invited_id',
   })
   who_invited?: string;
 
@@ -85,14 +89,14 @@ class UserEntity {
   referral_money: number;
 
   @ApiProperty({
-    enum: LanguageEnum,
+    enum: BotLanguageEnum,
   })
   @Column({
     type: 'enum',
-    enum: LanguageEnum,
-    default: LanguageEnum.ENGLISH,
+    enum: BotLanguageEnum,
+    default: BotLanguageEnum.ENGLISH,
   })
-  lang: string;
+  lang: BotLanguageEnum;
 
   @ApiProperty({
     enum: RoleEnum,
@@ -102,7 +106,7 @@ class UserEntity {
     enum: RoleEnum,
     default: RoleEnum.USER,
   })
-  role: string;
+  role: RoleEnum;
 
   @ApiProperty({
     example: 600,

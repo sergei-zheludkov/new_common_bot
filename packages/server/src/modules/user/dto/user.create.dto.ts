@@ -5,7 +5,7 @@ import {
   IsEnum,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { LanguageEnum } from '@common_bot/shared';
+import { BotLanguageEnum } from '@common_bot/shared';
 
 class UserCreateDto {
   @ApiProperty({
@@ -47,15 +47,15 @@ class UserCreateDto {
   })
   @IsOptional()
   @IsString()
-  who_invited?: string;
+  who_invited_id?: string;
 
   @ApiProperty({
     required: true,
-    enum: LanguageEnum,
+    enum: BotLanguageEnum,
   })
   @IsNotEmpty()
-  @IsEnum(LanguageEnum)
-  lang: string;
+  @IsEnum(BotLanguageEnum)
+  lang: BotLanguageEnum;
 }
 
 export { UserCreateDto };
