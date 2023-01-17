@@ -11,9 +11,16 @@ const Settings = () => {
   } = useRouter();
   const { t } = useTranslation(['buttons', 'common']);
 
-  useText(switchToSceneLanguage, t('languages'));
-  useText(switchToSceneNotifications, t('notifications'));
-  useText(switchToMenuMain, t('back'));
+  /* ---------- BUTTON HOOKS ---------- */
+  const languages = t('languages');
+  useText(switchToSceneLanguage, languages);
+
+  const notifications = t('notifications');
+  useText(switchToSceneNotifications, notifications);
+
+  const back = t('back');
+  useText(switchToMenuMain, back);
+  /* --------------------------------- */
 
   return (
     <ButtonGroup

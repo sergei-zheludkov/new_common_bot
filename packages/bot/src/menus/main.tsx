@@ -24,12 +24,24 @@ export const Main = ({ useMain }: MainMenuProps) => {
   const { t } = useTranslation('buttons');
   const { message } = useMain();
 
+  /* ---------- BUTTON HOOKS ---------- */
   useCommand(switchToMenuAdmin, '/admin');
-  useText(switchToMenuBalance, t('balance'));
-  useText(switchToMenuReferral, t('referral'));
-  useText(switchToMenuSettings, t('settings'));
-  useText(switchToSceneFeedback, t('feedback'));
-  useText(switchToSceneRules, t('rules'));
+
+  const balance = t('balance');
+  useText(switchToMenuBalance, balance);
+
+  const referral = t('referral');
+  useText(switchToMenuReferral, referral);
+
+  const settings = t('settings');
+  useText(switchToMenuSettings, settings);
+
+  const feedback = t('feedback');
+  useText(switchToSceneFeedback, feedback);
+
+  const rules = t('rules');
+  useText(switchToSceneRules, rules);
+  /* --------------------------------- */
 
   return (
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t(message)}>

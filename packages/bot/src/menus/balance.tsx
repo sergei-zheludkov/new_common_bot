@@ -12,9 +12,16 @@ export const Balance = () => {
   const { t } = useTranslation(['buttons', 'balance']);
   const { user } = useUser();
 
-  useText(switchToSceneInputMoney, t('input_money'));
-  useText(switchToSceneAllPayments, t('all_payments'));
-  useText(switchToMenuMain, t('back'));
+  /* ---------- BUTTON HOOKS ---------- */
+  const input_money = t('input_money');
+  useText(switchToSceneInputMoney, input_money);
+
+  const all_payments = t('all_payments');
+  useText(switchToSceneAllPayments, all_payments);
+
+  const back = t('back');
+  useText(switchToMenuMain, back);
+  /* --------------------------------- */
 
   const message = (
     <>
