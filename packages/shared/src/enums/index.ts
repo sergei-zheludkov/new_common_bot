@@ -1,3 +1,4 @@
 export { RoleEnum } from './role';
-export { LanguageEnum } from './language';
-export { WalletEnum } from './wallet';
+export { WalletTypeEnum } from './wallet-type';
+export { BotLanguageEnum } from './bot-language';
+export { PaymentStatusEnum } from './payment-status';
