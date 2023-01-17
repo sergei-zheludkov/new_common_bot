@@ -16,7 +16,7 @@ export class DefaultService {
      * @returns UserEntity User has been found.
      * @throws ApiError
      */
-    public static getUser(
+    public static getOneUser(
         id: string,
     ): CancelablePromise<UserEntity> {
         return __request(OpenAPI, {

@@ -26,8 +26,9 @@ export namespace UserEntity {
     }
 
     export enum role {
-        ADMIN = 'admin',
         USER = 'user',
+        ADMIN = 'admin',
+        AFFILIATE = 'affiliate',
     }
 
 

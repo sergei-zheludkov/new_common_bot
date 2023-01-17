@@ -7,7 +7,7 @@ export type UserCreateDto = {
     firstname?: string;
     lastname?: string;
     username?: string;
-    who_invited?: string | null;
+    who_invited_id?: string | null;
     lang: UserCreateDto.lang;
 };
 
