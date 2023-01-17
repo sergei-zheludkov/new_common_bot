@@ -36,7 +36,7 @@ const User = ({ children }: UserProviderProps) => {
 
   const { switchToSceneGreeting } = useRouter();
   const { chat } = useBotContext();
-  const { getUser } = useApi();
+  const { getOneUser } = useApi();
   const {
     data: user,
     isCalled,
@@ -47,7 +47,7 @@ const User = ({ children }: UserProviderProps) => {
     fetch,
   } = useQuery(
     'user',
-    () => getUser(chat.id),
+    () => getOneUser(chat.id),
     { isLazy: true },
   );
 

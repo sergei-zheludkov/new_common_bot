@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonGroup, Button, Text } from '@urban-bot/core';
-import { LanguageEnum } from '@common_bot/shared';
+import { BotLanguageEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
 import { useRegistration } from './use-registration';
 
@@ -29,17 +29,25 @@ const Registration = ({ refId, getUser }: Props) => {
   }
 
   const createWithRussianLang = async () => {
-    await createUser(LanguageEnum.RUSSIAN);
+    await createUser(BotLanguageEnum.RUSSIAN);
   };
   const createWithEnglishLang = async () => {
-    await createUser(LanguageEnum.ENGLISH);
+    await createUser(BotLanguageEnum.ENGLISH);
   };
 
   if (!isRegistered && !isSentData) {
     return (
-      <ButtonGroup isResizedKeyboard isNewMessageEveryRender={false} title={t('message')}>
-        <Button onClick={createWithRussianLang}>{t(LanguageEnum.RUSSIAN)}</Button>
-        <Button onClick={createWithEnglishLang}>{t(LanguageEnum.ENGLISH)}</Button>
+      <ButtonGroup
+        isResizedKeyboard
+        isNewMessageEveryRender={false}
+        title={t('message')}
+      >
+        <Button onClick={createWithRussianLang}>
+          {t(BotLanguageEnum.RUSSIAN)}
+        </Button>
+        <Button onClick={createWithEnglishLang}>
+          {t(BotLanguageEnum.ENGLISH)}
+        </Button>
       </ButtonGroup>
     );
   }

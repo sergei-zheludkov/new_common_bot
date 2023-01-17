@@ -8,7 +8,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { UserEntity } from '../user/user.entity';
-import { WalletEntity } from '../wallet/wallet.entity';
 
 @Entity('payments')
 class PaymentEntity {
@@ -19,9 +18,9 @@ class PaymentEntity {
   @JoinColumn()
   user: UserEntity;
 
-  @ManyToOne(() => WalletEntity)
-  @JoinColumn()
-  wallet: WalletEntity;
+  // @ManyToOne(() => WalletEntity)
+  // @JoinColumn()
+  // wallet: WalletEntity;
 
   // RUB | USD | EUR | KZT
   @Column({
