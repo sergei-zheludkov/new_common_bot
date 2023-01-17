@@ -3,7 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 // import { join } from 'path';
 import { UserEntity } from '../../modules/user/user.entity';
-import { WalletEntity } from '../../modules/wallet/wallet.entity';
 import { PaymentEntity } from '../../modules/payment/payment.entity';
 import { StatisticsEntity } from '../../modules/statistics/statistics.entity';
 
@@ -20,7 +19,6 @@ import { StatisticsEntity } from '../../modules/statistics/statistics.entity';
         database: configService.get('PG_DATABASE'),
         entities: [
           UserEntity,
-          WalletEntity,
           PaymentEntity,
           StatisticsEntity,
         ],
