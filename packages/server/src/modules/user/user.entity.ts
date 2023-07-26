@@ -59,7 +59,8 @@ class UserEntity {
   balance: number;
 
   @ApiProperty({
-    example: '258000010',
+    // eslint-disable-next-line no-use-before-define
+    type: UserEntity,
     nullable: true,
   })
   @ManyToOne(() => UserEntity, {

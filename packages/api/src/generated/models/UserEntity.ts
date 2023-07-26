@@ -8,7 +8,7 @@ export type UserEntity = {
     lastname: string | null;
     username: string | null;
     balance: number;
-    who_invited: string | null;
+    who_invited: UserEntity | null;
     referral_counter: number;
     referral_money: number;
     lang: UserEntity.lang;
