@@ -133,9 +133,12 @@
             "example": 2000
           },
           "who_invited": {
-            "type": "string",
-            "example": "258000010",
-            "nullable": true
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            ]
           },
           "referral_counter": {
             "type": "number",
