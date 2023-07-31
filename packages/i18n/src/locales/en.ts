@@ -8,6 +8,7 @@ const en = {
     settings_menu: 'Settings menu message',
     update_message: "I'm update!" + "\n\nWhat's new?" + '\n-Paragraph 1"' + '\n-Paragraph 2' + '\n-Paragraph 3',
     default_notification_message: 'Default notification message',
+    max: 'Maximum: ',
   },
   lang: {
     ru: '🇷🇺 Русский',
@@ -22,7 +23,7 @@ const en = {
     feedback: '📲 Support',
     settings: '⚙️ Settings',
     languages: '🌎 Languages',
-    notifications: '🔈 Notifications',
+    reminders: '🔈 Reminders',
     rules: '📚 Rules',
     invite: '🤝 Invite',
     link_generator: '🔗 Link Generator',
@@ -39,16 +40,18 @@ const en = {
     exit: '🔚 Exit',
     confirm: '✔️ Confirm',
     great: '✅ Great!',
+    ready: '✅ Ready',
     saved: '✅ Saved',
     error: '⛔️ Error',
     less: '➖',
     more: '➕',
-    add_wallets: '➕ Add',
+    add: '➕ Add',
+    remove: '🗑 Remove',
     management_wallets: '💱 Management',
 
     // ------Notifications Settings------
-    notificationsOff: '🔇 Disable reminders',
-    notificationsOn: '🔊 Enable reminders',
+    remindersOff: '🔇 Disable reminders',
+    remindersOn: '🔊 Enable reminders',
     off: 'Off',
 
     // Фильтрация кошельков
@@ -66,6 +69,15 @@ const en = {
     week: 'Week',
     yesterday: 'Yesterday',
     period: 'Period',
+
+    // Дни
+    monday: 'Monday',
+    tuesday: 'Tuesday',
+    wednesday: 'Wednesday',
+    thursday: 'Thursday',
+    friday: 'Friday',
+    saturday: 'Saturday',
+    sunday: 'Sunday',
   },
   admin_menu: {
     message: 'What do you want to do?',
@@ -176,9 +188,14 @@ const en = {
       by_period: 'Statistics by period',
     },
   },
-  notifications: {
-    message: 'Setting the notification time',
-    about: 'You can choose any time\nfrom 7:00 to 22:00',
+  settings: {
+    reminder: {
+      message: 'Setting the reminders time',
+      about: 'Choose the day',
+
+      day_reminder_message: 'Setting on ',
+      selected: 'Selected: '
+    }
   },
 };
 
