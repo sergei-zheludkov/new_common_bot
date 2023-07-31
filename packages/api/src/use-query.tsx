@@ -8,7 +8,7 @@ export type QueryOptions = {
 }
 
 type QueryState<T, E = ApiError> = {
-  isCalled: boolean
+  isCalled: boolean;
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
@@ -18,7 +18,7 @@ type QueryState<T, E = ApiError> = {
 }
 
 export type Query<T, E = ApiError, A = any> = QueryState<T, E> & {
-  fetch: (...arg: A[]) => Promise<QueryState<T, E>>
+  fetch: (...arg: A[]) => Promise<QueryState<T, E>>;
 }
 
 function useQuery<T, A, E extends ApiError = ApiError>(
