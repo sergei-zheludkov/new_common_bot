@@ -7,6 +7,7 @@ interface Props {
 }
 
 const clocks = ['🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛'];
+const timeout = 1000;
 
 const Loading: React.FC<Props> = ({ isRemoveKeyboard }) => {
   const { t } = useTranslation('common');
@@ -18,7 +19,7 @@ const Loading: React.FC<Props> = ({ isRemoveKeyboard }) => {
 
     const isShow = state < clocks.length - 1;
     if (isShow) {
-      timeoutId = setTimeout(incrementState, 500);
+      timeoutId = setTimeout(incrementState, timeout);
     }
 
     return () => clearTimeout(timeoutId);

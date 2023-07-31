@@ -61,6 +61,7 @@ const User = ({ children }: UserProviderProps) => {
     if (isUserLoaded) {
       switchToSceneGreeting();
     }
+
     fetch();
   }, '/start');
 

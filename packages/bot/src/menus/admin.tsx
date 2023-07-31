@@ -8,8 +8,7 @@ const { ROLES: { isAdmin } } = predicates;
 
 const Admin = () => {
   const {
-    switchToMenuWallets,
-    switchToMenuAdminStatistics,
+    // switchToMenuAdminStatistics,
     switchToMenuMain,
   } = useRouter();
   const { t } = useTranslation('buttons');
@@ -17,24 +16,7 @@ const Admin = () => {
   const role = user.role as unknown as RoleEnum;
   const isUserAdmin = isAdmin(role);
 
-  const handleSwitchToMenuWallets = () => {
-    if (isUserAdmin) {
-      switchToMenuWallets();
-    }
-  };
-
-  const handleSwitchToMenuAdminStatistics = () => {
-    if (isUserAdmin) {
-      switchToMenuAdminStatistics();
-    }
-  };
-
   /* ---------- BUTTON HOOKS ---------- */
-  const wallets = t('wallets');
-  useText(handleSwitchToMenuWallets, wallets);
-
-  const statistics = t('statistics');
-  useText(handleSwitchToMenuAdminStatistics, statistics);
 
   const back = t('back');
   useText(switchToMenuMain, back);
@@ -47,8 +29,7 @@ const Admin = () => {
       maxColumns={2}
       title={t(isUserAdmin ? 'admin_menu:message' : 'admin_menu:error')}
     >
-      {isUserAdmin && <Button>{t('wallets')}</Button>}
-      {isUserAdmin && <Button>{t('statistics')}</Button>}
+      {/* {isUserAdmin && <Button>{t('')}</Button>} */}
       <Button>{t('back')}</Button>
     </ButtonGroup>
   );

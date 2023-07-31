@@ -15,7 +15,6 @@ interface MainMenuProps {
 export const Main = ({ useMain }: MainMenuProps) => {
   const {
     switchToMenuAdmin,
-    switchToMenuBalance,
     switchToMenuReferral,
     switchToMenuSettings,
     switchToSceneFeedback,
@@ -26,9 +25,6 @@ export const Main = ({ useMain }: MainMenuProps) => {
 
   /* ---------- BUTTON HOOKS ---------- */
   useCommand(switchToMenuAdmin, '/admin');
-
-  const balance = t('balance');
-  useText(switchToMenuBalance, balance);
 
   const referral = t('referral');
   useText(switchToMenuReferral, referral);
@@ -45,7 +41,6 @@ export const Main = ({ useMain }: MainMenuProps) => {
 
   return (
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t(message)}>
-      <Button>{t('balance')}</Button>
       <Button>{t('referral')}</Button>
       <Button>{t('settings')}</Button>
       <Button>{t('feedback')}</Button>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useBotContext } from '@urban-bot/core';
 import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
 import { BotLanguageEnum } from '@common_bot/shared';
@@ -11,12 +11,12 @@ interface Props {
 }
 
 const useRegistration = ({ refId, getUser }: Props) => {
-  const [isRegistered, setRegistered] = useState(false);
+  // const [isRegistered, setRegistered] = useState(false);
   const { switchToSceneGreeting } = useRouter();
   const { i18n } = useTranslation('lang');
   const { chat } = useBotContext();
   const { postUser } = useApi();
-  const { fetch, isCalled } = useQuery('user', postUser, { isLazy: true });
+  const { fetch, isCalled, isSuccess } = useQuery('user', postUser, { isLazy: true });
 
   const createUser = async (lang: BotLanguageEnum) => {
     const newUser = await fetch({
@@ -33,14 +33,14 @@ const useRegistration = ({ refId, getUser }: Props) => {
       return;
     }
 
-    setRegistered(true);
+    // setRegistered(true);
     await i18n.changeLanguage(lang);
     await getUser();
     switchToSceneGreeting();
   };
 
   return {
-    isRegistered,
+    isRegistered: isSuccess,
     isSentData: isCalled,
     createUser,
   };

@@ -23,8 +23,8 @@ interface State {
 // TODO сделать перевод по запросу после проверки и подтверждения данных
 const Referral = () => {
   const {
-    switchToMenuLinkGenerator,
-    switchToMenuAffiliateStatistics,
+    // switchToMenuLinkGenerator,
+    // switchToMenuAffiliateStatistics,
     switchToMenuMain,
   } = useRouter();
   const { user } = useUser();
@@ -33,17 +33,17 @@ const Referral = () => {
   const role = user.role as unknown as RoleEnum;
   const isUserAffiliate = isAffiliate(role);
 
-  const handleLinkGenerator = () => {
-    if (isUserAffiliate) {
-      switchToMenuLinkGenerator();
-    }
-  };
-
-  const handleStatistic = () => {
-    if (isUserAffiliate) {
-      switchToMenuAffiliateStatistics();
-    }
-  };
+  // const handleLinkGenerator = () => {
+  //   if (isUserAffiliate) {
+  //     switchToMenuLinkGenerator();
+  //   }
+  // };
+  //
+  // const handleStatistic = () => {
+  //   if (isUserAffiliate) {
+  //     switchToMenuAffiliateStatistics();
+  //   }
+  // };
 
   /* ---------- BUTTON HOOKS ---------- */
   const invite = t('invite');
@@ -52,11 +52,11 @@ const Referral = () => {
   const output_money = t('output_money');
   useText(() => setShowed(moneyShowed), output_money);
 
-  const link_generator = t('link_generator');
-  useText(handleLinkGenerator, link_generator);
+  // const link_generator = t('link_generator');
+  // useText(handleLinkGenerator, link_generator);
 
-  const statistics = t('statistics');
-  useText(handleStatistic, statistics);
+  // const statistics = t('statistics');
+  // useText(handleStatistic, statistics);
 
   const back = t('back');
   useText(switchToMenuMain, back);
