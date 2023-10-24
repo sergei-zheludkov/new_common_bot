@@ -6,7 +6,7 @@ import { useRouter } from '../contexts';
 const Settings = () => {
   const {
     switchToSceneSettingsLanguage,
-    switchToSceneSettingsReminders,
+    // switchToSceneSettingsReminders,
     switchToMenuMain,
   } = useRouter();
   const { t } = useTranslation(['buttons', 'common']);
@@ -15,8 +15,8 @@ const Settings = () => {
   const languages = t('languages');
   useText(switchToSceneSettingsLanguage, languages);
 
-  const reminders = t('reminders');
-  useText(switchToSceneSettingsReminders, reminders);
+  // const reminders = t('reminders');
+  // useText(switchToSceneSettingsReminders, reminders);
 
   const back = t('back');
   useText(switchToMenuMain, back);
@@ -30,7 +30,7 @@ const Settings = () => {
       title={t('common:settings_menu')}
     >
       <Button>{t('languages')}</Button>
-      <Button>{t('reminders')}</Button>
+      {/* <Button>{t('reminders')}</Button> */}
       <Button>{t('back')}</Button>
     </ButtonGroup>
   );
