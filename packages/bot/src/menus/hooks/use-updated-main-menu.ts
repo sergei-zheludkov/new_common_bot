@@ -6,12 +6,7 @@ import { Main } from '../main';
 type UseUpdatedMainMenu = Parameters<typeof Main>[0]['useMain'];
 
 const useUpdatedMainMenu: UseUpdatedMainMenu = () => {
-  const { t, i18n } = useTranslation('common');
-  // const { user } = Hook.useUser();
-
-  // useEffect(() => {
-  //   i18n.changeLanguage(user.lang);
-  // }, []);
+  const { t } = useTranslation('common');
 
   return { message: t('update_message') };
 };

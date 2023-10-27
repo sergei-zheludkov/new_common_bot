@@ -20,6 +20,7 @@ const useToggleState = (defaultValue = false) => {
     toggleOn,
     toggleOff,
     toggleSwitch,
+    setState,
   };
 };
 

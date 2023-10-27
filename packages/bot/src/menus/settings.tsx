@@ -4,12 +4,12 @@ import { useTranslation } from '@common_bot/i18n';
 import { useRouter } from '../contexts';
 
 const Settings = () => {
+  const { t } = useTranslation(['buttons', 'common']);
   const {
     switchToSceneSettingsLanguage,
     // switchToSceneSettingsReminders,
     switchToMenuMain,
   } = useRouter();
-  const { t } = useTranslation(['buttons', 'common']);
 
   /* ---------- BUTTON HOOKS ---------- */
   const languages = t('languages');
@@ -30,7 +30,7 @@ const Settings = () => {
       title={t('common:settings_menu')}
     >
       <Button>{t('languages')}</Button>
-      {/* <Button>{t('reminders')}</Button> */}
+      <Button>{t('reminders')}</Button>
       <Button>{t('back')}</Button>
     </ButtonGroup>
   );

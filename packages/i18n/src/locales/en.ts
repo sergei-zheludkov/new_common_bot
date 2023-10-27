@@ -13,9 +13,10 @@ const en = {
   lang: {
     ru: '🇷🇺 Русский',
     en: '🇺🇸 English',
-    message: 'Выбери язык / Choose your language',
     success: '👌👍🤙',
-    main: 'Выбран:',
+    main: 'Language settings',
+    used: 'Used: ',
+    choose: 'Выбери язык / Choose your language',
   },
   buttons: {
     balance: '💵 Balance',
@@ -38,6 +39,7 @@ const en = {
     statistics: '📈 Statistics',
     back: '🔙 Back',
     exit: '🔚 Exit',
+    change: '🖊 Change',
     confirm: '✔️ Confirm',
     great: '✅ Great!',
     ready: '✅ Ready',
@@ -50,8 +52,8 @@ const en = {
     management_wallets: '💱 Management',
 
     // ------Notifications Settings------
-    remindersOff: '🔇 Disable reminders',
-    remindersOn: '🔊 Enable reminders',
+    reminders_off: '🔇 Disable reminders',
+    reminders_on: '🔊 Enable reminders',
     off: 'Off',
 
     // Фильтрация кошельков

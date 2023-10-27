@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from './contexts';
 import { useCommonMainMenu } from './menus';
+import { RemoveKeyboard } from './components';
 
 import * as Menu from './menus';
 import * as Scene from './scenes';
@@ -19,12 +20,21 @@ export const SceneSwitcher = () => {
       // case T.Scene.RULES:
       //   return <Scene.Rules />;
       // ----------------------------------------ADMIN MENU----------------------------------------
+
       // ----------------------------------------SETTINGS----------------------------------------
-      // case T.Scene.LANGUAGE:
-      //   return <Scene.Language />
-      //
+    case T.SceneEnum.SETTINGS_LANGUAGE:
+      return (
+        <RemoveKeyboard>
+          <Scene.SettingsLanguage />
+        </RemoveKeyboard>
+      );
+
     case T.SceneEnum.SETTINGS_REMINDERS:
-      return <Scene.SettingsReminder />;
+      return (
+        <RemoveKeyboard>
+          <Scene.SettingsReminder />
+        </RemoveKeyboard>
+      );
       // -----------------------------------------------------------------------------------------
     case T.MenuEnum.MAIN:
       return <Menu.Main useMain={useCommonMainMenu} />;
