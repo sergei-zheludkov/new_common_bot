@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useBotContext } from '@urban-bot/core';
 import { DayKindEnum, hook } from '@common_bot/shared';
 import { useApi, useQuery } from '@common_bot/api';
+import { useUser } from '../../contexts';
 import { DEFAULT_REMINDERS_BY_DAY } from './constants';
 import { getReminder } from './helpers';
 import type { RemindersByDays } from './types';
@@ -9,9 +9,9 @@ import type { RemindersByDays } from './types';
 const { useToggleState } = hook;
 
 const useSettingsReminder = () => {
-  const { chat } = useBotContext();
+  const { user } = useUser();
   const { patchUser } = useApi();
-  const { fetch, isSuccess } = useQuery('user', patchUser, { isLazy: true });
+  const { fetch, isSuccess } = useQuery('update_user', patchUser, { isLazy: true });
 
   const [reminders, setReminders] = useState(DEFAULT_REMINDERS_BY_DAY);
   const [day, setDay] = useState<DayKindEnum | null>(null);
@@ -97,11 +97,10 @@ const useSettingsReminder = () => {
   };
 
   const handleSave = async () => {
-    // const newUser =
-    await fetch({
-      id: chat.id,
-      reminder_time: 660, // Todo заменить на reminders
-    });
+    const { id } = user;
+
+    // Todo заменить на reminders
+    await fetch({ id, reminder_time: 660 });
 
     // if (!newUser) {
     //   return;

@@ -18,6 +18,7 @@ const Loading: React.FC<Props> = ({ isRemoveKeyboard }) => {
     let timeoutId: NodeJS.Timeout;
 
     const isShow = state < clocks.length - 1;
+
     if (isShow) {
       timeoutId = setTimeout(incrementState, timeout);
     }

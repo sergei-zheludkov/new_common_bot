@@ -1,35 +1,9 @@
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
-import * as T from '../constants';
+import React, { useMemo, useState } from 'react';
+import * as T from '../../constants';
+import { Context } from './context';
+import type { ProviderProps, Scenes } from './types';
 
-type Scenes = T.MenuEnum | T.SceneEnum;
-
-interface Router {
-  scene: Scenes;
-
-  switchToMenuMain: () => void;
-  switchToMenuAdmin: () => void;
-  switchToMenuReferral: () => void;
-  switchToMenuSettings: () => void;
-
-  switchToSceneGreeting: () => void;
-  switchToSceneFeedback: () => void;
-  switchToSceneRules: () => void;
-  switchToSceneSettingsLanguage: () => void;
-  switchToSceneSettingsReminders: () => void;
-}
-
-const RouterContext = createContext({} as Router);
-
-type RouterProviderProps = {
-  children: React.ReactNode;
-};
-
-const Router = ({ children }: RouterProviderProps) => {
+const RouterProvider = ({ children }: ProviderProps) => {
   const [scene, setScene] = useState<Scenes>(T.SceneEnum.RESET);
   console.info('Bot scene:', scene);
 
@@ -60,12 +34,10 @@ const Router = ({ children }: RouterProviderProps) => {
   }), [scene]);
 
   return (
-    <RouterContext.Provider value={data}>
+    <Context.Provider value={data}>
       {children}
-    </RouterContext.Provider>
+    </Context.Provider>
   );
 };
 
-const useRouter = () => useContext(RouterContext);
-
-export { Router, useRouter };
+export { RouterProvider };

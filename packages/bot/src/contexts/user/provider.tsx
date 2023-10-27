@@ -1,39 +1,19 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBotContext, useCommand } from '@urban-bot/core';
 import { useApi, useQuery, predicates } from '@common_bot/api';
-import type { UserEntity } from '@common_bot/api';
-import { Registration } from '../scenes';
-import { useRouter } from './router';
-import { saveChat, getChatsMap } from '../local-storage';
+import { useTranslation } from '@common_bot/i18n';
+import { Registration } from '../../scenes';
+import { saveChat, getChatsMap } from '../../local-storage';
+import { useRouter } from '../router';
+import { Context } from './context';
+import type { ProviderProps, ContextState } from './types';
 
 const { isNotFoundError } = predicates;
 
-interface User {
-  referralId: string | null;
-  user: UserEntity;
-  fetch: () => void;
-  isCalled: boolean;
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-  statusCode?: number;
-}
-
-const UserContext = createContext({} as User);
-
-type UserProviderProps = {
-  children: React.ReactNode;
-};
-
-const User = ({ children }: UserProviderProps) => {
-  const [referralId, setReferralId] = useState<User['referralId']>(null);
-
+const UserProvider = ({ children }: ProviderProps) => {
+  const [referralId, setReferralId] = useState<ContextState['referralId']>(null);
+  const { i18n } = useTranslation('common');
   const { switchToSceneGreeting } = useRouter();
   const { chat } = useBotContext();
   const { getOneUser } = useApi();
@@ -46,7 +26,7 @@ const User = ({ children }: UserProviderProps) => {
     statusCode,
     fetch,
   } = useQuery(
-    'user',
+    'get_one_user',
     () => getOneUser(chat.id),
     { isLazy: true },
   );
@@ -79,13 +59,19 @@ const User = ({ children }: UserProviderProps) => {
     saveChat(chat);
   }, [chat]);
 
+  useEffect(() => {
+    if (user) {
+      i18n.changeLanguage(user?.lang);
+    }
+  }, [user]);
+
   if (isUserNotFound) {
     return <Registration refId={referralId} getUser={fetch} />;
   }
 
   if (isUserLoaded) {
     return (
-      <UserContext.Provider
+      <Context.Provider
         value={{
           referralId,
           user,
@@ -98,13 +84,11 @@ const User = ({ children }: UserProviderProps) => {
         }}
       >
         {children}
-      </UserContext.Provider>
+      </Context.Provider>
     );
   }
 
   return null;
 };
 
-const useUser = () => useContext(UserContext);
-
-export { User, useUser };
+export { UserProvider };
