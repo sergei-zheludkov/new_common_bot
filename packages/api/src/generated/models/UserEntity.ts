@@ -13,6 +13,8 @@ export type UserEntity = {
     referral_money: number;
     lang: UserEntity.lang;
     role: UserEntity.role;
+    gender: UserEntity.gender | null;
+    timezone: number | null;
     reminder_time: number;
     created: string;
     updated: string;
@@ -29,6 +31,11 @@ export namespace UserEntity {
         USER = 'user',
         ADMIN = 'admin',
         AFFILIATE = 'affiliate',
+    }
+
+    export enum gender {
+        MALE = 'male',
+        FEMALE = 'female',
     }
 
 
