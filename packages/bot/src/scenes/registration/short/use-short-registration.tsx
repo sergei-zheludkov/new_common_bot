@@ -1,17 +1,15 @@
-// import { useEffect, useState } from 'react';
 import { useBotContext } from '@urban-bot/core';
 import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
 import { BotLanguageEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
-import { useRouter } from '../../contexts';
+import { useRouter } from '../../../contexts';
 
 interface Props {
   refId: string | null;
   getUser: () => void;
 }
 
-const useRegistration = ({ refId, getUser }: Props) => {
-  // const [isRegistered, setRegistered] = useState(false);
+const useShortRegistration = ({ refId, getUser }: Props) => {
   const { switchToSceneGreeting } = useRouter();
   const { i18n } = useTranslation('lang');
   const { chat } = useBotContext();
@@ -33,7 +31,6 @@ const useRegistration = ({ refId, getUser }: Props) => {
       return;
     }
 
-    // setRegistered(true);
     await i18n.changeLanguage(lang);
     await getUser();
     switchToSceneGreeting();
@@ -46,4 +43,4 @@ const useRegistration = ({ refId, getUser }: Props) => {
   };
 };
 
-export { useRegistration };
+export { useShortRegistration };

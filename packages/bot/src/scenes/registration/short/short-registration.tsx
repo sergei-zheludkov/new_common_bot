@@ -2,23 +2,16 @@ import React from 'react';
 import { ButtonGroup, Button, Text } from '@urban-bot/core';
 import { BotLanguageEnum } from '@common_bot/shared';
 import { useTranslation } from '@common_bot/i18n';
-import { useRegistration } from './use-registration';
+import { useShortRegistration } from './use-short-registration';
 
 interface Props {
   refId: string | null;
   getUser: () => void;
 }
 
-const Registration = ({ refId, getUser }: Props) => {
-  const { t } = useTranslation('lang');
-  const {
-    isRegistered,
-    isSentData,
-    createUser,
-  } = useRegistration({
-    refId,
-    getUser,
-  });
+const ShortRegistration = ({ refId, getUser }: Props) => {
+  const { t } = useTranslation('registration');
+  const { isRegistered, isSentData, createUser } = useShortRegistration({ refId, getUser });
 
   if (isRegistered) {
     return <Text>{t('success')}</Text>;
@@ -26,6 +19,7 @@ const Registration = ({ refId, getUser }: Props) => {
 
   if (!isRegistered && isSentData) {
     // TODO сообщение об ошибке и просьба написать в поддержку
+    return null;
   }
 
   const createWithRussianLang = async () => {
@@ -40,13 +34,13 @@ const Registration = ({ refId, getUser }: Props) => {
       <ButtonGroup
         isResizedKeyboard
         isNewMessageEveryRender={false}
-        title={t('message')}
+        title={t('questions.language.message')}
       >
         <Button onClick={createWithRussianLang}>
-          {t(BotLanguageEnum.RUSSIAN)}
+          {t(`buttons:${BotLanguageEnum.RUSSIAN}`)}
         </Button>
         <Button onClick={createWithEnglishLang}>
-          {t(BotLanguageEnum.ENGLISH)}
+          {t(`buttons:${BotLanguageEnum.ENGLISH}`)}
         </Button>
       </ButtonGroup>
     );
@@ -55,4 +49,4 @@ const Registration = ({ refId, getUser }: Props) => {
   return null;
 };
 
-export { Registration };
+export { ShortRegistration };
