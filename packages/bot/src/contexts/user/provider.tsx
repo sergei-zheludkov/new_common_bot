@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useBotContext, useCommand } from '@urban-bot/core';
 import { useApi, useQuery, predicates } from '@common_bot/api';
 import { useTranslation } from '@common_bot/i18n';
-import { Registration } from '../../scenes';
+import { /* ShortRegistration, */ FullRegistration } from '../../scenes';
 import { saveChat, getChatsMap } from '../../local-storage';
 import { useRouter } from '../router';
 import { Context } from './context';
@@ -66,7 +66,9 @@ const UserProvider = ({ children }: ProviderProps) => {
   }, [user]);
 
   if (isUserNotFound) {
-    return <Registration refId={referralId} getUser={fetch} />;
+    // TODO add feature-toggle for changing scenarios
+    // return <ShortRegistration refId={referralId} getUser={fetch} />;
+    return <FullRegistration refId={referralId} getUser={fetch} />;
   }
 
   if (isUserLoaded) {

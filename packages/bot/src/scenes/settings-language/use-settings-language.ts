@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { BotLanguageEnum, hook } from '@common_bot/shared';
 import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
 import { useUser } from '../../contexts';
-import { languages } from './constants';
+import { LANGUAGES } from '../../constants';
 
 const { useToggleState } = hook;
 
 const useSettingsLanguage = () => {
-  const { user, fetch: getUser } = useUser();
   const { patchUser } = useApi();
+  const { user, fetch: getUser } = useUser();
   const { fetch: updateUser, isSuccess: isSaved } = useQuery('update_user', patchUser, { isLazy: true });
   const {
     toggle: isChanging,
@@ -18,7 +18,7 @@ const useSettingsLanguage = () => {
 
   // TODO зарефакторить as unknown as BotLanguageEnum через Хелперы
   const currentLang = user.lang as unknown as BotLanguageEnum;
-  const availableLanguages = languages.filter((lang) => lang !== currentLang);
+  const availableLanguages = LANGUAGES.filter((lang) => lang !== currentLang);
 
   const handleSave = (lang: BotLanguageEnum) => async () => {
     await updateUser({

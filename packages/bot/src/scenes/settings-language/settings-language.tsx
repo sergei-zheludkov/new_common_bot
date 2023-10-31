@@ -6,7 +6,7 @@ import { useSettingsLanguage } from './use-settings-language';
 
 const SettingsLanguage = () => {
   const { switchToMenuSettings } = useRouter();
-  const { t } = useTranslation('lang');
+  const { t } = useTranslation('settings');
   const {
     availableLanguages,
     isChanging,
@@ -17,7 +17,9 @@ const SettingsLanguage = () => {
   const { user } = useUser();
 
   const languageButtons = availableLanguages.map((language) => (
-    <Button key={language} onClick={handleSave(language)}>{t(language)}</Button>
+    <Button key={language} onClick={handleSave(language)}>
+      {t(`buttons:${language}`)}
+    </Button>
   ));
 
   const changeButton = [
@@ -32,7 +34,10 @@ const SettingsLanguage = () => {
     (<Button key="back" onClick={switchToMenuSettings}>{t('buttons:back')}</Button>),
   ];
 
-  const title = isChanging ? t('choose') : `${t('used')}${t(user.lang)}`;
+  const activeLang = t(`buttons:${user.lang}`);
+  const title = isChanging
+    ? t('language.choose')
+    : `${t('language.used')}${activeLang}`;
 
   const buttons = isChanging
     ? [...languageButtons, ...backToLanguagesButton]
