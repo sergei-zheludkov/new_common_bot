@@ -1,7 +1,7 @@
 import { date } from '@common_bot/shared';
 import type { Reminder } from './types';
 
-const { getTimeToDisplay } = date;
+const { getTimeFromNumber } = date;
 
 const getReminder = (day: string, num: number): Reminder => ({
   id: `${day}_${num}`,
@@ -12,7 +12,7 @@ const getReminder = (day: string, num: number): Reminder => ({
 
 const getTimeForReminder = (time: number, isActive: boolean) => {
   const icon = isActive ? '⏰' : '🔕';
-  const displayTime = isActive ? ` ${getTimeToDisplay(time)}` : '';
+  const displayTime = isActive ? ` ${getTimeFromNumber(time)}` : '';
   return `${icon}${displayTime}`;
 };
 

@@ -4,7 +4,9 @@ import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
 import { useTranslation } from '@common_bot/i18n';
 import { useRouter } from '../../../contexts';
 import { LANGUAGES, TIMEZONES } from '../../../constants';
-import { LANG_KEY, GENDERS /* , GENDER_KEY, TIMEZONE_KEY, */ } from './constants';
+import {
+  LANG_KEY, GENDERS, GENDER_KEY, TIMEZONE_KEY,
+} from './constants';
 
 type Props = {
   refId: string | null;
@@ -28,9 +30,11 @@ const useFullRegistration = ({ refId, getUser }: Props) => {
   };
 
   const createUser = async (answers: DialogAnswers) => {
-    // const { [GENDER_KEY]: gender, [TIMEZONE_KEY]: timezone} = answers;
     // Такой финт из-за кривой генерации enum в @common_bot/api
     const lang = answers[LANG_KEY] as unknown as UserCreateDto['lang'];
+    // Такой финт из-за кривой генерации enum в @common_bot/api
+    const gender = answers[GENDER_KEY] as unknown as UserCreateDto['gender'];
+    const timezone = Number(answers[TIMEZONE_KEY]);
 
     const newUser = await fetch({
       id: chat.id,
@@ -39,10 +43,8 @@ const useFullRegistration = ({ refId, getUser }: Props) => {
       username: chat.username,
       who_invited_id: refId,
       lang,
-
-      // TODO реализовать сохранение ключей
-      // gender,
-      // timezone,
+      timezone,
+      gender,
     });
 
     if (!newUser) {
