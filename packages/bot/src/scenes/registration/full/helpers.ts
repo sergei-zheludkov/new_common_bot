@@ -1,9 +1,9 @@
 import { date } from '@common_bot/shared';
 
-const { getTimeToDisplay } = date;
+const { getTimeFromNumber } = date;
 
 const getTimezone = (time: number) => {
-  const timeToDisplay = getTimeToDisplay(time);
+  const timeToDisplay = getTimeFromNumber(time);
 
   return time < 0 ? `-${timeToDisplay}` : `+${timeToDisplay}`;
 };
