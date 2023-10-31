@@ -2,10 +2,10 @@ import {
   IsOptional,
   IsString,
   IsNotEmpty,
-  IsEnum,
+  IsEnum, IsNumber,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { BotLanguageEnum } from '@common_bot/shared';
+import { BotLanguageEnum, GenderEnum } from '@common_bot/shared';
 
 class UserCreateDto {
   @ApiProperty({
@@ -42,8 +42,8 @@ class UserCreateDto {
 
   @ApiProperty({
     required: false,
-    example: '258000010',
     nullable: true,
+    example: '258000010',
   })
   @IsOptional()
   @IsString()
@@ -56,6 +56,23 @@ class UserCreateDto {
   @IsNotEmpty()
   @IsEnum(BotLanguageEnum)
   lang: BotLanguageEnum;
+
+  @ApiProperty({
+    required: false,
+    nullable: true,
+    enum: GenderEnum,
+  })
+  @IsOptional()
+  @IsEnum(GenderEnum)
+  gender?: GenderEnum;
+
+  @ApiProperty({
+    required: false,
+    example: 600,
+  })
+  @IsOptional()
+  @IsNumber()
+  timezone?: number;
 }
 
 export { UserCreateDto };
