@@ -1,2 +1,3 @@
 export { getTodayStart } from './get-today-start';
-export { getTimeToDisplay } from './get-day-time-to-display';
+export { getTimeFromNumber } from './get-time-from-number';
+export { getTimeAsNumber } from './get-time-as-number';
