@@ -12,6 +12,7 @@ export type UserUpdateDto = {
     referral_money?: number;
     lang?: UserUpdateDto.lang;
     reminder_time?: number;
+    timezone?: number;
 };
 
 export namespace UserUpdateDto {
