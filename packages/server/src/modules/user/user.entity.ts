@@ -8,7 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { BotLanguageEnum, RoleEnum } from '@common_bot/shared';
+import { GenderEnum, RoleEnum, BotLanguageEnum } from '@common_bot/shared';
 
 @Entity('users')
 class UserEntity {
@@ -108,6 +108,27 @@ class UserEntity {
     default: RoleEnum.USER,
   })
   role: RoleEnum;
+
+  @ApiProperty({
+    enum: GenderEnum,
+    nullable: true,
+  })
+  @Column({
+    type: 'enum',
+    nullable: true,
+    enum: GenderEnum,
+  })
+  gender?: GenderEnum;
+
+  @ApiProperty({
+    example: 600,
+    nullable: true,
+  })
+  @Column({
+    type: 'int',
+    nullable: true,
+  })
+  timezone?: number;
 
   @ApiProperty({
     example: 600,

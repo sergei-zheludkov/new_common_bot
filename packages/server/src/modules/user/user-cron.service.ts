@@ -3,10 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Cron } from '@nestjs/schedule';
+import { date } from '@common_bot/shared';
 import { Repository } from 'typeorm';
 import { logger } from '../../libs/logger/logger.instance';
-import { toPromise, getTimeAsNumber } from '../../helpers';
+import { toPromise } from '../../helpers';
 import { UserEntity as User } from './user.entity';
+
+const { getTimeAsNumber } = date;
 
 const EVERY_30_MINUTES = '0 */30 8-21 * * *';
 const logger_message = '[ UserCronService | startReminder | post ]';

@@ -80,6 +80,14 @@ class UserUpdateDto {
   @IsOptional()
   @IsNumber()
   reminder_time?: number;
+
+  @ApiProperty({
+    required: false,
+    example: 600,
+  })
+  @IsOptional()
+  @IsNumber()
+  timezone: number;
 }
 
 export { UserUpdateDto };

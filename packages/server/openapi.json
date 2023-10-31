@@ -163,6 +163,19 @@
               "affiliate"
             ]
           },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ],
+            "nullable": true
+          },
+          "timezone": {
+            "type": "number",
+            "example": 600,
+            "nullable": true
+          },
           "reminder_time": {
             "type": "number",
             "example": 600
@@ -189,6 +202,8 @@
           "referral_money",
           "lang",
           "role",
+          "gender",
+          "timezone",
           "reminder_time",
           "created",
           "updated"
@@ -215,8 +230,8 @@
           },
           "who_invited_id": {
             "type": "string",
-            "example": "258000010",
-            "nullable": true
+            "nullable": true,
+            "example": "258000010"
           },
           "lang": {
             "type": "string",
@@ -224,6 +239,18 @@
               "ru",
               "en"
             ]
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "male",
+              "female"
+            ]
+          },
+          "timezone": {
+            "type": "number",
+            "example": 600
           }
         },
         "required": [
@@ -270,6 +297,10 @@
             ]
           },
           "reminder_time": {
+            "type": "number",
+            "example": 600
+          },
+          "timezone": {
             "type": "number",
             "example": 600
           }
