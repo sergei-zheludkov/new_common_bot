@@ -16,23 +16,23 @@ const UserProvider = ({ children }: ProviderProps) => {
   const { i18n } = useTranslation('common');
   const { switchToSceneGreeting } = useRouter();
   const { chat } = useBotContext();
-  const { getOneUser } = useApi();
+  const { getOneUser: getOneUserApi } = useApi();
   const {
     data: user,
-    isCalled,
-    isLoading,
-    isSuccess,
-    isError,
-    statusCode,
-    fetch,
+    isCalled: isGetCalled,
+    isLoading: isGetLoading,
+    isSuccess: isGetSuccess,
+    isError: isGetError,
+    statusCode: getStatusCode,
+    fetch: getUser,
   } = useQuery(
     'get_one_user',
-    () => getOneUser(chat.id),
+    () => getOneUserApi(chat.id),
     { isLazy: true },
   );
 
-  const isUserNotFound = isCalled && isError && isNotFoundError(statusCode);
-  const isUserLoaded = isCalled && !isLoading && isSuccess && !!user;
+  const isUserNotFound = isGetCalled && isGetError && isNotFoundError(getStatusCode);
+  const isUserLoaded = isGetCalled && !isGetLoading && isGetSuccess && !!user;
 
   useCommand(({ argument }) => {
     if (argument) {
@@ -42,7 +42,7 @@ const UserProvider = ({ children }: ProviderProps) => {
       switchToSceneGreeting();
     }
 
-    fetch();
+    getUser();
   }, '/start');
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const UserProvider = ({ children }: ProviderProps) => {
       switchToSceneGreeting();
     }
     if (!isUserLoaded) {
-      fetch();
+      getUser();
     }
   }, []);
 
@@ -67,8 +67,8 @@ const UserProvider = ({ children }: ProviderProps) => {
 
   if (isUserNotFound) {
     // TODO add feature-toggle for changing scenarios
-    // return <ShortRegistration refId={referralId} getUser={fetch} />;
-    return <FullRegistration refId={referralId} getUser={fetch} />;
+    // return <ShortRegistration refId={referralId} getUser={getUser} />;
+    return <FullRegistration refId={referralId} getUser={getUser} />;
   }
 
   if (isUserLoaded) {
@@ -77,12 +77,13 @@ const UserProvider = ({ children }: ProviderProps) => {
         value={{
           referralId,
           user,
-          isCalled,
-          isLoading,
-          isSuccess,
-          isError,
-          statusCode,
-          fetch,
+
+          isGetCalled,
+          isGetLoading,
+          isGetSuccess,
+          isGetError,
+          getStatusCode,
+          getUser,
         }}
       >
         {children}

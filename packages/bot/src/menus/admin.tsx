@@ -30,7 +30,7 @@ const Admin = () => {
       title={t(isUserAdmin ? 'admin_menu:message' : 'admin_menu:error')}
     >
       {/* {isUserAdmin && <Button>{t('')}</Button>} */}
-      <Button>{t('back')}</Button>
+      <Button>{back}</Button>
     </ButtonGroup>
   );
 };

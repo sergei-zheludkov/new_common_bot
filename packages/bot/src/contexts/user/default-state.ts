@@ -8,11 +8,11 @@ const defaultState: ContextState = {
   referralId: null,
   user: {} as UserEntity,
 
-  fetch: empty,
-  isCalled: false,
-  isLoading: false,
-  isSuccess: false,
-  isError: false,
+  getUser: empty,
+  isGetCalled: false,
+  isGetLoading: false,
+  isGetSuccess: false,
+  isGetError: false,
   // statusCode: NaN,
 };
 

@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { BotLanguageEnum, hook } from '@common_bot/shared';
-import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
-import { useUser } from '../../contexts';
-import { LANGUAGES } from '../../constants';
+import { UserCreateDto } from '@common_bot/api';
+import { useUser } from '../../../contexts';
+import { LANGUAGES } from '../../../constants';
+import { useSettingsPatchUser } from '../use-settings-patch-user';
 
 const { useToggleState } = hook;
 
 const useSettingsLanguage = () => {
-  const { patchUser } = useApi();
-  const { user, fetch: getUser } = useUser();
-  const { fetch: updateUser, isSuccess: isSaved } = useQuery('update_user', patchUser, { isLazy: true });
+  const { user, getUser } = useUser();
+  const { patchUser, isPatchSuccess: isSaved } = useSettingsPatchUser();
   const {
     toggle: isChanging,
     toggleOn: handleChangingOn,
@@ -21,18 +21,18 @@ const useSettingsLanguage = () => {
   const availableLanguages = LANGUAGES.filter((lang) => lang !== currentLang);
 
   const handleSave = (lang: BotLanguageEnum) => async () => {
-    await updateUser({
+    await patchUser({
       id: user.id,
       // Такой финт из-за кривой генерации enum в @common_bot/api
       lang: lang as unknown as UserCreateDto['lang'],
     });
 
-    // Necessary to send request to event_loop
     handleChangingOff();
   };
 
   useEffect(() => {
     if (isSaved) {
+      // Necessary to send request to event_loop
       setTimeout(getUser, 300);
     }
   }, [isSaved]);

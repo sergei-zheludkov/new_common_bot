@@ -7,14 +7,14 @@ import {
   DialogStep,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { BotLanguageEnum } from '@common_bot/shared';
+import { BotLanguageEnum, date } from '@common_bot/shared';
 import { TIMEZONES } from '../../../constants';
 import { useFullRegistration } from './use-full-registration';
-import { getTimezone } from './helpers';
 import {
   GENDER_KEY, LANG_KEY, TIMEZONE_KEY, GENDERS,
 } from './constants';
 
+const { getTimezone } = date;
 const { MALE, FEMALE } = GENDERS;
 
 interface Props {

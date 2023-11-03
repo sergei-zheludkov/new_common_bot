@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DayKindEnum, hook } from '@common_bot/shared';
-import { useApi, useQuery } from '@common_bot/api';
-import { useUser } from '../../contexts';
+import { useUser } from '../../../contexts';
+import { useSettingsPatchUser } from '../use-settings-patch-user';
 import { DEFAULT_REMINDERS_BY_DAY } from './constants';
 import { getReminder } from './helpers';
 import type { RemindersByDays } from './types';
@@ -10,8 +10,7 @@ const { useToggleState } = hook;
 
 const useSettingsReminder = () => {
   const { user } = useUser();
-  const { patchUser } = useApi();
-  const { fetch, isSuccess } = useQuery('update_user', patchUser, { isLazy: true });
+  const { patchUser, isPatchSuccess: isSaved } = useSettingsPatchUser();
 
   const [reminders, setReminders] = useState(DEFAULT_REMINDERS_BY_DAY);
   const [day, setDay] = useState<DayKindEnum | null>(null);
@@ -100,7 +99,7 @@ const useSettingsReminder = () => {
     const { id } = user;
 
     // Todo заменить на reminders
-    await fetch({ id, reminder_time: 660 });
+    await patchUser({ id, reminder_time: 660 });
 
     // if (!newUser) {
     //   return;
@@ -112,7 +111,7 @@ const useSettingsReminder = () => {
     reminders,
 
     isRemoveMode,
-    isSaved: isSuccess,
+    isSaved,
 
     handleChangeDay,
     handleClearDay,

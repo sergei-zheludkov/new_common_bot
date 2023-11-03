@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { ButtonGroup, Button, Text } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
 import { DayKindEnum } from '@common_bot/shared';
-import { useRouter } from '../../contexts';
+import { useRouter } from '../../../contexts';
 import { days } from './constants';
 import type { RemindersByDays } from './types';
 
