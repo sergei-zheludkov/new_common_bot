@@ -1,6 +1,4 @@
-import { date } from '@common_bot/shared';
-
-const { getTimeFromNumber } = date;
+import { getTimeFromNumber } from './get-time-from-number';
 
 const getTimezone = (time: number) => {
   const timeToDisplay = getTimeFromNumber(time);
