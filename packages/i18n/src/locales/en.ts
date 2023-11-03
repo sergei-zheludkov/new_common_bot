@@ -15,7 +15,8 @@ const en = {
     referral: '💎 Affiliate',
     feedback: '📲 Support',
     settings: '⚙️ Settings',
-    languages: '🌎 Languages',
+    language: '🌎 Language',
+    timezone: '🌐 Timezone',
     reminders: '🔈 Reminders',
     rules: '📚 Rules',
     invite: '🤝 Invite',
@@ -214,9 +215,13 @@ const en = {
     },
     language: {
       used: 'Used: ',
-      choose: 'Choose language',
-      // main: 'Language settings',
-    }
+      choose: 'Choose a language',
+    },
+    timezone: {
+      selected: 'Selected timezone: ',
+      not_selected: 'Timezone not selected',
+      choose: 'Choose a new timezone',
+    },
   },
 };
 

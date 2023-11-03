@@ -15,7 +15,8 @@ const ru = {
     referral: '💎 Партнерка',
     feedback: '📲 Обратная связь',
     settings: '⚙️ Настройки',
-    languages: '🌎 Язык',
+    language: '🌎 Язык',
+    timezone: '🌐 Часовой пояс',
     reminders: '🔈 Напоминания',
     rules: '📚 Правила',
     invite: '🤝 Пригласить друга',
@@ -215,8 +216,12 @@ const ru = {
     language: {
       used: 'Используется: ',
       choose: 'Выбери язык',
-      // main: 'Настройки языка',
-    }
+    },
+    timezone: {
+      selected: 'Выбраная таймзона: ',
+      not_selected: 'Таймзона не выбрана',
+      choose: 'Выбери новую таимзону',
+    },
   },
 };
 
