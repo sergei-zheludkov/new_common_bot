@@ -15,6 +15,7 @@ type ContextState = {
   switchToSceneFeedback: () => void;
   switchToSceneRules: () => void;
   switchToSceneSettingsLanguage: () => void;
+  switchToSceneSettingsTimezone: () => void;
   switchToSceneSettingsReminders: () => void;
 }
 

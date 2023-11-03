@@ -5,12 +5,12 @@ type ContextState = {
   referralId: string | null;
   user: UserEntity;
 
-  fetch: () => void;
-  isCalled: boolean;
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-  statusCode?: number;
+  getUser: () => void;
+  isGetCalled: boolean;
+  isGetLoading: boolean;
+  isGetSuccess: boolean;
+  isGetError: boolean;
+  getStatusCode?: number;
 }
 
 type ProviderProps = {

@@ -7,13 +7,17 @@ const Settings = () => {
   const { t } = useTranslation(['buttons', 'common']);
   const {
     switchToSceneSettingsLanguage,
+    switchToSceneSettingsTimezone,
     // switchToSceneSettingsReminders,
     switchToMenuMain,
   } = useRouter();
 
   /* ---------- BUTTON HOOKS ---------- */
-  const languages = t('languages');
-  useText(switchToSceneSettingsLanguage, languages);
+  const language = t('language');
+  useText(switchToSceneSettingsLanguage, language);
+
+  const timezone = t('timezone');
+  useText(switchToSceneSettingsTimezone, timezone);
 
   // const reminders = t('reminders');
   // useText(switchToSceneSettingsReminders, reminders);
@@ -29,9 +33,10 @@ const Settings = () => {
       maxColumns={2}
       title={t('common:settings_menu')}
     >
-      <Button>{t('languages')}</Button>
-      <Button>{t('reminders')}</Button>
-      <Button>{t('back')}</Button>
+      <Button>{language}</Button>
+      <Button>{timezone}</Button>
+      {/* <Button>{reminders}</Button> */}
+      <Button>{back}</Button>
     </ButtonGroup>
   );
 };

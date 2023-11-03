@@ -41,10 +41,10 @@ export const Main = ({ useMain }: MainMenuProps) => {
 
   return (
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={t(message)}>
-      <Button>{t('referral')}</Button>
-      <Button>{t('settings')}</Button>
-      <Button>{t('feedback')}</Button>
-      <Button>{t('rules')}</Button>
+      <Button>{referral}</Button>
+      <Button>{settings}</Button>
+      <Button>{feedback}</Button>
+      <Button>{rules}</Button>
     </ButtonGroup>
   );
 };

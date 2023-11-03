@@ -15,6 +15,7 @@ const defaultState: ContextState = {
   switchToSceneFeedback: empty,
   switchToSceneRules: empty,
   switchToSceneSettingsLanguage: empty,
+  switchToSceneSettingsTimezone: empty,
   switchToSceneSettingsReminders: empty,
 };
 

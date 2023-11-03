@@ -6,10 +6,11 @@ import {
   useText,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { predicates, RoleEnum } from '@common_bot/shared';
+// import { predicates, RoleEnum } from '@common_bot/shared';
 import { useUser, useRouter } from '../contexts';
 
-const { ROLES: { isAffiliate } } = predicates;
+// const { ROLES: { isAffiliate } } = predicates;
+// TODO в .env
 const BOT_NAME = 'zheludkov_test_bot';
 const nothingShown = { inviteIsShowed: false, moneyIsShowed: false };
 const inviteShowed = { inviteIsShowed: true, moneyIsShowed: false };
@@ -30,8 +31,8 @@ const Referral = () => {
   const { user } = useUser();
   const { t } = useTranslation(['buttons', 'referral', 'invite']);
   const [{ inviteIsShowed, moneyIsShowed }, setShowed] = useState<State>(nothingShown);
-  const role = user.role as unknown as RoleEnum;
-  const isUserAffiliate = isAffiliate(role);
+  // const role = user.role as unknown as RoleEnum;
+  // const isUserAffiliate = isAffiliate(role);
 
   // const handleLinkGenerator = () => {
   //   if (isUserAffiliate) {
@@ -100,11 +101,11 @@ const Referral = () => {
 
   return (
     <ButtonGroup isReplyButtons isResizedKeyboard maxColumns={2} title={message}>
-      <Button>{t('invite')}</Button>
-      <Button>{t('output_money')}</Button>
-      {isUserAffiliate && <Button>{t('statistics')}</Button>}
-      {isUserAffiliate && <Button>{t('link_generator')}</Button>}
-      <Button>{t('back')}</Button>
+      <Button>{invite}</Button>
+      <Button>{output_money}</Button>
+      {/* {isUserAffiliate && <Button>{statistics}</Button> } */}
+      {/* {isUserAffiliate && <Button>{link_generator}</Button>} */}
+      <Button>{back}</Button>
     </ButtonGroup>
   );
 };
