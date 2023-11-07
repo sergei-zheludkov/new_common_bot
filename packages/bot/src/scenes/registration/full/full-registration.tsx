@@ -7,14 +7,14 @@ import {
   DialogStep,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { BotLanguageEnum, date } from '@common_bot/shared';
-import { TIMEZONES } from '../../../constants';
+import { BotLanguageEnum, constants, date } from '@common_bot/shared';
 import { useFullRegistration } from './use-full-registration';
 import {
   GENDER_KEY, LANG_KEY, TIMEZONE_KEY, GENDERS,
 } from './constants';
 
-const { getTimezone } = date;
+const { TIMEZONES } = constants;
+const { getTimeZoneFromNumber } = date;
 const { MALE, FEMALE } = GENDERS;
 
 interface Props {
@@ -70,7 +70,7 @@ const FullRegistration = ({ refId, getUser }: Props) => {
     const timezoneContent = (
       <ButtonGroup isNewMessageEveryRender title={t('questions.timezone.message')} maxColumns={4}>
         {TIMEZONES.map((timezone) => {
-          const displayTimezone = getTimezone(timezone);
+          const displayTimezone = getTimeZoneFromNumber(timezone);
 
           return <Button id={String(timezone)} key={timezone}>{displayTimezone}</Button>;
         })}

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { hook } from '@common_bot/shared';
+import { constants, hook } from '@common_bot/shared';
 import { useUser } from '../../../contexts';
-import { TIMEZONES } from '../../../constants';
 import { useSettingsPatchUser } from '../use-settings-patch-user';
 
+const { TIMEZONES } = constants;
 const { useToggleState } = hook;
 
 const useSettingsTimezone = () => {

@@ -15,7 +15,7 @@ const getTimezoneButtonLines = (acc: Buttons, button: JSX.Element) => {
   const slicedAcc = acc.slice(0, lastIndex);
   const lastItem = getLastElement(acc);
 
-  return [...slicedAcc, [...lastItem, button]];
+  return lastItem ? [...slicedAcc, [...lastItem, button]] : acc;
 };
 
 export { getTimezoneButtonLines };
