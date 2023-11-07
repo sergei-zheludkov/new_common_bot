@@ -1,7 +1,8 @@
-const getTimeAsNumber = (): number => {
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
+type GetTimeAsNumber = (date?: Date) => number;
+
+const getTimeAsNumber: GetTimeAsNumber = (date = new Date()) => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
   return hours * 60 + minutes;
 };
 
