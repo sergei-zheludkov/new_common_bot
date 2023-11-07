@@ -27,3 +27,13 @@
 
 #### Delete all
 `pm2 delete ecosystem.config.js`
+
+---
+## Development flow
+
+1. Add necessary helpers, enums, etc. into **shared** package.
+2. Implementation of the required logic (like models, services, etc.) into **server** package.
+3. Start server with `yarn start_server:dev`. It allows to get a fresh `openapi.json` file.
+4. Automatic generation **api** package by `yarn generate:api`.
+5. Implementation of necessary logic into **bot** / **front** packages.
+6. Add necessary translations into **i18n** package.
