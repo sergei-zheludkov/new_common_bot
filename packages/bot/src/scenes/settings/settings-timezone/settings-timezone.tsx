@@ -6,7 +6,7 @@ import { useRouter } from '../../../contexts';
 import { useSettingsTimezone } from './use-settings-timezone';
 import { getTimezoneButtonLines } from './helpers';
 
-const { getTimezone } = date;
+const { getTimeZoneFromNumber } = date;
 const DEFAULT_BUTTONS_ARRAY = [[]];
 
 const SettingsTimezone = () => {
@@ -23,7 +23,9 @@ const SettingsTimezone = () => {
 
   const timezoneButtons = availableTimezones
     .map((timezone) => (
-      <Button key={timezone} onClick={handleSave(timezone)}>{getTimezone(timezone)}</Button>
+      <Button key={timezone} onClick={handleSave(timezone)}>
+        {getTimeZoneFromNumber(timezone)}
+      </Button>
     ))
     .reduce(getTimezoneButtonLines, DEFAULT_BUTTONS_ARRAY);
 
@@ -46,7 +48,7 @@ const SettingsTimezone = () => {
   )];
 
   const activeTimezone = currentTimezone
-    ? `${t('timezone.selected')}${getTimezone(currentTimezone)}`
+    ? `${t('timezone.selected')}${getTimeZoneFromNumber(currentTimezone)}`
     : t('timezone.not_selected');
 
   const title = isChanging

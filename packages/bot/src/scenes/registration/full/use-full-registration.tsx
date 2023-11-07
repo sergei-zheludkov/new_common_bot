@@ -1,12 +1,17 @@
 import { useBotContext } from '@urban-bot/core';
+// TODO настроить eslint на проставку type вниз импортов
 import type { DialogAnswers, DialogValidation } from '@urban-bot/core';
-import { useApi, useQuery, UserCreateDto } from '@common_bot/api';
+import { constants } from '@common_bot/shared';
+import { useApi, useQuery } from '@common_bot/api';
+import type { UserCreateDto } from '@common_bot/api';
 import { useTranslation } from '@common_bot/i18n';
 import { useRouter } from '../../../contexts';
-import { LANGUAGES, TIMEZONES } from '../../../constants';
+import { LANGUAGES } from '../../../constants';
 import {
   LANG_KEY, GENDERS, GENDER_KEY, TIMEZONE_KEY,
 } from './constants';
+
+const { TIMEZONES } = constants;
 
 type Props = {
   refId: string | null;
