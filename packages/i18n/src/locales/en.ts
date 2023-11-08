@@ -6,7 +6,7 @@ const en = {
     notification: 'Server notification',
     main_menu: 'Main menu message',
     settings_menu: 'Settings menu message',
-    update_message: "I'm update!" + "\n\nWhat's new?" + '\n-Paragraph 1"' + '\n-Paragraph 2' + '\n-Paragraph 3',
+    update_message: "I'm update!\n\nWhat's new?\n-Paragraph 1\n-Paragraph 2\n-Paragraph 3",
     default_notification_message: 'Default notification message',
     max: 'Maximum: ',
   },
@@ -91,7 +91,7 @@ const en = {
     questions: {
       language: {
         message: 'Choose language / Выберите язык',
-        error_description: 'Unsupported language. Select available on keyboard'
+        error_description: 'Unsupported language. Select available on keyboard',
       },
       gender: {
         message: 'Choose your gender',
@@ -184,7 +184,7 @@ const en = {
   //   },
   // },
   rules: {
-    message: 'Rules' + '\n\n-Paragraph 1"' + '\n-Paragraph 2' + '\n-Paragraph 3',
+    message: 'Rules\n\n-Paragraph 1"\n-Paragraph 2\n-Paragraph 3',
   },
   // statistics: {
   //   more_details: 'More details can be found on the bottom buttons',
@@ -211,7 +211,7 @@ const en = {
       about: 'Choose the day',
 
       day_reminder_message: 'Setting on ',
-      selected: 'Selected: '
+      selected: 'Selected: ',
     },
     language: {
       used: 'Used: ',

@@ -17,9 +17,9 @@ class StatisticsEntity {
   @Column({ type: 'simple-json' })
   payments: {
     [key: string]: {
-      total: number,
-      amount: number
-    }
+      total: number;
+      amount: number;
+    };
   };
 
   @CreateDateColumn()

@@ -1,6 +1,7 @@
 {
   "name": "@common_bot/api",
   "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +9,10 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
-    "generate:api": "openapi --input ../server/openapi.json --output ./src/generated --client axios"
+    "generate:api": "openapi --input ../server/openapi.json --output ./src/generated --client axios",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
     "openapi-typescript-codegen": "^0.23.0",
