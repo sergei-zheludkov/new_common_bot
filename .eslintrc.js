@@ -42,15 +42,12 @@ module.exports = {
     'import/prefer-default-export': 0,
     'import/extensions': 0,
   },
-  // overrides: [
-  //   {
-  //     files: ['packages/i18n/src/locales/*.ts'],
-  //     rules: {
-  //       'sort-keys-fix/sort-keys-fix': 'error',
-  //       'react-i18n/rule-name': 'error',
-  //     },
-  //   },
-  // ],
+  overrides: [
+    {
+      files: ['packages/i18n/src/**/*.ts'],
+      rules: { 'max-len': 0 },
+    },
+  ],
   settings: {
     'import/resolver': {
       node: {
@@ -66,7 +63,11 @@ module.exports = {
     'build',
     'dist',
     'webpack.config.js',
-    'i18n',
     'generated.tsx',
+
+    'packages/*/.env',
+    'packages/*/dist',
+    'packages/*/node_modules',
+    'packages/*/storage',
   ],
 };

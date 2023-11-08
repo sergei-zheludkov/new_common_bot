@@ -11,7 +11,10 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main"
+    "start:prod": "node dist/main",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
     "@common_bot/shared": "^1.0.0",
