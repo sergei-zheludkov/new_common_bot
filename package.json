@@ -35,14 +35,14 @@
     "start_bot:dev": "cd packages/bot && yarn dev",
     "build:packages": "lerna run build --scope=@common_bot/{shared,api,i18n}",
     "build:services": "lerna run build --parallel --scope=@common_bot/{server,bot}",
-    "typecheck": "lerna run typecheck --parallel --scope=@common_bot/{shared,api,i18n,server,bot}",
-    "lint": "lerna run lint --parallel --scope=@common_bot/{shared,api,i18n,server,bot}",
-    "test": "jest"
+    "lint:project": "lerna run lint --parallel --scope=@common_bot/{shared,api,i18n,server,bot}",
+    "typecheck:project": "lerna run typecheck --parallel --scope=@common_bot/{shared,api,i18n,server,bot}",
+    "test:project": "jest"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn typecheck && yarn lint",
-      "pre-push": "yarn test"
+      "pre-commit": "yarn typecheck:project && yarn lint:project",
+      "pre-push": "yarn test:project"
     }
   }
 }

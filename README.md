@@ -37,3 +37,12 @@
 4. Automatic generation **api** package by `yarn generate:api`.
 5. Implementation of necessary logic into **bot** / **front** packages.
 6. Add necessary translations into **i18n** package.
+
+---
+## Husky set up
+
+1. `husky install`
+2. `husky add .husky/pre-commit "yarn typecheck:project && yarn lint:project"`
+3. `chmod a+x .husky/pre-commit`
+4. `husky add .husky/pre-push "yarn test:project"`
+5. `chmod a+x .husky/pre-push`
