@@ -3,8 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 // import { join } from 'path';
 import { UserEntity } from '../../modules/user/user.entity';
-import { PaymentEntity } from '../../modules/payment/payment.entity';
-import { StatisticsEntity } from '../../modules/statistics/statistics.entity';
 
 @Module({
   imports: [
@@ -17,11 +15,7 @@ import { StatisticsEntity } from '../../modules/statistics/statistics.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('PG_DATABASE'),
-        entities: [
-          UserEntity,
-          PaymentEntity,
-          StatisticsEntity,
-        ],
+        entities: [UserEntity],
         autoLoadEntities: true,
         synchronize: true,
         logging: true,

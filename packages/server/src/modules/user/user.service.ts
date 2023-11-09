@@ -9,8 +9,7 @@ import { UserCreateDto, UserUpdateDto } from './dto';
 const findOne = (users_repository: Repository<User>, id: string) => users_repository
   .findOne({
     where: { id },
-    // TODO найти решение
-    // relations: { who_invited: {} },
+    relations: ['who_invited'],
   });
 
 @Injectable()
