@@ -29,7 +29,11 @@ class UserController {
   @ApiNotFoundResponse({
     description: 'User not found.',
   })
-  @ApiOperation({ operationId: 'getOneUser' })
+  @ApiOperation({
+    tags: ['User'],
+    operationId: 'getOneUser',
+    summary: 'Returning information about user',
+  })
   @Get(':id')
   async getOneUser(@Param('id') id: string) {
     const user = await this.userService.getOneUser(id);
@@ -45,7 +49,11 @@ class UserController {
     description: 'User has been successfully created.',
     type: UserEntity,
   })
-  @ApiOperation({ operationId: 'postUser' })
+  @ApiOperation({
+    tags: ['User'],
+    operationId: 'postUser',
+    summary: 'Creating new user in db',
+  })
   @Post()
   async postUser(
     @Body('who_invited_id') who_invited_id: string,
@@ -65,7 +73,11 @@ class UserController {
   @ApiNotFoundResponse({
     description: 'User not found.',
   })
-  @ApiOperation({ operationId: 'patchUser' })
+  @ApiOperation({
+    tags: ['User'],
+    operationId: 'patchUser',
+    summary: 'Updating user data',
+  })
   @Patch()
   async patchUser(@Body() data: UserUpdateDto) {
     const user = await this.userService.updateUser(data);
