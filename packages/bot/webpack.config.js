@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
@@ -9,7 +10,13 @@ module.exports = (env, argv) => ({
         filename: 'index.js',
     },
     devtool: argv.mode === 'development' ? 'eval-cheap-module-source-map' : undefined,
-    plugins: [],
+    plugins: [
+        // 'cause bot doesn't start in the browser
+        new webpack.ContextReplacementPlugin(/\/express\//, (data) => {
+            delete data.dependencies[0].critical;
+            return data;
+        }),
+    ],
     target: 'node',
     externals: [nodeExternals()],
     module: {
