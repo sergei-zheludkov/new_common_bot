@@ -10,9 +10,9 @@ const useSettingsTimezone = () => {
   const { user, getUser } = useUser();
   const { patchUser, isPatchSuccess: isSaved } = useSettingsPatchUser();
   const {
-    toggle: isChanging,
-    toggleOn: handleChangingOn,
-    toggleOff: handleChangingOff,
+    toggle: isChangingMode,
+    turnOn: turnOnChangingMode,
+    turnOff: turnOffChangingMode,
   } = useToggleState();
 
   const { timezone: currentTimezone } = user;
@@ -21,7 +21,7 @@ const useSettingsTimezone = () => {
   const handleSave = (timezone: number) => async () => {
     await patchUser({ id: user.id, timezone });
 
-    handleChangingOff();
+    turnOffChangingMode();
   };
 
   useEffect(() => {
@@ -35,12 +35,12 @@ const useSettingsTimezone = () => {
     currentTimezone,
     availableTimezones,
 
-    isChanging,
     isSaved,
+    isChangingMode,
 
     handleSave,
-    handleChangingOn,
-    handleChangingOff,
+    turnOnChangingMode,
+    turnOffChangingMode,
   };
 };
 

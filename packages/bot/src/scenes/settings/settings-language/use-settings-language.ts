@@ -11,9 +11,9 @@ const useSettingsLanguage = () => {
   const { user, getUser } = useUser();
   const { patchUser, isPatchSuccess: isSaved } = useSettingsPatchUser();
   const {
-    toggle: isChanging,
-    toggleOn: handleChangingOn,
-    toggleOff: handleChangingOff,
+    toggle: isChangingMode,
+    turnOn: turnOnChangingMode,
+    turnOff: turnOffChangingMode,
   } = useToggleState();
 
   // TODO зарефакторить as unknown as BotLanguageEnum через Хелперы
@@ -27,7 +27,7 @@ const useSettingsLanguage = () => {
       lang: lang as unknown as UserCreateDto['lang'],
     });
 
-    handleChangingOff();
+    turnOffChangingMode();
   };
 
   useEffect(() => {
@@ -41,12 +41,12 @@ const useSettingsLanguage = () => {
     currentLang,
     availableLanguages,
 
-    isChanging,
     isSaved,
+    isChangingMode,
 
     handleSave,
-    handleChangingOn,
-    handleChangingOff,
+    turnOnChangingMode,
+    turnOffChangingMode,
   };
 };
 

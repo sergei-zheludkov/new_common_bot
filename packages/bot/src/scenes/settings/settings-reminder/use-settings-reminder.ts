@@ -16,8 +16,8 @@ const useSettingsReminder = () => {
   const [day, setDay] = useState<DayKindEnum | null>(null);
   const {
     toggle: isRemoveMode,
-    toggleSwitch: handleSwitchRemoveMode,
-    toggleOff: handleOffRemoveMode,
+    turnOff: turnOffRemoveMode,
+    switchOn: handleSwitchRemoveMode,
   } = useToggleState();
 
   const handleChangeDay = (dayOfWeek: DayKindEnum) => setDay(dayOfWeek);
@@ -42,7 +42,7 @@ const useSettingsReminder = () => {
     };
 
     setReminders(callback);
-    setTimeout(handleOffRemoveMode, 500);
+    setTimeout(turnOffRemoveMode, 500);
   };
 
   const handleChangeReminder = (dayOfWeek: DayKindEnum, reminderId: string, type: 'increase' | 'decrease') => {
