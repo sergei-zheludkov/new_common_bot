@@ -15,10 +15,10 @@ const SettingsTimezone = () => {
   const {
     currentTimezone,
     availableTimezones,
-    isChanging,
+    isChangingMode,
     handleSave,
-    handleChangingOn,
-    handleChangingOff,
+    turnOnChangingMode,
+    turnOffChangingMode,
   } = useSettingsTimezone();
 
   const timezoneButtons = availableTimezones
@@ -29,14 +29,14 @@ const SettingsTimezone = () => {
     ))
     .reduce(getTimezoneButtonLines, DEFAULT_BUTTONS_ARRAY);
 
-  const changeButton = [(
-    <Button key="change-timezone" onClick={handleChangingOn}>
+  const changingModeButton = [(
+    <Button key="change-timezone" onClick={turnOnChangingMode}>
       {t('buttons:change')}
     </Button>
   )];
 
   const backToTimezoneSettingsButton = [(
-    <Button key="back-to-timezone-settings" onClick={handleChangingOff}>
+    <Button key="back-to-timezone-settings" onClick={turnOffChangingMode}>
       {t('buttons:back')}
     </Button>
   )];
@@ -51,13 +51,13 @@ const SettingsTimezone = () => {
     ? `${t('timezone.selected')}${getTimeZoneFromNumber(currentTimezone)}`
     : t('timezone.not_selected');
 
-  const title = isChanging
+  const title = isChangingMode
     ? t('timezone.choose')
     : activeTimezone;
 
-  const buttons = isChanging
+  const buttons = isChangingMode
     ? [...timezoneButtons, backToTimezoneSettingsButton]
-    : [changeButton, backToSettingsButton];
+    : [changingModeButton, backToSettingsButton];
 
   return (
     <ButtonGroup title={title} isNewMessageEveryRender={false}>

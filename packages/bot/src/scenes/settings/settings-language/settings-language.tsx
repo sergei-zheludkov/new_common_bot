@@ -10,10 +10,10 @@ const SettingsLanguage = () => {
   const {
     currentLang,
     availableLanguages,
-    isChanging,
+    isChangingMode,
     handleSave,
-    handleChangingOn,
-    handleChangingOff,
+    turnOnChangingMode,
+    turnOffChangingMode,
   } = useSettingsLanguage();
 
   const languageButtons = availableLanguages.map((language) => (
@@ -22,14 +22,14 @@ const SettingsLanguage = () => {
     </Button>
   ));
 
-  const changeButton = (
-    <Button key="change-language" onClick={handleChangingOn}>
+  const changingModeButton = (
+    <Button key="change-language" onClick={turnOnChangingMode}>
       {t('buttons:change')}
     </Button>
   );
 
   const backToLanguageSettingsButton = (
-    <Button key="back-to-language-settings" onClick={handleChangingOff}>
+    <Button key="back-to-language-settings" onClick={turnOffChangingMode}>
       {t('buttons:back')}
     </Button>
   );
@@ -41,13 +41,13 @@ const SettingsLanguage = () => {
   );
 
   const activeLang = t(`buttons:${currentLang}`);
-  const title = isChanging
+  const title = isChangingMode
     ? t('language.choose')
     : `${t('language.used')}${activeLang}`;
 
-  const buttons = isChanging
+  const buttons = isChangingMode
     ? [...languageButtons, backToLanguageSettingsButton]
-    : [changeButton, backToSettingsButton];
+    : [changingModeButton, backToSettingsButton];
 
   return (
     <ButtonGroup
