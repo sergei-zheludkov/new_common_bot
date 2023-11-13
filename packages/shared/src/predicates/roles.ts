@@ -1,7 +1,10 @@
-import { RoleEnum } from '../enums';
+import { RoleEnum as Role } from '../enums';
 
-const isUser = (role: RoleEnum) => role === RoleEnum.USER;
-const isAdmin = (role: RoleEnum) => role === RoleEnum.ADMIN;
-const isAffiliate = (role: RoleEnum) => role === RoleEnum.AFFILIATE;
+const isUser = (role: Role) => role === Role.USER;
+const isAdmin = (role: Role) => role === Role.ADMIN;
+const isSupport = (role: Role) => role === Role.SUPPORT;
+const isAffiliate = (role: Role) => role === Role.AFFILIATE;
 
-export { isUser, isAdmin, isAffiliate };
+export {
+  isUser, isAdmin, isSupport, isAffiliate,
+};

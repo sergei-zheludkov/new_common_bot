@@ -1,6 +1,6 @@
-import { BotLanguageEnum } from '../enums';
+import { BotLanguageEnum as BotLanguage } from '../enums';
 
-const isRussian = (lang: BotLanguageEnum) => lang === BotLanguageEnum.RUSSIAN;
-const isEnglish = (lang: BotLanguageEnum) => lang === BotLanguageEnum.ENGLISH;
+const isRussian = (lang: BotLanguage) => lang === BotLanguage.RUSSIAN;
+const isEnglish = (lang: BotLanguage) => lang === BotLanguage.ENGLISH;
 
 export { isRussian, isEnglish };
