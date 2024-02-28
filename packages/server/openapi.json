@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/api/v1/user/{id}": {
+    "/api/v1/users/{id}": {
       "get": {
         "operationId": "getOneUser",
         "summary": "Returning information about user",
@@ -35,7 +35,7 @@
         }
       }
     },
-    "/api/v1/user": {
+    "/api/v1/users": {
       "post": {
         "operationId": "postUser",
         "summary": "Creating new user in db",
@@ -99,6 +99,265 @@
           }
         }
       }
+    },
+    "/api/v1/feedback_notes/daily_limits/{id}": {
+      "get": {
+        "operationId": "getFeedbackDailyLimits",
+        "summary": "Returning information about feedback daily limits by user",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feedback daily limits by user has been calculated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/feedback_notes/count": {
+      "get": {
+        "operationId": "getFeedbackCount",
+        "summary": "Returning information about feedback count by feedback status",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [
+          {
+            "name": "start",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feedback count by status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackCountResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/feedback_notes/{id}": {
+      "get": {
+        "operationId": "getOneFeedbackNote",
+        "summary": "Returning information about feedback note",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feedback note has been found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Feedback note not found."
+          }
+        }
+      }
+    },
+    "/api/v1/feedback_notes": {
+      "get": {
+        "operationId": "getFeedbackNotes",
+        "summary": "Returning information about feedback notes",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "support_id",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feedback notes has been found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeedbackEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "postFeedbackNote",
+        "summary": "Creating new feedback note in db",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Feedback note has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackEntity"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patchFeedbackNote",
+        "summary": "Updating feedback note data",
+        "tags": [
+          "Feedback"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback note has been updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Feedback note not found."
+          }
+        }
+      }
     }
   },
   "info": {
@@ -120,26 +379,22 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "258000010"
+            "example": "266006070"
           },
           "firstname": {
             "type": "string",
-            "example": "Sergei",
+            "example": "Ivan",
             "nullable": true
           },
           "lastname": {
             "type": "string",
-            "example": "Zheludkov",
+            "example": "Ivanov",
             "nullable": true
           },
           "username": {
             "type": "string",
-            "example": "sergozheludkov",
+            "example": "sergei_zheludkov",
             "nullable": true
-          },
-          "balance": {
-            "type": "number",
-            "example": 2000
           },
           "who_invited": {
             "nullable": true,
@@ -153,10 +408,6 @@
             "type": "number",
             "example": 5
           },
-          "referral_money": {
-            "type": "number",
-            "example": 300
-          },
           "lang": {
             "type": "string",
             "enum": [
@@ -167,9 +418,10 @@
           "role": {
             "type": "string",
             "enum": [
-              "user",
               "admin",
-              "affiliate"
+              "support",
+              "affiliate",
+              "user"
             ]
           },
           "gender": {
@@ -205,10 +457,8 @@
           "firstname",
           "lastname",
           "username",
-          "balance",
           "who_invited",
           "referral_counter",
-          "referral_money",
           "lang",
           "role",
           "gender",
@@ -223,24 +473,24 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "258000010"
+            "example": "266006070"
           },
           "firstname": {
             "type": "string",
-            "example": "Sergei"
+            "example": "Ivan"
           },
           "lastname": {
             "type": "string",
-            "example": "Zheludkov"
+            "example": "Ivanov"
           },
           "username": {
             "type": "string",
-            "example": "sergozheludkov"
+            "example": "sergei_zheludkov"
           },
           "who_invited_id": {
             "type": "string",
             "nullable": true,
-            "example": "258000010"
+            "example": "1269959930"
           },
           "lang": {
             "type": "string",
@@ -272,31 +522,23 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "258000010"
+            "example": "266006070"
           },
           "firstname": {
             "type": "string",
-            "example": "Sergei"
+            "example": "Ivan"
           },
           "lastname": {
             "type": "string",
-            "example": "Zheludkov"
+            "example": "Ivanov"
           },
           "username": {
             "type": "string",
-            "example": "sergozheludkov"
-          },
-          "balance": {
-            "type": "number",
-            "example": 2000
+            "example": "sergei_zheludkov"
           },
           "referral_counter": {
             "type": "number",
             "example": 5
-          },
-          "referral_money": {
-            "type": "number",
-            "example": 300
           },
           "lang": {
             "type": "string",
@@ -316,6 +558,239 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "FeedbackCountResponseDto": {
+        "type": "object",
+        "properties": {
+          "waiting": {
+            "type": "number",
+            "example": 10
+          },
+          "processing": {
+            "type": "number",
+            "example": 4
+          },
+          "done": {
+            "type": "number",
+            "example": 3
+          }
+        }
+      },
+      "FeedbackFilesEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "AgACAgIAAxkBAAIVb2VOFv4Imec7PVIve4JdiQABQCRSegACDdgxG5ERcEr65sylfrcRDgEAAwIAA3MAAzME"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "file",
+              "audio",
+              "voice",
+              "image",
+              "video",
+              "video_note"
+            ]
+          },
+          "feedback_id": {
+            "type": "string",
+            "example": "13600338317425362"
+          },
+          "created": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          },
+          "updated": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "feedback_id",
+          "created",
+          "updated"
+        ]
+      },
+      "FeedbackEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "13600338317425362"
+          },
+          "text": {
+            "type": "string",
+            "example": "I am writing to request your assistance concerning the matter of ... I hope that my request will not inconvenience you too much.",
+            "nullable": true
+          },
+          "feedback_files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeedbackFilesEntity"
+            }
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
+          },
+          "support": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            ]
+          },
+          "comment": {
+            "type": "string",
+            "example": "Created task for development",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "file",
+              "voice",
+              "audio",
+              "image",
+              "video",
+              "video_note",
+              "media_group",
+              "sticker"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "waiting",
+              "processing",
+              "done"
+            ]
+          },
+          "created": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          },
+          "updated": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2022-10-21T19:48:59.726Z"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "feedback_files",
+          "user",
+          "support",
+          "comment",
+          "type",
+          "status",
+          "created",
+          "updated"
+        ]
+      },
+      "FeedbackFilesCreateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "AgACAgIAAxkBAAIVb2VOFv4Imec7PVIve4JdiQABQCRSegACDdgxG5ERcEr65sylfrcRDgEAAwIAA3MAAzME"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "file",
+              "audio",
+              "voice",
+              "image",
+              "video",
+              "video_note"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type"
+        ]
+      },
+      "FeedbackCreateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "13600338317425362"
+          },
+          "text": {
+            "type": "string",
+            "example": "I am writing to request your assistance concerning the matter of ... I hope that my request will not inconvenience you too much."
+          },
+          "feedback_files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeedbackFilesCreateDto"
+            }
+          },
+          "user_id": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "file",
+              "voice",
+              "audio",
+              "image",
+              "video",
+              "video_note",
+              "media_group",
+              "sticker"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "type"
+        ]
+      },
+      "FeedbackUpdateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "13600338317425362"
+          },
+          "support_id": {
+            "type": "string",
+            "example": "258000010"
+          },
+          "text": {
+            "type": "string",
+            "example": "Created task for development"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "waiting",
+              "processing",
+              "done"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "status"
         ]
       }
     }
