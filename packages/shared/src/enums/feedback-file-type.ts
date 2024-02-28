@@ -1,8 +1,10 @@
 enum FeedbackFilesTypeEnum {
+  FILE = 'file',
+  AUDIO = 'audio',
+  VOICE = 'voice',
   IMAGE = 'image',
   VIDEO = 'video',
-  AUDIO = 'audio',
-  FILE = 'file',
+  VIDEO_NOTE = 'video_note'
 }
 
 export { FeedbackFilesTypeEnum };

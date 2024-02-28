@@ -8,6 +8,7 @@ const isImageMessage = (type: MessageType) => type === MessageType.IMAGE;
 const isVideoMessage = (type: MessageType) => type === MessageType.VIDEO;
 const isAudioMessage = (type: MessageType) => type === MessageType.AUDIO;
 const isFileMessage = (type: MessageType) => type === MessageType.FILE;
+const isMediaGroupMessage = (type: MessageType) => type === MessageType.MEDIA_GROUP;
 
 export {
   isTextMessage,
@@ -18,4 +19,5 @@ export {
   isVideoMessage,
   isAudioMessage,
   isFileMessage,
+  isMediaGroupMessage,
 };

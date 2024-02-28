@@ -1,12 +1,13 @@
 enum MessageTypeEnum {
   TEXT = 'text',
-  STICKER = 'sticker',
+  FILE = 'file',
   VOICE = 'voice',
-  VIDEO_NOTE = 'video_note',
+  AUDIO = 'audio',
   IMAGE = 'image',
   VIDEO = 'video',
-  AUDIO = 'audio',
-  FILE = 'file',
+  VIDEO_NOTE = 'video_note',
+  MEDIA_GROUP = 'media_group',
+  STICKER = 'sticker',
 }
 
 export { MessageTypeEnum };
