@@ -3,16 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Cron } from '@nestjs/schedule';
-import { date } from '@common_bot/shared';
+import { DATE } from '@common_bot/shared';
 import { Repository } from 'typeorm';
 import { logger } from '../../libs/logger/logger.instance';
 import { toPromise } from '../../helpers';
 import { UserEntity as User } from './user.entity';
 
-const { getTimeAsNumber } = date;
+const { getTimeAsNumber } = DATE;
 
 const EVERY_30_MINUTES = '0 */30 8-21 * * *';
-const logger_message = '[ UserCronService | startReminder | post ]';
+const logger_message = 'UserCronService(startReminder)[POST]:';
 const error_message = 'Error with http req in User Cron';
 
 @Injectable()
@@ -39,7 +39,7 @@ class UserCronService {
         toPromise({ request, logger_message, error_message });
       });
     } catch (error) {
-      logger.error('[ UserCronService | startReminder ]', error);
+      logger.error('UserCronService(startReminder):', error);
       throw new Error('Error with User Cron');
     }
   }

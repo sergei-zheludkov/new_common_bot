@@ -10,7 +10,7 @@ import { BotLanguageEnum, GenderEnum } from '@common_bot/shared';
 class UserCreateDto {
   @ApiProperty({
     required: true,
-    example: '258000010',
+    example: '266006070',
   })
   @IsNotEmpty()
   @IsString()
@@ -18,7 +18,7 @@ class UserCreateDto {
 
   @ApiProperty({
     required: false,
-    example: 'Sergei',
+    example: 'Ivan',
   })
   @IsOptional()
   @IsString()
@@ -26,7 +26,7 @@ class UserCreateDto {
 
   @ApiProperty({
     required: false,
-    example: 'Zheludkov',
+    example: 'Ivanov',
   })
   @IsOptional()
   @IsString()
@@ -34,7 +34,7 @@ class UserCreateDto {
 
   @ApiProperty({
     required: false,
-    example: 'sergozheludkov',
+    example: 'sergei_zheludkov',
   })
   @IsOptional()
   @IsString()
@@ -43,7 +43,7 @@ class UserCreateDto {
   @ApiProperty({
     required: false,
     nullable: true,
-    example: '258000010',
+    example: '1269959930',
   })
   @IsOptional()
   @IsString()

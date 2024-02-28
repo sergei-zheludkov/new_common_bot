@@ -13,13 +13,13 @@ import { GenderEnum, RoleEnum, BotLanguageEnum } from '@common_bot/shared';
 @Entity('users')
 class UserEntity {
   @ApiProperty({
-    example: '258000010',
+    example: '266006070',
   })
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'varchar' })
   id: string;
 
   @ApiProperty({
-    example: 'Sergei',
+    example: 'Ivan',
     nullable: true,
   })
   @Column({
@@ -29,7 +29,7 @@ class UserEntity {
   firstname?: string;
 
   @ApiProperty({
-    example: 'Zheludkov',
+    example: 'Ivanov',
     nullable: true,
   })
   @Column({
@@ -39,7 +39,7 @@ class UserEntity {
   lastname?: string;
 
   @ApiProperty({
-    example: 'sergozheludkov',
+    example: 'sergei_zheludkov',
     nullable: true,
   })
   @Column({
@@ -48,15 +48,6 @@ class UserEntity {
     nullable: true,
   })
   username?: string;
-
-  @ApiProperty({
-    example: 2000,
-  })
-  @Column({
-    type: 'int',
-    default: 0,
-  })
-  balance: number;
 
   @ApiProperty({
     // eslint-disable-next-line no-use-before-define
@@ -79,15 +70,6 @@ class UserEntity {
     default: 0,
   })
   referral_counter: number;
-
-  @ApiProperty({
-    example: 300,
-  })
-  @Column({
-    type: 'int',
-    default: 0,
-  })
-  referral_money: number;
 
   @ApiProperty({
     enum: BotLanguageEnum,

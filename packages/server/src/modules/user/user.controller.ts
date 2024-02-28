@@ -18,7 +18,7 @@ import { UserService } from './user.service';
 import { UserEntity } from './user.entity';
 import { UserCreateDto, UserUpdateDto } from './dto';
 
-@Controller(`${API_VERSION_ROUTES.v1}/user`)
+@Controller(`${API_VERSION_ROUTES.v1}/users`)
 class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -59,11 +59,9 @@ class UserController {
     @Body('who_invited_id') who_invited_id: string,
     @Body() body: UserCreateDto,
   ) {
-    const user = who_invited_id
-      ? await this.userService.createUserWithReferral(body)
-      : await this.userService.createUser(body);
-
-    return user;
+    return who_invited_id
+      ? this.userService.createUserWithReferral(body)
+      : this.userService.createUser(body);
   }
 
   @ApiOkResponse({
