@@ -5,3 +5,4 @@ export * as FEEDBACK_STATUS from './feedback-statuses';
 export * as FEEDBACK_FILES from './feedback-files';
 
 export { isNaN } from './is-nan';
+export { isNull } from './is-null';
