@@ -1,6 +1,6 @@
-import { date } from '../../src';
+import { DATE } from '../../src';
 
-const { getTimeFromNumber } = date;
+const { getTimeFromNumber } = DATE;
 
 describe('get day time from db data number', () => {
   test('correct time cases', () => {

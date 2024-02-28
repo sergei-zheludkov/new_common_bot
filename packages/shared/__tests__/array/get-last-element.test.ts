@@ -1,7 +1,7 @@
-import { array } from '../../src';
+import { ARRAY } from '../../src';
 import { ARRAY_MOCKS } from '../mocks';
 
-const { getLastElement } = array;
+const { getLastElement } = ARRAY;
 
 const OBJECT_EQUAL = { id: 6, name: 'Denis' };
 

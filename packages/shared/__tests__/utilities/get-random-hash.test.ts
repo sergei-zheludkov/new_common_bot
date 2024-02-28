@@ -1,6 +1,6 @@
-import { utilities } from '../../src';
+import { UTILITIES } from '../../src';
 
-const { getRandomHash } = utilities;
+const { getRandomHash } = UTILITIES;
 
 describe('get random hash', () => {
   test('define length', () => {

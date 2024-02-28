@@ -1,6 +1,6 @@
-import { date } from '../../src';
+import { DATE } from '../../src';
 
-const { getTimeZoneFromNumber } = date;
+const { getTimeZoneFromNumber } = DATE;
 
 describe('get day time from db data number', () => {
   test('correct timezone cases', () => {

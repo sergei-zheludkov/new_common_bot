@@ -1,7 +1,7 @@
-import { array } from '../../src';
+import { ARRAY } from '../../src';
 import { ARRAY_MOCKS } from '../mocks';
 
-const { getLastIndex } = array;
+const { getLastIndex } = ARRAY;
 
 test('get last index of array', () => {
   expect(getLastIndex(ARRAY_MOCKS.EMPTY)).toBe(-1);

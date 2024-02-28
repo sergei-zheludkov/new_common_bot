@@ -1,7 +1,7 @@
-import { date } from '../../src';
+import { DATE } from '../../src';
 import { DATE_MOCKS } from '../mocks';
 
-const { getTimeAsNumber } = date;
+const { getTimeAsNumber } = DATE;
 
 test('get day time as number for saving into db', () => {
   expect(getTimeAsNumber(DATE_MOCKS.AUGUST_1990_17)).toBe(1335);

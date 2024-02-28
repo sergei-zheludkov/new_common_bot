@@ -1,7 +1,9 @@
 export * from './enums';
-export * as constants from './constants';
-export * as array from './array';
-export * as date from './date';
-export * as hook from './hooks';
-export * as predicates from './predicates';
-export * as utilities from './utilities';
+export * as CONSTANTS from './constants';
+export * as ARRAY from './array';
+export * as DATE from './date';
+export * as HOOK from './hooks';
+export * as PREDICATES from './predicates';
+export * as UTILITIES from './utilities';
+
+export * from './types';
