@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-// import { join } from 'path';
 import { UserEntity } from '../../modules/user/user.entity';
+import { FeedbackFilesEntity } from '../../modules/feedback-files/feedback-files.entity';
+import { FeedbackEntity } from '../../modules/feedback/feedback.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { UserEntity } from '../../modules/user/user.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('PG_DATABASE'),
-        entities: [UserEntity],
+        entities: [UserEntity, FeedbackFilesEntity, FeedbackEntity],
         autoLoadEntities: true,
         synchronize: true,
         logging: true,
