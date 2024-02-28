@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
+// import { HttpService } from '@nestjs/axios';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { logger } from '../../libs/logger/logger.instance';
@@ -15,7 +15,7 @@ const findOne = (users_repository: Repository<User>, id: string) => users_reposi
 @Injectable()
 class UserService {
   constructor(
-    private readonly httpService: HttpService,
+    // private readonly httpService: HttpService,
     @InjectDataSource()
     private readonly dataSource: DataSource,
   ) {}
@@ -23,8 +23,8 @@ class UserService {
   getOneUser(id: string) {
     return this.dataSource.transaction(async (manager) => {
       const users_repository = manager.getRepository(User);
-      const user = await findOne(users_repository, id);
-      return user;
+
+      return findOne(users_repository, id);
     });
   }
 
@@ -42,10 +42,12 @@ class UserService {
         }
 
         const new_user = users_repository.create(data);
+
         return users_repository.save(new_user);
       });
-    } catch (e) {
-      logger.error('[ UserService | createUser ]', e);
+    } catch (error) {
+      logger.error('UserService(createUser):', error);
+
       throw new Error();
     }
   }
@@ -78,11 +80,11 @@ class UserService {
           // this.httpService.post();
         }
 
-        const updated_user = await findOne(users_repository, id);
-        return updated_user;
+        return findOne(users_repository, id);
       });
-    } catch (e) {
-      logger.error('[ UserService | createUserWithReferral ]', e);
+    } catch (error) {
+      logger.error('UserService(createUserWithReferral):', error);
+
       throw new Error();
     }
   }
@@ -94,16 +96,18 @@ class UserService {
         const users_repository = manager.getRepository(User);
 
         const user_in_db = await findOne(users_repository, id);
+
         if (!user_in_db) {
           return user_in_db;
         }
 
         await users_repository.update({ id }, data);
-        const updated_user = await findOne(users_repository, id);
-        return updated_user;
+
+        return findOne(users_repository, id);
       });
-    } catch (e) {
-      logger.error('[ UserService | updateUser ]', e);
+    } catch (error) {
+      logger.error('UserService(updateUser):', error);
+
       throw new Error();
     }
   }

@@ -11,7 +11,7 @@ import { BotLanguageEnum } from '@common_bot/shared';
 class UserUpdateDto {
   @ApiProperty({
     required: true,
-    example: '258000010',
+    example: '266006070',
   })
   @IsNotEmpty()
   @IsString()
@@ -19,7 +19,7 @@ class UserUpdateDto {
 
   @ApiProperty({
     required: false,
-    example: 'Sergei',
+    example: 'Ivan',
   })
   @IsOptional()
   @IsString()
@@ -27,7 +27,7 @@ class UserUpdateDto {
 
   @ApiProperty({
     required: false,
-    example: 'Zheludkov',
+    example: 'Ivanov',
   })
   @IsOptional()
   @IsString()
@@ -35,19 +35,11 @@ class UserUpdateDto {
 
   @ApiProperty({
     required: false,
-    example: 'sergozheludkov',
+    example: 'sergei_zheludkov',
   })
   @IsOptional()
   @IsString()
   username?: string;
-
-  @ApiProperty({
-    required: false,
-    example: 2000,
-  })
-  @IsOptional()
-  @IsNumber()
-  balance?: number;
 
   @ApiProperty({
     required: false,
@@ -56,14 +48,6 @@ class UserUpdateDto {
   @IsOptional()
   @IsNumber()
   referral_counter?: number;
-
-  @ApiProperty({
-    required: false,
-    example: 300,
-  })
-  @IsOptional()
-  @IsNumber()
-  referral_money?: number;
 
   @ApiProperty({
     required: false,
