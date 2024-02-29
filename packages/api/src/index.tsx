@@ -4,7 +4,13 @@ export { useQuery } from './use-query';
 export * as predicates from './predicates';
 
 export type {
-  UserCreateDto,
   UserEntity,
+  UserCreateDto,
   UserUpdateDto,
+
+  FeedbackEntity,
+  FeedbackFilesEntity,
+  FeedbackCreateDto,
+  FeedbackUpdateDto,
+  FeedbackFilesCreateDto,
 } from './generated';
