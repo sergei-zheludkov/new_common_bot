@@ -9,9 +9,10 @@ import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 
-export class DefaultService {
+export class UserService {
 
     /**
+     * Returning information about user
      * @param id
      * @returns UserEntity User has been found.
      * @throws ApiError
@@ -21,7 +22,7 @@ export class DefaultService {
     ): CancelablePromise<UserEntity> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/api/v1/user/{id}',
+            url: '/api/v1/users/{id}',
             path: {
                 'id': id,
             },
@@ -32,6 +33,7 @@ export class DefaultService {
     }
 
     /**
+     * Creating new user in db
      * @param requestBody
      * @returns UserEntity User has been successfully created.
      * @throws ApiError
@@ -41,13 +43,14 @@ export class DefaultService {
     ): CancelablePromise<UserEntity> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/v1/user',
+            url: '/api/v1/users',
             body: requestBody,
             mediaType: 'application/json',
         });
     }
 
     /**
+     * Updating user data
      * @param requestBody
      * @returns UserEntity User has been updated.
      * @throws ApiError
@@ -57,7 +60,7 @@ export class DefaultService {
     ): CancelablePromise<UserEntity> {
         return __request(OpenAPI, {
             method: 'PATCH',
-            url: '/api/v1/user',
+            url: '/api/v1/users',
             body: requestBody,
             mediaType: 'application/json',
             errors: {

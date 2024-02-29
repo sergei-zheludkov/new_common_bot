@@ -7,10 +7,8 @@ export type UserEntity = {
     firstname: string | null;
     lastname: string | null;
     username: string | null;
-    balance: number;
     who_invited: UserEntity | null;
     referral_counter: number;
-    referral_money: number;
     lang: UserEntity.lang;
     role: UserEntity.role;
     gender: UserEntity.gender | null;
@@ -28,9 +26,10 @@ export namespace UserEntity {
     }
 
     export enum role {
-        USER = 'user',
         ADMIN = 'admin',
+        SUPPORT = 'support',
         AFFILIATE = 'affiliate',
+        USER = 'user',
     }
 
     export enum gender {

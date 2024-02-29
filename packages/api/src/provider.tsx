@@ -1,14 +1,19 @@
 import React, { createContext, useContext } from 'react';
-import { DefaultService } from './generated';
+import { UserService, FeedbackService } from './generated';
 
-const ApiContext = createContext(DefaultService);
+const ApiService = {
+  user: UserService,
+  feedback: FeedbackService,
+};
+
+const ApiContext = createContext(ApiService);
 
 type ApiProviderProps = {
   children: React.ReactNode;
 };
 
 const ApiProvider = ({ children }: ApiProviderProps) => (
-  <ApiContext.Provider value={DefaultService}>
+  <ApiContext.Provider value={ApiService}>
     {children}
   </ApiContext.Provider>
 );

@@ -7,9 +7,7 @@ export type UserUpdateDto = {
     firstname?: string;
     lastname?: string;
     username?: string;
-    balance?: number;
     referral_counter?: number;
-    referral_money?: number;
     lang?: UserUpdateDto.lang;
     reminder_time?: number;
     timezone?: number;
