@@ -20,9 +20,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
     tsconfigRootDir: '.',
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
   },
   env: {
     node: true,
@@ -42,21 +40,13 @@ module.exports = {
     'import/prefer-default-export': 0,
     'import/extensions': 0,
   },
-  overrides: [
-    {
-      files: ['packages/i18n/src/**/*.ts'],
-      rules: { 'max-len': 0 },
-    },
-  ],
+  overrides: [{
+    files: ['packages/i18n/src/**/*.ts'],
+    rules: { 'max-len': 0 },
+  }],
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-    react: {
-      version: 'detect',
-    },
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
+    react: { version: 'detect' },
   },
   ignorePatterns: [
     'node_modules',
