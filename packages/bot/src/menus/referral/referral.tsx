@@ -3,11 +3,11 @@ import {
   ButtonGroup,
   Button,
   Text,
-  useText,
+  useText, useBotContext,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
 // import { predicates, RoleEnum } from '@common_bot/shared';
-import { useUser, useRouter } from '../contexts';
+import { useUser, useRouter } from '../../contexts';
 
 // const { ROLES: { isAffiliate } } = predicates;
 // TODO в .env
@@ -23,12 +23,13 @@ interface State {
 
 // TODO сделать перевод по запросу после проверки и подтверждения данных
 const Referral = () => {
+  const { chat } = useBotContext();
   const {
     // switchToMenuLinkGenerator,
     // switchToMenuAffiliateStatistics,
     switchToMenuMain,
   } = useRouter();
-  const { user } = useUser();
+  // const { user } = useUser();
   const { t } = useTranslation(['buttons', 'referral', 'invite']);
   const [{ inviteIsShowed, moneyIsShowed }, setShowed] = useState<State>(nothingShown);
   // const role = user.role as unknown as RoleEnum;
@@ -64,7 +65,7 @@ const Referral = () => {
   /* --------------------------------- */
 
   if (inviteIsShowed) {
-    const inviteLink = `https://t.me/${BOT_NAME}?start=${user.id}`;
+    const inviteLink = `https://t.me/${BOT_NAME}?start=`;
     return (
       <>
         <Text>
@@ -81,7 +82,7 @@ const Referral = () => {
   }
 
   if (moneyIsShowed) {
-    return <Text>{t('output_money:message')}</Text>;
+    // return <Text>{t('output_money:message')}</Text>;
   }
 
   const message = (
@@ -90,12 +91,6 @@ const Referral = () => {
       <br />
       <br />
       {t('referral:message')}
-      <br />
-      <br />
-      {t('referral:balance')}
-      <b>{user.referral_money}</b>
-      &#32;
-      $
     </>
   );
 

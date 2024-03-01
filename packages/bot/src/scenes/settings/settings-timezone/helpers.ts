@@ -1,6 +1,6 @@
-import { array } from '@common_bot/shared';
+import { ARRAY } from '@common_bot/shared';
 
-const { getLastIndex, getLastElement } = array;
+const { getLastIndex, getLastElement } = ARRAY;
 const BUTTONS_IN_LINE = 4;
 
 type Buttons = Array<Array<JSX.Element>>;

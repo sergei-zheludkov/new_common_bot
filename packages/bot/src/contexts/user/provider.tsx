@@ -16,7 +16,7 @@ const UserProvider = ({ children }: ProviderProps) => {
   const { i18n } = useTranslation('common');
   const { switchToSceneGreeting } = useRouter();
   const { chat } = useBotContext();
-  const { getOneUser: getOneUserApi } = useApi();
+  const { getOneUser: getOneUserApi } = useApi().user;
   const {
     data: user,
     isCalled: isGetCalled,

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { DayKindEnum, hook } from '@common_bot/shared';
+import { DayKindEnum, HOOK } from '@common_bot/shared';
 import { useUser } from '../../../contexts';
 import { useSettingsPatchUser } from '../use-settings-patch-user';
 import { DEFAULT_REMINDERS_BY_DAY } from './constants';
 import { getReminder } from './helpers';
 import type { RemindersByDays } from './types';
 
-const { useToggleState } = hook;
+const { useToggleState } = HOOK;
 
 const useSettingsReminder = () => {
   const { user } = useUser();
