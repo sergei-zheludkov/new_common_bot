@@ -1,7 +1,7 @@
-import { date } from '@common_bot/shared';
+import { DATE } from '@common_bot/shared';
 import type { Reminder } from './types';
 
-const { getTimeFromNumber } = date;
+const { getTimeFromNumber } = DATE;
 
 const getReminder = (day: string, num: number): Reminder => ({
   id: `${day}_${num}`,

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { BotLanguageEnum, hook } from '@common_bot/shared';
+import { BotLanguageEnum, HOOK } from '@common_bot/shared';
 import { UserCreateDto } from '@common_bot/api';
 import { useUser } from '../../../contexts';
 import { LANGUAGES } from '../../../constants';
 import { useSettingsPatchUser } from '../use-settings-patch-user';
 
-const { useToggleState } = hook;
+const { useToggleState } = HOOK;
 
 const useSettingsLanguage = () => {
   const { user, getUser } = useUser();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonGroup, Button } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { DayKindEnum, utilities } from '@common_bot/shared';
+import { DayKindEnum, UTILITIES } from '@common_bot/shared';
 import { getTimeForReminder } from './helpers';
 import type { Reminder } from './types';
 
@@ -16,7 +16,7 @@ type Props = {
   // onSaveReminders: () => void;
 }
 
-const { empty } = utilities;
+const { empty } = UTILITIES;
 
 const RemindersChangeControl = ({
   day,

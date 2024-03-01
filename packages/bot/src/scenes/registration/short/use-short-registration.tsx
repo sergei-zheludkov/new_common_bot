@@ -13,7 +13,7 @@ const useShortRegistration = ({ refId, getUser }: Props) => {
   const { switchToSceneGreeting } = useRouter();
   const { i18n } = useTranslation('lang');
   const { chat } = useBotContext();
-  const { postUser } = useApi();
+  const { postUser } = useApi().user;
   const { fetch, isCalled, isSuccess } = useQuery('user', postUser, { isLazy: true });
 
   const createUser = async (lang: BotLanguageEnum) => {

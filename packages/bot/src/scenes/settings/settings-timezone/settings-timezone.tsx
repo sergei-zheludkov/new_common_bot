@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, ButtonGroup } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { date } from '@common_bot/shared';
+import { DATE } from '@common_bot/shared';
 import { useRouter } from '../../../contexts';
 import { useSettingsTimezone } from './use-settings-timezone';
 import { getTimezoneButtonLines } from './helpers';
 
-const { getTimeZoneFromNumber } = date;
+const { getTimeZoneFromNumber } = DATE;
 const DEFAULT_BUTTONS_ARRAY = [[]];
 
 const SettingsTimezone = () => {

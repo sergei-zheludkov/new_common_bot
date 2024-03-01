@@ -1,7 +1,7 @@
 import { useBotContext } from '@urban-bot/core';
 // TODO настроить eslint на проставку type вниз импортов
 import type { DialogAnswers, DialogValidation } from '@urban-bot/core';
-import { constants } from '@common_bot/shared';
+import { CONSTANTS } from '@common_bot/shared';
 import { useApi, useQuery } from '@common_bot/api';
 import type { UserCreateDto } from '@common_bot/api';
 import { useTranslation } from '@common_bot/i18n';
@@ -11,7 +11,7 @@ import {
   LANG_KEY, GENDERS, GENDER_KEY, TIMEZONE_KEY,
 } from './constants';
 
-const { TIMEZONES } = constants;
+const { TIMEZONES } = CONSTANTS;
 
 type Props = {
   refId: string | null;
@@ -23,7 +23,7 @@ const useFullRegistration = ({ refId, getUser }: Props) => {
   const { switchToSceneGreeting } = useRouter();
   const { i18n } = useTranslation('lang');
   const { chat } = useBotContext();
-  const { postUser } = useApi();
+  const { postUser } = useApi().user;
   const { fetch, isCalled, isSuccess } = useQuery('user', postUser, { isLazy: true });
 
   const handleSelectLanguage = async (lang: string) => {

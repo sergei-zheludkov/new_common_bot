@@ -1,8 +1,8 @@
-import { utilities } from '@common_bot/shared';
+import { UTILITIES } from '@common_bot/shared';
 import type { UserEntity } from '@common_bot/api';
 import type { ContextState } from './types';
 
-const { empty } = utilities;
+const { empty } = UTILITIES;
 
 const defaultState: ContextState = {
   referralId: null,

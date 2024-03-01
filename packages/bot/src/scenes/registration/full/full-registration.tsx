@@ -7,14 +7,14 @@ import {
   DialogStep,
 } from '@urban-bot/core';
 import { useTranslation } from '@common_bot/i18n';
-import { BotLanguageEnum, constants, date } from '@common_bot/shared';
+import { BotLanguageEnum, CONSTANTS, DATE } from '@common_bot/shared';
 import { useFullRegistration } from './use-full-registration';
 import {
   GENDER_KEY, LANG_KEY, TIMEZONE_KEY, GENDERS,
 } from './constants';
 
-const { TIMEZONES } = constants;
-const { getTimeZoneFromNumber } = date;
+const { TIMEZONES } = CONSTANTS;
+const { getTimeZoneFromNumber } = DATE;
 const { MALE, FEMALE } = GENDERS;
 
 interface Props {
@@ -50,7 +50,7 @@ const FullRegistration = ({ refId, getUser }: Props) => {
 
   if (!isRegistered && !isSentData) {
     const languageContent = (
-      <ButtonGroup isNewMessageEveryRender title={t('questions.language.message')}>
+      <ButtonGroup title={t('questions.language.message')}>
         <Button id={BotLanguageEnum.RUSSIAN}>
           {t(`buttons:${BotLanguageEnum.RUSSIAN}`)}
         </Button>
@@ -61,14 +61,14 @@ const FullRegistration = ({ refId, getUser }: Props) => {
     );
 
     const genderContent = (
-      <ButtonGroup isNewMessageEveryRender title={t('questions.gender.message')}>
+      <ButtonGroup title={t('questions.gender.message')}>
         <Button id={MALE}>{t(`buttons:${MALE}`)}</Button>
         <Button id={FEMALE}>{t(`buttons:${FEMALE}`)}</Button>
       </ButtonGroup>
     );
 
     const timezoneContent = (
-      <ButtonGroup isNewMessageEveryRender title={t('questions.timezone.message')} maxColumns={4}>
+      <ButtonGroup title={t('questions.timezone.message')} maxColumns={4}>
         {TIMEZONES.map((timezone) => {
           const displayTimezone = getTimeZoneFromNumber(timezone);
 

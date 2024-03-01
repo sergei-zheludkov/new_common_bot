@@ -31,8 +31,6 @@ const saveChat = (chat: UrbanChat) => {
 };
 
 export {
-  CHAT_MAP_KEY,
-  localStorage,
   getChatsMap,
   getChats,
   saveChat,
