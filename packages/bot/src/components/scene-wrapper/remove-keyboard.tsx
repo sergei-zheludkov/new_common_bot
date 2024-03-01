@@ -1,22 +1,18 @@
 import React, { ReactNode } from 'react';
 import { Text } from '@urban-bot/core';
-import { useTranslation } from '@common_bot/i18n';
-import { useRemoveKeyboard } from './use-remove-keyboard';
+import { useSceneWrapper } from './use-scene-wrapper';
 
 type Props = {
   children: ReactNode;
 };
 
 const RemoveKeyboard = ({ children }: Props) => {
-  const { t } = useTranslation('common');
-  const { shouldRemoveKeyboard } = useRemoveKeyboard();
+  const { shouldShown, title } = useSceneWrapper();
 
-  if (shouldRemoveKeyboard) {
+  if (shouldShown) {
     return (
       <Text isNewMessageEveryRender={false} isRemoveKeyboard>
-        🤖
-        &#32;
-        {t('loading')}
+        {title}
       </Text>
     );
   }
