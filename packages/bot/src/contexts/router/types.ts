@@ -8,15 +8,19 @@ type ContextState = {
 
   switchToMenuMain: () => void;
   switchToMenuAdmin: () => void;
+  switchToMenuSupport: () => void;
   switchToMenuReferral: () => void;
+  switchToMenuFeedback: () => void;
   switchToMenuSettings: () => void;
-
+  // -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
   switchToSceneGreeting: () => void;
-  switchToSceneFeedback: () => void;
   switchToSceneRules: () => void;
   switchToSceneSettingsLanguage: () => void;
   switchToSceneSettingsTimezone: () => void;
   switchToSceneSettingsReminders: () => void;
+  switchToSceneFeedbackWriting: () => void;
+  switchToSceneFeedbackRequests: () => void;
+  switchToSceneSupportRequests: () => void;
 }
 
 type ProviderProps = {
