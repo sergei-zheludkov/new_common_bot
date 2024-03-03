@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouter } from './contexts';
-// import { useCommonMainMenu } from './menus';
 import { SceneWrapper } from './components';
 
 import * as Menu from './menus';
@@ -45,13 +44,13 @@ export const SceneSwitcher = () => {
     case T.SceneEnum.FEEDBACK_WRITING:
       return <Scene.FeedbackWriting />;
 
-    // case T.SceneEnum.FEEDBACK_REQUESTS:
-    //   return (
-    //     <SceneWrapper type="remove-keyboard">
-    //       <Scene.FeedbackRequests />
-    //     </SceneWrapper>
-    //   );
-    //
+    case T.SceneEnum.FEEDBACK_REQUESTS:
+      return (
+        <SceneWrapper type="remove-keyboard">
+          <Scene.FeedbackRequests />
+        </SceneWrapper>
+      );
+
     // case T.SceneEnum.SUPPORT_REQUESTS:
     //   return (
     //     <SceneWrapper type="remove-keyboard">
