@@ -51,12 +51,12 @@ export const SceneSwitcher = () => {
         </SceneWrapper>
       );
 
-    // case T.SceneEnum.SUPPORT_REQUESTS:
-    //   return (
-    //     <SceneWrapper type="remove-keyboard">
-    //       <Scene.SupportRequests />
-    //     </SceneWrapper>
-    //   );
+    case T.SceneEnum.SUPPORT_REQUESTS:
+      return (
+        <SceneWrapper type="remove-keyboard">
+          <Scene.SupportRequests />
+        </SceneWrapper>
+      );
     // ----------------------------------------------------------------------------------------
     case T.MenuEnum.MAIN:
       return <Menu.Main />;
