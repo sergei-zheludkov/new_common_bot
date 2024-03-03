@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from './contexts';
-import { useCommonMainMenu } from './menus';
-import { RemoveKeyboard } from './components';
+// import { useCommonMainMenu } from './menus';
+import { SceneWrapper } from './components';
 
 import * as Menu from './menus';
 import * as Scene from './scenes';
@@ -13,50 +13,71 @@ export const SceneSwitcher = () => {
   switch (scene) {
     case T.SceneEnum.GREETING:
       return <Scene.Greeting />;
-      // ----------------------------------------MAIN MENU----------------------------------------
-      // case T.Scene.FEEDBACK:
-      //   return <Scene.Feedback />;
+      // ----------------------------------------MAIN MENU---------------------------------------
       //
       // case T.Scene.RULES:
       //   return <Scene.Rules />;
-      // ----------------------------------------ADMIN MENU----------------------------------------
+      // ----------------------------------------ADMIN MENU--------------------------------------
 
-      // ----------------------------------------SETTINGS----------------------------------------
+    // ----------------------------------------SETTINGS----------------------------------------
     case T.SceneEnum.SETTINGS_LANGUAGE:
       return (
-        <RemoveKeyboard>
+        <SceneWrapper type="remove-keyboard">
           <Scene.SettingsLanguage />
-        </RemoveKeyboard>
+        </SceneWrapper>
       );
 
     case T.SceneEnum.SETTINGS_TIMEZONE:
       return (
-        <RemoveKeyboard>
+        <SceneWrapper type="remove-keyboard">
           <Scene.SettingsTimezone />
-        </RemoveKeyboard>
+        </SceneWrapper>
       );
 
     case T.SceneEnum.SETTINGS_REMINDERS:
       return (
-        <RemoveKeyboard>
+        <SceneWrapper type="remove-keyboard">
           <Scene.SettingsReminder />
-        </RemoveKeyboard>
+        </SceneWrapper>
       );
-      // -----------------------------------------------------------------------------------------
+
+    // ----------------------------------------FEEDBACK----------------------------------------
+    case T.SceneEnum.FEEDBACK_WRITING:
+      return <Scene.FeedbackWriting />;
+
+    // case T.SceneEnum.FEEDBACK_REQUESTS:
+    //   return (
+    //     <SceneWrapper type="remove-keyboard">
+    //       <Scene.FeedbackRequests />
+    //     </SceneWrapper>
+    //   );
+    //
+    // case T.SceneEnum.SUPPORT_REQUESTS:
+    //   return (
+    //     <SceneWrapper type="remove-keyboard">
+    //       <Scene.SupportRequests />
+    //     </SceneWrapper>
+    //   );
+    // ----------------------------------------------------------------------------------------
     case T.MenuEnum.MAIN:
-      return <Menu.Main useMain={useCommonMainMenu} />;
+      return <Menu.Main />;
 
     case T.MenuEnum.ADMIN:
       return <Menu.Admin />;
 
+    case T.MenuEnum.SUPPORT:
+      return <Menu.Support />;
+
     case T.MenuEnum.REFERRAL:
       return <Menu.Referral />;
+
+    case T.MenuEnum.FEEDBACK:
+      return <Menu.Feedback />;
 
     case T.MenuEnum.SETTINGS:
       return <Menu.Settings />;
 
-      // -----------------------------------------------------------------------------------------
-
+    // ----------------------------------------------------------------------------------------
     default:
       return null;
   }
