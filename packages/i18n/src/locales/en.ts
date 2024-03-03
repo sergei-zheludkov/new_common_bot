@@ -6,12 +6,12 @@ const en = {
     notification: 'Server notification',
     main_menu: 'Main menu message',
     settings_menu: 'Settings menu message',
+    feedback_menu: 'Feedback menu message',
     update_message: "I'm update!\n\nWhat's new?\n-Paragraph 1\n-Paragraph 2\n-Paragraph 3",
     default_notification_message: 'Default notification message',
     max: 'Maximum: ',
   },
   buttons: {
-    // balance: '💵 Balance',
     referral: '💎 Affiliate',
     feedback: '📲 Support',
     settings: '⚙️ Settings',
@@ -21,14 +21,6 @@ const en = {
     rules: '📚 Rules',
     invite: '🤝 Invite',
     link_generator: '🔗 Link Generator',
-    // input_money: '💸 Payment',
-    // output_money: '💰 Output profit',
-    // all_payments: '🧾 All Payments',
-    // qiwi: '🟠 QIWI',
-    // yoomoney: '🟣 ЮMoney',
-    // webmoney: '🔵 Webmoney',
-    // check_payment: '♻️ Check payment',
-    // wallets: '💳 Wallets',
     // statistics: '📈 Statistics',
     back: '🔙 Back',
     exit: '🔚 Exit',
@@ -46,6 +38,19 @@ const en = {
     female: '👩 Female',
     // management_wallets: '💱 Management',
 
+    // ---------Admin Menu---------
+    support_menu: '📟 Support menu',
+
+    // --------Support Menu--------
+    support_requests: '📥 Support Requests',
+    take_into_work: '🔧 Take into work',
+
+    // --------Feedback Menu--------
+    write: '✍️ Write',
+    requests: '📤 Requests',
+    feedback_waiting_status: 'Waiting',
+    feedback_processing_status: 'Processing',
+
     // ------Reminder Settings------
     reminders_off: '🔇 Disable reminders',
     reminders_on: '🔊 Enable reminders',
@@ -54,11 +59,6 @@ const en = {
     // ------Language Settings------
     ru: '🇷🇺 Русский',
     en: '🇺🇸 English',
-
-    // Фильтрация кошельков
-    // enabled: '🟢',
-    // disabled: '🔴',
-    // all: 'All',
 
     // Кпопки статистики
     // users: '👥 Users',
@@ -80,10 +80,6 @@ const en = {
     saturday: 'Saturday',
     sunday: 'Sunday',
   },
-  // admin_menu: {
-  //   message: 'What do you want to do?',
-  //   error: 'This menu is for administration only. Sorry, but you are not an admin!',
-  // },
   registration: {
     success: 'Registration successful',
     error_title: '❗️ Error ❗',
@@ -104,16 +100,24 @@ const en = {
       },
     },
   },
+  admin: {
+    message: 'What do you want to do?',
+    error: 'This menu is for administration only. Sorry, but you are not an admin!',
+  },
+  support: {
+    message: 'Support menu',
+    error: "This menu is for support workers only. Sorry, but you're not one of them!",
+  },
   referral: {
     title: '🙋‍♂️ Affiliate program',
-    message: '🎁 Invite friends and get 10% of each balance top-up by a friend',
-    balance: '💰 Your partner balance: ',
+    message: '🎁 Invite friends and get bonuses', // 10% of each balance top-up by a friend',
+    // balance: '💰 Your partner balance: ',
     notification: {
       registration_success: 'You have registered with your link by ',
-      bonus: 'Now you will receive 10% from each of his balance replenishment',
+      // bonus: 'Now you will receive 10% from each of his balance replenishment',
 
-      money_part1: 'Your account was replenished by ',
-      money_part2: ' for replenishment by a referral ',
+      // money_part1: 'Your account was replenished by ',
+      // money_part2: ' for replenishment by a referral ',
     },
   },
   // invite: {
@@ -121,90 +125,44 @@ const en = {
   //   message: 'Yo, hello!\nMessage with a referral link:',
   //   // bonus: 'При переходе по ссылке получишь +10% на первое пополнение баланса.',
   // },
-  // input_money: {
-  //   amount: 'Enter payment amount in USD ($)',
-  //   wallet: 'Choose a convenient payment method',
-  //
-  //   bill: 'Bill',
-  //   transfer: 'Make a transfer for the amount:',
-  //   wallet_number: 'Wallet: ',
-  //   warning: 'Attention! Be sure to write in the comment to the payment:',
-  //   else: 'Otherwise, I will not be able to verify your payment',
-  //   or: 'or ',
-  //
-  //   update_message: 'After payment, check the payment and the money will be credited if you did everything correctly',
-  //   check_failed: 'Transfer not found.',
-  //   write_to_support: 'If you think that an error has occurred - write to support.',
-  //   next_check: 'The next verification attempt will be available in',
-  //   sec: 'seconds',
-  //   check_success: 'Payment accepted!',
-  //   balance: 'Accrued ',
-  //
-  //   amount_error: 'Incorrect. Enter by number',
-  //   amount_not_integer: 'Please enter an integer',
-  //   amount_should_be_positive: 'The number must be greater 0',
-  // },
-  // output_money: {
-  //   message: '[Write output message]',
-  // },
-  // payments: {
-  //   title: 'Payments',
-  //   from: 'from',
-  //   error: 'There was an error loading payments. Try again later...',
-  //   empty: "You haven't made any payments yet",
-  // },
   feedback: {
-    message:
-      'At the moment, any sent message will be forwarded to support. You can describe the problem in text, send a photo or video (screen recording)',
+    message: 'At the moment, any sent message will be forwarded to support',
+    describe: 'You can describe the problem in text, send a photo, video, audio or circle video',
+    error: 'Unfortunately, the request limit has already been reached',
+
+    request_list: 'Request list',
+    last_request_list: 'Last requests list',
+    empty_request_list: 'Request list is empty',
+    your_request: 'Your request from {{date}}',
+    user_request: 'Request {{user_name}} from {{date}}',
+    sent_success: 'Your request has been successfully sent',
+    request_has_been_taken: 'The request has been taken into work',
+    request_has_been_done: 'The request has been successfully processed',
+
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    limit_zero: "Requests aren't available, try tomorrow",
+    limit_one: '{{count}} request is available',
+    limit_other: '{{count}} requests are available',
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    total_in_waiting_zero: 'There are no requests waiting',
+    total_in_waiting_one: 'There is {{count}} request awaiting processing',
+    total_in_waiting_other: 'There are {{count}} requests awaiting processing',
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    today_in_waiting_zero: '',
+    today_in_waiting_one: '',
+    today_in_waiting_other: '',
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    today_in_processing_zero: '',
+    today_in_processing_one: '',
+    today_in_processing_other: '',
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    today_in_done_zero: '',
+    today_in_done_one: '',
+    today_in_done_other: '',
   },
-  // wallets: {
-  //   message: 'Wallets actions',
-  //
-  //   type_message: 'Select the type of wallet to add',
-  //   type_validation_error: 'Select the type of wallet to add wallet using the buttons',
-  //
-  //   empty_wallets_list: 'No wallets added',
-  //
-  //   meta: {
-  //     message: 'Input data',
-  //     format: 'number:token;',
-  //     description: 'Данные одного кошелька должны быть с разделителем :\nРазные кошельки должны быть с разделителем ;',
-  //
-  //     validation_error: "Don't screw up!",
-  //   },
-  //
-  //   add: {
-  //     success: 'Successfully added and launched in rotation wallets in quantity',
-  //     failed:
-  //       'There was a problem adding wallets on the server. Probably the number or token has already been used. Check everything, if you are sure that everything is clear and if you are not a developer - write to him urgently about the problem',
-  //   },
-  //
-  //   management: {
-  //     message: 'Wallets switcher',
-  //   },
-  // },
   rules: {
     message: 'Rules\n\n-Paragraph 1"\n-Paragraph 2\n-Paragraph 3',
   },
-  // statistics: {
-  //   more_details: 'More details can be found on the bottom buttons',
-  //   new_users: 'New users:',
-  //   payments: 'Payments:',
-  //   payments_is_empty: 'Payments is empty',
-  //   total: 'Total:',
-  //   amount: 'Amount:',
-  //   choose_period: 'Enter the period in the format:',
-  //   period_example: '\n220521-240521',
-  //
-  //   periods: {
-  //     daily: 'Daily statistics',
-  //     yesterday: 'Yesterday statistics',
-  //     weekly: 'Weekly statistics',
-  //     monthly: 'Monthly statistics',
-  //     all_time: 'Statistics by All time ',
-  //     by_period: 'Statistics by period',
-  //   },
-  // },
   settings: {
     reminder: {
       message: 'Setting the reminders time',
