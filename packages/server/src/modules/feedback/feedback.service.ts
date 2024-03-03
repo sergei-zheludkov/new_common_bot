@@ -195,7 +195,8 @@ class FeedbackService {
   }
 
   async updateFeedback(user_data: FeedbackUpdateDto) {
-    const { id, ...data } = user_data;
+    const { id, support_id: support, ...data } = user_data;
+
     try {
       return await this.dataSource.transaction(async (manager) => {
         const feedback_repository = manager.getRepository(Feedback);
@@ -205,7 +206,7 @@ class FeedbackService {
           return feedback_in_db;
         }
 
-        await feedback_repository.update({ id }, data);
+        await feedback_repository.update({ id }, { ...data, support });
 
         return findOne(feedback_repository, id);
       });
